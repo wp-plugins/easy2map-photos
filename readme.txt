@@ -73,9 +73,8 @@ When adding a new marker (or editing an existing marker), click on the 'Change I
 5. Upload your own marker icons, to tailor your map to your exact requirements.
 6. Resize your map to a preset size, or to a custom size (pixel or percentage).
 7. Add multiple markers to your map.
-8. On saving your map, you are shown the map's shortcode for easy insertion into your pages or posts.
-9. Simply add your map's shortcode to your pages or posts to include the map.
-10. Voila, your Easy2Map!
+8. On saving your map, you are shown the map's shortcode for easy insertion into your pages or posts. Simply add your map's shortcode to your pages or posts to include the map.
+9. Voila, your Easy2Map!
 
 
 == Changelog ==
@@ -86,6 +85,8 @@ When adding a new marker (or editing an existing marker), click on the 'Change I
 = 1.0.2 =
 * Images added for help documentation
 
+= 1.0.3 =
+* Screenshot images altered
 
 == Upgrade Notice ==
 
@@ -94,3 +95,6 @@ When adding a new marker (or editing an existing marker), click on the 'Change I
 
 = 1.0.2 =
 * Images added for help documentation
+
+= 1.0.3 =
+* Screenshot images altered
