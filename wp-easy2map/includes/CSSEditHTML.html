@@ -1,0 +1,126 @@
+<div id="div_edit_color" style="width:600px" 
+     class="modal hide fade" tabindex="-1" 
+     role="dialog" aria-labelledby="winSettingsModalLabel" data-keyboard="true" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3>Alter Style Value</h3>
+    </div>
+    <div class="modal-body" style="max-height: 300px">
+        <input type="text" style="width:75px;height:28px;" 
+               value="FFFFFF" 
+               name="txtDefaultValue_color" 
+               id="txtDefaultValue_color" 
+               class="color" />
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary" data-dismiss="modal" onclick="easy2map_map_functions.saveItemValue();" aria-hidden="true">Save changes</button>
+    </div>
+</div>
+
+<div id="div_edit_pixel" style="width:600px" 
+     class="modal hide fade" tabindex="-1" 
+     role="dialog" aria-labelledby="winSettingsModalLabel" data-keyboard="true" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3>Alter Style Value</h3>
+    </div>
+    <div class="modal-body">
+        <input type="number" class="input-mini" style="height:28px" 
+               id="txtDefaultValue_pixel" name="txtDefaultValue_pixel">  pixels
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary" data-dismiss="modal"  onclick="easy2map_map_functions.saveItemValue();" aria-hidden="true">Save changes</button>
+    </div>
+</div>
+
+<div id="div_edit_percentage" style="width:600px" 
+     class="modal hide fade" tabindex="-1" 
+     role="dialog" aria-labelledby="winSettingsModalLabel" data-keyboard="true" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3>Alter Style Value</h3>
+    </div>
+    <div class="modal-body" style="max-height: 300px">
+        <select class="Heading3" style="width:150px;height:28px" 
+                        id="txtDefaultValue_percentage" name="txtDefaultValue_percentage">
+                </select> % 
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary" data-dismiss="modal" onclick="easy2map_map_functions.saveItemValue();" aria-hidden="true">Save changes</button>
+    </div>
+</div>
+
+<div id="div_edit_margin" style="width:600px" 
+     class="modal hide fade" tabindex="-1" 
+     role="dialog" aria-labelledby="winSettingsModalLabel" data-keyboard="true" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3>Alter Style Value</h3>
+    </div>
+    <div class="modal-body" style="max-height: 300px">
+        <select class="Heading3" style="width:150px;height:28px" id="txtDefaultValue_margin" name="txtDefaultValue_margin">
+                </select> 
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary" data-dismiss="modal" onclick="easy2map_map_functions.saveItemValue();" aria-hidden="true">Save changes</button>
+    </div>
+</div>
+
+<div id="div_edit_style" style="width:600px" 
+     class="modal hide fade" tabindex="-1" 
+     role="dialog" aria-labelledby="winSettingsModalLabel" data-keyboard="true" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3>Alter Style Value</h3>
+    </div>
+    <div class="modal-body" style="max-height: 300px">
+        <select class="Heading3" style="width:200px;height:28px" id="txtDefaultValue_style" name="txtDefaultValue_style">
+                    <option value="none">none</option>
+                    <option value="hidden">hidden</option> 
+                    <option value="dotted">dotted</option>
+                    <option value="dashed">dashed</option>
+                    <option value="solid">solid</option>
+                    <option value="double">double</option>
+                    <option value="groove">groove</option>
+                    <option value="ridge">ridge</option>
+                    <option value="inset">inset</option>
+                    <option value="outset">outset</option>
+                </select> 
+    </div>
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary" data-dismiss="modal" onclick="easy2map_map_functions.saveItemValue();" aria-hidden="true">Save changes</button>
+    </div>
+</div>
+
+<div id="div_edit_widthheight" style="width:600px" 
+     class="modal hide fade" tabindex="-1" 
+     role="dialog" aria-labelledby="winSettingsModalLabel" data-keyboard="true" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h3>Set Custom Map Size</h3>
+    </div>
+    <div class="modal-body">
+        Width: <input type="number" class="input-mini" style="height:28px" 
+                      id="txtCustomWidthValue" name="txtDefaultValue_pixel">
+
+        <select id="mapWidthDimension" style="width:60px">
+            <option value="px">px</option>
+            <option value="%">%</option>
+        </select>
+
+    </div>
+    <div class="modal-body">
+        Height: <input type="number" class="input-mini" style="height:28px" 
+                       id="txtCustomHeightValue" name="txtDefaultValue_pixel"> px
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+        <button class="btn btn-primary" data-dismiss="modal"  onclick="easy2map_map_functions.setCustomMapSize();" aria-hidden="true">Save changes</button>
+    </div>
+</div>
