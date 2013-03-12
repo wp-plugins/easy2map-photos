@@ -1,11 +1,7 @@
 === Easy2Map ===
 Plugin Name: Easy2Map
 Contributors: stevenellis
-Tags: google maps, store finder, online maps, store locater, google, dealer locator, map plugins, mapping plugins,
-dealer locater, zip code search, shop locator, shop finder, zipcode, 
-location finder, places, maps, mapping, mapper, blog maps, blogging maps, travel maps, 
-plugin, posts, post, page, coordinates, latitude, longitude, 
-geo, geocoding, shops, ecommerce, e-commerce, business locations, bing map, bing, yahoo maps, yahoo, mapping, retail
+Tags: google maps, store finder, online maps, store locater, google, dealer locator, map plugins, mapping plugins, dealer locater, zip code search, shop locator, shop finder, zipcode, location finder, places, maps, mapping, mapper, blog maps, blogging maps, travel maps, plugin, posts, post, page, coordinates, latitude, longitude, geo, geocoding, shops, ecommerce, e-commerce, business locations, bing map, bing, yahoo maps, yahoo, mapping, retail
 
 Requires at least: 3.0.1
 Tested up to: 3.5.1
@@ -13,8 +9,7 @@ Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-The easiest tool available for creating custom & great-looking Google Maps. Add multiple pins and customize
-maps with drag-and-drop simplicity.
+The easiest tool available for creating custom & great-looking Google Maps. Add multiple pins and customize maps with drag-and-drop simplicity.
 
 == Description ==
 

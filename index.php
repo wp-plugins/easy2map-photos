@@ -3,7 +3,7 @@
 /* 
   Plugin Name: Easy2Map WordPress Plugin 
   URI: http://easy2map.com/ 
-  Description: The easiest tool available for creating custom and great-looking Google Maps. Add multiple pins, customize every element of your map and pins, and insert maps in your posts and pages with Easy2Map's simple drag-and-drop tool. 
+  Description: The easiest tool available for creating custom & great-looking Google Maps. Add multiple pins and customize maps with drag-and-drop simplicity.
   Author: Steven Ellis 
   Version: 1.0 
   Author URI: http://easy2map.com/ 
