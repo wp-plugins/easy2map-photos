@@ -5,7 +5,7 @@ Tags: google maps, store finder, online maps, store locater, google, dealer loca
 
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.0.2
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -87,6 +87,7 @@ When adding a new marker (or editing an existing marker), click on the 'Change I
 
 = 1.0.3 =
 * Screenshot images altered
+
 
 == Upgrade Notice ==
 
