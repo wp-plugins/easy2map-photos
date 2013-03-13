@@ -103,7 +103,7 @@ class Easy2Map {
                 PRIMARY KEY (`ID`),
                 UNIQUE KEY `ID_UNIQUE` (`ID`),
                 KEY `wp_easy2map_map_points_MapID` (`MapID`),
-                CONSTRAINT `wp_easy2map_map_points_MapID` FOREIGN KEY (`MapID`) REFERENCES `wp_easy2map_maps` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+                CONSTRAINT `wp_easy2map_map_points_MapID` FOREIGN KEY (`MapID`) REFERENCES `$map_table` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
               ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1";
             
             if (!$wpdb->query($SQL)){
