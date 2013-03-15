@@ -5,7 +5,7 @@
   URI: http://easy2map.com/ 
   Description: The easiest tool available for creating custom & great-looking Google Maps. Add multiple pins and customize maps with drag-and-drop simplicity.
   Author: Steven Ellis 
-  Version: 1.0.5 
+  Version: 1.0.6 
   Author URI: http://easy2map.com/ 
  */
 
@@ -91,6 +91,19 @@ if (!function_exists('easy2map_add_actions')):
         add_action('wp_ajax_save_map_name', 'easy2map_save_map_name');
         add_action('wp_ajax_save_map_pin', 'easy2map_save_map_pin');
         add_action('wp_ajax_update_map_pin_location', 'easy2map_update_map_pin_location');
+        
+        add_action('wp_ajax_nopriv_retrieve_map_points', 'easy2map_retrieve_map_pins_callback');
+        add_action('wp_ajax_nopriv_delete_map_point', 'easy2map_delete_map_point_callback');
+        add_action('wp_ajax_nopriv_retrieve_pin_icons', 'easy2map_retrieve_pin_icons_callback');
+        add_action('wp_ajax_nopriv_save_default_pin_image', 'easy2map_save_default_pin_image_callback');
+        add_action('wp_ajax_nopriv_retrieve_map_settings', 'easy2map_retrieve_map_settings_callback');
+        add_action('wp_ajax_nopriv_retrieve_map_templates', 'easy2map_retrieve_map_templates_callback');
+        add_action('wp_ajax_nopriv_retrieve_mappin_templates', 'easy2map_retrieve_mappin_templates_callback');
+        add_action('wp_ajax_nopriv_save_map_polylines', 'easy2map_save_map_polylines_callback');
+        add_action('wp_ajax_nopriv_save_map', 'easy2map_save_map');
+        add_action('wp_ajax_nopriv_save_map_name', 'easy2map_save_map_name');
+        add_action('wp_ajax_nopriv_save_map_pin', 'easy2map_save_map_pin');
+        add_action('wp_ajax_nopriv_update_map_pin_location', 'easy2map_update_map_pin_location');
     }
 
 endif;

@@ -79,7 +79,7 @@ class Easy2Map {
             `IsActive` smallint(6),
             PRIMARY KEY (`ID`),
             UNIQUE KEY `ID_UNIQUE` (`ID`)
-            ) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1";
+            ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1";
             
             if (!$wpdb->query($SQL)){
                 echo sprintf($error, __("Could not create easy2map maps table.", 'easy2map'));
@@ -104,7 +104,7 @@ class Easy2Map {
                 UNIQUE KEY `ID_UNIQUE` (`ID`),
                 KEY `wp_easy2map_map_points_MapID` (`MapID`),
                 CONSTRAINT `wp_easy2map_map_points_MapID` FOREIGN KEY (`MapID`) REFERENCES `$map_table` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
-              ) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1";
+              ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1";
             
             if (!$wpdb->query($SQL)){
                 echo sprintf($error, __("Could not create easy2map pins table.", 'easy2map'));
@@ -123,7 +123,7 @@ class Easy2Map {
             `TemplateHTML` text,
             PRIMARY KEY (`ID`),
             UNIQUE KEY `ID_UNIQUE` (`ID`)
-          ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1";
+          ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1";
             
             if (!$wpdb->query($SQL)){
                 echo sprintf($error, __("Could not create easy2map pin templates table.", 'easy2map'));
@@ -171,7 +171,7 @@ class Easy2Map {
             `Active` smallint(6) DEFAULT NULL,
             PRIMARY KEY (`ID`),
             UNIQUE KEY `ID_UNIQUE` (`ID`)
-          ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1";
+          ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=latin1";
             
             if (!$wpdb->query($SQL)){
                 echo sprintf($error, __("Could not create easy2map templates table.", 'easy2map'));
