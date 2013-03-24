@@ -45,6 +45,7 @@
 <?php
 global $wpdb;
 $mapsTable = $wpdb->prefix . "easy2map_maps";
+
 if (isset($_POST["mapName"])) {
     easy2map_save_map();
 }
@@ -58,11 +59,9 @@ if (isset($_GET["action"]) && strcasecmp($_GET["action"], "deletemap") == 0 && i
 <div class="control-group mcm-control-group" style="margin-left:auto;margin-right:auto;width:90%;margin-top:10px;border:1px solid #EBEBEB;padding:5px;border-radius:5px;background:url(<?php echo easy2map_get_plugin_url('/images/e2m_favicon3030.png'); ?>) no-repeat;background-color:#EBEBEB;background-position: 1px 3px;">
     <h5 style="line-height:6px;margin-left:25px;">
         My Easy2Maps
-        
         <a style="margin-top:-10px;float:right;margin-right:5%;font-size:20px;" href="?page=easy2map&action=edit&map_id=0">
-                            <img src="<?php echo easy2map_get_plugin_url('/images/e2m_icon_add.png'); ?>" style="margin-right:10px;"> Create New Map</a>
-        
-        
+                            <img alt="easy2mapwordpress131723" src="<?php echo easy2map_get_plugin_url('/images/e2m_icon_add.png'); ?>" style="margin-right:10px;"> Create New Map</a>
+     
     </h5>
 </div>
 
@@ -106,7 +105,9 @@ if (isset($_GET["action"]) && strcasecmp($_GET["action"], "deletemap") == 0 && i
         }
         ?>
     </table>
-
+    <?php if (count($results) > 0) { ?>
+    <a style="float:right;margin-right:5%;font-size:1.1em;font-weight:bold" href="http://easy2map.com/contactUs.php" target="_blank">Your comments and feedback are always welcome</a>
+    <?php } ?>
 </div>
 
 <div id="are_you_sure" style="width:600px" 

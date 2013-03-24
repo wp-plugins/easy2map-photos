@@ -5,7 +5,7 @@
   URI: http://easy2map.com/ 
   Description: The easiest tool available for creating custom & great-looking Google Maps. Add multiple pins and customize maps with drag-and-drop simplicity.
   Author: Steven Ellis 
-  Version: 1.0.6 
+  Version: 1.0.7 
   Author URI: http://easy2map.com/ 
  */
 
@@ -121,7 +121,6 @@ endif;
 if (!function_exists('easy2map_register_hooks')):
 
     function easy2map_register_hooks() {
-        register_uninstall_hook(EASY2MAP_PLUGIN_BOOTSTRAP, 'easy2map_on_uninstall_hook');
     }
 
 endif;

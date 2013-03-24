@@ -179,7 +179,7 @@ $mapID = $_REQUEST["map_id"];
 
                     <p style="display:none;margin-bottom:20px;" id="AddMarkerOrSave">
                         <a href="#" onclick="easy2map_mappin_functions.addNewMapMarker()">
-                            <img src="<?php echo easy2map_get_plugin_url('/images/e2m_icon_add.png'); ?>" style="margin-right:10px;"> Add New Marker</a>
+                            <img alt="easy2mapwordpress131723" src="<?php echo easy2map_get_plugin_url('/images/e2m_icon_add.png'); ?>" style="margin-right:10px;"> Add New Marker</a>
                         <button id="btnSaveAndBack" onclick="easy2map_map_functions.saveMap(true, true);" type="button" 
                                 style="float:right;width:150px;"
                                 class="btn btn-custom">Map Completed</button>
