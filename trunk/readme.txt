@@ -4,7 +4,7 @@ Contributors: stevenellis
 Tags: photo maps, image maps, image map, geo, map images, map photos, google maps, map plugins, mapping plugins, maps, mapping, mapper, blog maps, blogging maps, travel maps, plugin, posts, post, page, coordinates, latitude, longitude, geocoding, geotag images, geotag photos, image slider, photo slider, image gallery, photo gallery
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -69,7 +69,7 @@ If the photo was taken on a device that records the photo's geolocation, then ye
 07. Photo Map Manager - create, administer and delete your photo maps from here.
 08. Easily upload photos in the photo admin screen
 09. Indicate the photo's location by entering the marker's address (auto-prompts assist with address selection). For photos already containing geolocation data, this step is not necessary. 
-09b. Give each photo an optional title or description. Add custom HTML and links to this description if you wish to.
+10. Give each photo an optional title or description. Add custom HTML and links to this description if you wish to.
 11. Upload your own marker icons. (Pro version).
 12. Choose from a number of great-looking photo map templates. Edit the photo's and map's height and width, as well as the map type and default zoom. Administer the style of individual elements on the template to your exact requirements. (Pro version). 
 13. On saving your photo map, you are shown the photo map's shortcode for easy insertion into your pages or posts. Simply add this shortcode to your pages or posts to include the photo map.
