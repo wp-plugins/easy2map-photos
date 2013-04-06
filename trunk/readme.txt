@@ -4,7 +4,7 @@ Contributors: stevenellis
 Tags: photo maps, image maps, image map, geo, map images, map photos, google maps, map plugins, mapping plugins, maps, mapping, mapper, blog maps, blogging maps, travel maps, plugin, posts, post, page, coordinates, latitude, longitude, geocoding, geotag images, geotag photos, image slider, photo slider, image gallery, photo gallery
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
