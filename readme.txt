@@ -5,7 +5,7 @@ Tags: google maps, store finder, online maps, store locater, google, dealer loca
 
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,7 +94,7 @@ When adding a new marker (or editing an existing marker), click on the 'Change I
 = 1.0.6 =
 * Fix implemented that sorted out issue viewing maps when not logged into WordPress.
 
-= 2.0.1 =
+= 1.0.8 =
 * Map Marker HTML editor fixed.
 * Easy2Map Ultimate Version added.
 
@@ -109,6 +109,6 @@ When adding a new marker (or editing an existing marker), click on the 'Change I
 = 1.0.6 =
 * Fix implemented for viewing maps when not logged into WordPress. Please upgrade immediately.
 
-= 2.0.1 =
+= 1.0.8 =
 * Map Marker HTML editor fixed.
 * Easy2Map Ultimate Version added.
