@@ -44,7 +44,7 @@ Easy2Map is a simple-yet-powerful tool for quickly creating custom Google Maps f
 
 
 
-1. Upload the `wp-easy2map` folder to the `/wp-content/plugins/` directory
+1. Upload the `wp-easy2map` folder to the `/wp-content/plugins/` directory.
 
 2. Activate the plugin through the 'Plugins' menu in WordPress
 
@@ -66,7 +66,7 @@ When adding a new marker (or editing an existing marker), click on the 'Change I
 
 == Screenshots ==
 
-1. Map Manager - create, administer and delete your maps from here.
+1. Map Manager - create, administer and delete your easy2map maps from here
 2. Add a marker to your map by entering the marker's address (auto-prompts assist with address selection).
 3. Also add a marker to your map by simply dragging and dropping it onto your map.
 4. Edit your marker's details, including adding custom HTML and links to your marker's content.
