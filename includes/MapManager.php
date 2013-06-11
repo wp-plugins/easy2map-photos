@@ -61,6 +61,13 @@ if (isset($_GET["action"]) && strcasecmp($_GET["action"], "deletemap") == 0 && i
         My Easy2Maps
         <a style="margin-top:-10px;float:right;margin-right:5%;font-size:20px;" href="?page=easy2map&action=edit&map_id=0">
                             <img alt="easy2mapwordpress131723" src="<?php echo easy2map_get_plugin_url('/images/e2m_icon_add.png'); ?>" style="margin-right:10px;"> Create New Map</a>
+                            
+        <?php if (self::easy2MapCodeValidator(get_option('easy2map-key')) === false) { ?>
+            <a style="float:right;margin-right:10%;font-size:1.25em;color:#70aa00;" href="?page=easy2map&action=activation">Upgrade to Easy2Map Ultimate Version</a>
+        <?php } else {?>
+            <span style="float:right;margin-right:10%;font-size:1.3em;color:#70aa00;margin-top:-5px;"><img src="<?php echo easy2map_get_plugin_url('/images/tick_small.png'); ?>" style="margin-right:5px;" />Easy2Map Ultimate Version</span>
+        <?php }?>                     
+                            
      
     </h5>
 </div>

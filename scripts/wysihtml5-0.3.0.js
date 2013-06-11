@@ -7957,7 +7957,7 @@ wysihtml5.views.View = Base.extend(
 
     setValue: function(html, parse) {
       if (parse) {
-        html = this.parent.parse(html);
+        //html = this.parent.parse(html);
       }
       this.element.innerHTML = html;
     },
@@ -8725,7 +8725,7 @@ wysihtml5.views.Textarea = wysihtml5.views.View.extend(
   
   setValue: function(html, parse) {
     if (parse) {
-      html = this.parent.parse(html);
+      //html = this.parent.parse(html);
     }
     this.element.value = html;
   },

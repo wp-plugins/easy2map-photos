@@ -73,23 +73,23 @@ $mapID = $_REQUEST["map_id"];
     var $overlay, $styleElementIndex, $geocoder, $map, $mapSettings, $latlng, $arrTemplates, $mapPinID, $pinsArray = [], $markersArray = [], $selectedPin;
     var $pluginsURL = "<?php echo str_replace('index.php', '', easy2map_get_plugin_url('/index.php')); ?>";
     var $mapID = <?php echo $mapID; ?>;
-    
+
     jQuery.noConflict();
-    
+
     jQuery(function() {
-        
+
         $geocoder = new google.maps.Geocoder();
         easy2map_map_functions.retrieveMapSettings($mapID);
-                
+
         //add autocomplete to the address search textbox
         var input = document.getElementById('address');
         var autocomplete = new google.maps.places.Autocomplete(input);
-        google.maps.event.addListener(autocomplete, 'place_changed', function(){
-            
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+
             var place = autocomplete.getPlace();
-            easy2map_mappin_functions.SetPinPosition(place.geometry.location.lat(),place.geometry.location.lng());
+            easy2map_mappin_functions.SetPinPosition(place.geometry.location.lat(), place.geometry.location.lng());
         });
-        
+
         jQuery('#pinDescription').wysihtml5({
             "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
             "emphasis": true, //Italics, bold, etc. Default true
@@ -99,34 +99,34 @@ $mapID = $_REQUEST["map_id"];
             "image": false, //Button to insert an image. Default true,
             "color": true //Button to change color of font  
         });
-        
+
     });
-    
-    function showMapNameEdit(){
-        
+
+    function showMapNameEdit() {
+
         jQuery('#mapName').val(jQuery('#mapName2').html()).toggle().select();
         jQuery('#mapEditPencil').toggle();
         jQuery('#mapName2').toggle();
-        
+
     }
-    
+
     function runMapNameEdit(e) {
         if (e.keyCode == 13) {
             document.getElementById('btnBack').focus();
             return false;
         }
     }
-    
-    function saveMapNameEdit(){
-        
+
+    function saveMapNameEdit() {
+
         var mapName = jQuery.trim(jQuery('#mapName').val()) == "" ? "Untitled Map" : jQuery.trim(jQuery('#mapName').val());
-        
+
         jQuery('#mapName2').html(mapName).toggle();
         jQuery('#mapEditPencil').toggle();
         jQuery('#mapName').toggle();
         easy2map_map_functions.saveMapName();
     }
-    
+
 </script>
 
 <div class="wrap" id="bodyTag">
@@ -145,9 +145,9 @@ $mapID = $_REQUEST["map_id"];
                            class="input-large" style="display:none;width:300px;margin-bottom:-6px" />
 
                     <!---<?php if (!isset($_REQUEST["no_back"])) { ?>
-                                            <button onclick="window.location='?page=easy2map&action=viewMaps'" type="button" 
-                                                    style="margin-left:30px;width:100px;" 
-                                                    class="btn">Back</button> 
+                                                                <button onclick="window.location='?page=easy2map&action=viewMaps'" type="button" 
+                                                                        style="margin-left:30px;width:100px;" 
+                                                                        class="btn">Back</button> 
                     <?php } ?>--->
 
             </td>
@@ -158,7 +158,7 @@ $mapID = $_REQUEST["map_id"];
                 </select>
 
                 <a id="btnBack" href="#" onclick="easy2map_map_functions.saveMap(true, false);" type="button" 
-                        style="float:right;margin-right:5px;">Back to Map Manager</a>
+                   style="float:right;margin-right:5px;">Back to Map Manager</a>
             </td>
 
         </tr>
@@ -168,109 +168,119 @@ $mapID = $_REQUEST["map_id"];
         <tr><td style="width:34%;vertical-align:top;">
                 <div class="control-group" style="width:100%;">
 
-                    <select onclick="easy2map_map_functions.changeMapTemplate()" size="7" 
-                            id="MapTemplateName" name="MapTemplateName" 
-                            style="display:none;font-size:12px;width:300px">
-                    </select> 
-
-                    <h5 onclick="jQuery('#MapTemplateCSS').toggle('blind', {}, 500 );" 
-                        id="TitleMapStyle" style="display:none;cursor:pointer;margin-top:5px;">Map Style <span id="mapStyleHint" style="font-size:9px">(click to show)</span></h5>
-                    <p id="MapTemplateCSS" style="display:none;"></p>
-
-                    <p style="display:none;margin-bottom:20px;" id="AddMarkerOrSave">
-                        <a href="#" onclick="easy2map_mappin_functions.addNewMapMarker()">
-                            <img alt="easy2mapwordpress131723" src="<?php echo easy2map_get_plugin_url('/images/e2m_icon_add.png'); ?>" style="margin-right:10px;"> Add New Marker</a>
+                    <p style="display:none;margin-top:-20px;" id="SaveMap">
                         <button id="btnSaveAndBack" onclick="easy2map_map_functions.saveMap(true, true);" type="button" 
                                 style="float:right;width:150px;"
                                 class="btn btn-custom">Map Completed</button>
                     </p>
 
-                    <table id="tblAddMapMarker" style="display:none;background-color:#EBEBEB;width:100%;" cellspacing="3" cellpadding="3" class="table table-bordered">
-                        <tr>
-                            <td id="AddEditPinTitle" colspan="2" class="instructions">Add New Marker
-                            </td>
-                        </tr>
+                    <ul class="nav nav-tabs" style="clear:both;">
+                        <li class="active">
+                            <a href="#easy2maptabs-1" data-toggle="tab">Map Markers</a>
+                        </li>
+                        <li id='easy2maptab2'><a href="#easy2maptabs-2" data-toggle="tab">Additional Settings</a></li>
+                    </ul>
 
-                        <tr id="pinNameParent" style="display:none;"><td colspan="2">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="easy2maptabs-1">
 
-                                <h5 style="margin-top:0px;">Marker's Name</h5>
+                            <p style="display:none;margin-bottom:20px;" id="AddMarker">
+                                <a href="#" onclick="easy2map_mappin_functions.addNewMapMarker()">
+                                    <img alt="easy2mapwordpress131723" src="<?php echo easy2map_get_plugin_url('/images/e2m_icon_add.png'); ?>" style="margin-right:10px;"> Add New Marker</a>
+                            </p>
 
-                                <input maxlength="128" name="pinName"
-                                       id="pinName" value=""
-                                       type="text" placeholder="Enter map marker name" 
-                                       class="input-large" style="width:100%;margin:0;" />
+                            <table id="tblAddMapMarker" style="display:none;background-color:#EBEBEB;width:100%;" cellspacing="3" cellpadding="3" class="table table-bordered">
+                                <tr>
+                                    <td id="AddEditPinTitle" colspan="2" class="instructions">Add New Marker
+                                    </td>
+                                </tr>
 
-                            </td></tr>
+                                <tr id="pinNameParent" style="display:none;"><td colspan="2">
 
-                        <tr id="pinDescriptionParent" style="display:none;">
-                            <td colspan="2" style="">
+                                        <h5 style="margin-top:0px;">Marker's Name</h5>
 
-                                <h5 style="margin-top:0px;">Popup's Content</h5>
-                                <textarea style="width:100%;height:100px;margin:0;" placeholder="Enter popup content here" id="pinDescription" name="pinDescription"></textarea>
-                            </td>
-                        </tr>
+                                        <input maxlength="128" name="pinName"
+                                               id="pinName" value=""
+                                               type="text" placeholder="Enter map marker name" 
+                                               class="input-large" style="width:100%;margin:0;" />
 
-                        <tr id="divAddressSearch">
-                            <td colspan="2" style="vertical-align:middle;">
-                                <input class="input-xlarge" 
-                                       id="address" 
-                                       type="text"
-                                       placeholder="Enter Marker's Address" 
-                                       style="width:100%;margin:0">
+                                    </td></tr>
 
-                            </td>
-                        </tr>
-                        <tr id="divDrag">
-                            <td align="center" colspan="2" style="vertical-align:middle;text-align:center;font-size:13px">
-                                or drag marker onto map
-                            </td>
-                        </tr>
+                                <tr id="pinDescriptionParent" style="display:none;">
+                                    <td colspan="2" style="">
 
-                        <tr>
+                                        <h5 style="margin-top:0px;">Popup's Content</h5>
+                                        <textarea style="width:100%;height:100px;margin:0;" placeholder="Enter popup content here" id="pinDescription" name="pinDescription"></textarea>
+                                    </td>
+                                </tr>
 
-                            <td align="center" style="text-align:center;vertical-align:middle;">
-                                <button id="btnUploadIcon" onclick="easy2map_mappin_functions.openImagesDirectory(jQuery('#draggable').attr('src'))" type="button" 
-                                        style="margin-top:auto;margin-bottom:auto;width:120px;" 
-                                        class="btn">Change Icon</button>
-                            </td>
+                                <tr id="divAddressSearch">
+                                    <td colspan="2" style="vertical-align:middle;">
+                                        <input class="input-xlarge" 
+                                               id="address" 
+                                               type="text"
+                                               placeholder="Enter Marker's Address" 
+                                               style="width:100%;margin:0">
 
-                            <td align="center" style="text-align:center;vertical-align:middle;font-size:13px;" class="instructions">
+                                    </td>
+                                </tr>
+                                <tr id="divDrag">
+                                    <td align="center" colspan="2" style="vertical-align:middle;text-align:center;font-size:13px">
+                                        or drag marker onto map
+                                    </td>
+                                </tr>
 
-                                <img id="draganddrop" src="<?php echo easy2map_get_plugin_url('/images/draganddrop.png'); ?>" 
-                                     style="float:right;">
+                                <tr>
 
-                                <img id="draggable" name="draggable"
-                                     style="z-index:9999;cursor:move;vertical-align:top"/>
+                                    <td align="center" style="text-align:center;vertical-align:middle;">
+                                        <button id="btnUploadIcon" onclick="easy2map_mappin_functions.openImagesDirectory(jQuery('#draggable').attr('src'))" type="button" 
+                                                style="margin-top:auto;margin-bottom:auto;width:120px;" 
+                                                class="btn">Change Icon</button>
+                                    </td>
 
-                            </td>
-                        </tr>
+                                    <td align="center" style="text-align:center;vertical-align:middle;font-size:13px;" class="instructions">
 
-                        <tr id="divPinAddEditParent" style="display:none;">
-                            <td style="text-align:left;" colspan="2">
+                                        <img id="draganddrop" src="<?php echo easy2map_get_plugin_url('/images/draganddrop.png'); ?>" 
+                                             style="float:right;">
+
+                                        <img id="draggable" name="draggable"
+                                             style="z-index:9999;cursor:move;vertical-align:top"/>
+
+                                    </td>
+                                </tr>
+
+                                <tr id="divPinAddEditParent" style="display:none;">
+                                    <td style="text-align:left;" colspan="2">
 
 
-                                <button id="btnDeletePin" onclick="easy2map_mappin_functions.deleteSelectedPoint();" type="button" 
-                                        style="float:right;display:none;margin-top:10px;width:70px;" 
-                                        class="btn">Delete</button>
+                                        <button id="btnDeletePin" onclick="easy2map_mappin_functions.deleteSelectedPoint();" type="button" 
+                                                style="float:right;display:none;margin-top:10px;width:70px;" 
+                                                class="btn">Delete</button>
 
-                                <button id="btnSavePin" onclick="easy2map_mappin_functions.saveMapPin();" type="button" 
-                                        style="float:left;display:none;margin-left:5px;margin-top:10px;width:110px;" 
-                                        class="btn btn-custom">Save Marker</button>        
+                                        <button id="btnSavePin" onclick="easy2map_mappin_functions.saveMapPin();" type="button" 
+                                                style="float:left;display:none;margin-left:5px;margin-top:10px;width:110px;" 
+                                                class="btn btn-custom">Save Marker</button>        
 
-                                <button id="btnCancelPin" onclick="easy2map_mappin_functions.retrieveMapPoints();" type="button" 
-                                        style="display:none;margin-left:15px;margin-top:10px;width:70px;" 
-                                        class="btn">Cancel</button>
+                                        <button id="btnCancelPin" onclick="easy2map_mappin_functions.retrieveMapPoints();" type="button" 
+                                                style="display:none;margin-left:15px;margin-top:10px;width:70px;" 
+                                                class="btn">Cancel</button>
 
-                            </td>
+                                    </td>
 
-                        </tr>
+                                </tr>
 
-                    </table>
+                            </table>
 
-                    <div id="MarkersListHeading" style="padding-left:5px;clear:both">&nbsp;</div>
+                            <div id="MarkersListHeading" style="padding-left:5px;clear:both">&nbsp;</div>
 
-                    <table id="tblMapMarkers" style="display:none;width:98%;margin-top:20px;"  class="table table-striped">
-                    </table>
+                            <table id="tblMapMarkers" style="display:none;width:98%;margin-top:20px;"  class="table table-striped">
+                            </table>
+
+                        </div>
+                        <div class="tab-pane" id="easy2maptabs-2">
+                            <?php require_once 'SettingsEdit.php'; ?>
+                        </div>
+                    </div>
 
                 </div>
             </td>
@@ -299,10 +309,10 @@ $mapID = $_REQUEST["map_id"];
         </div>
         <div class="modal-body" style="max-height: 400px">
             <h5>Upload own icon: <input type='file' name='pinicon' 
-                                                                                   id='pinicon' 
-                                                                                   size='30' style="width:300px;vertical-align:middle;"
-                                                                                   acceptedFileList='JPG;JPEG;PJPEG;GIF;PNG;X-PNG'
-                                                                                   accept='image/*'></h5>
+                                        id='pinicon' 
+                                        size='30' style="width:300px;vertical-align:middle;"
+                                        acceptedFileList='JPG;JPEG;PJPEG;GIF;PNG;X-PNG'
+                                        accept='image/*'></h5>
             <h6><i>Valid image files accepted (.jpg, .png, .gif) with a maximum file size of 5MB.</i></h6>
             <table style="width:96%" 
                    cellpadding="4" 
@@ -316,6 +326,23 @@ $mapID = $_REQUEST["map_id"];
 
 </form>
 
+<form name="formExport" 
+      id="formExport"
+      action="?page=easy2map&action=mapexport&map_id=<?php echo $mapID; ?>"
+      method="post">
+</form>
+                
+<form name="formExport2" 
+      id="formExport2"
+      action="?page=easy2map&markers=true&action=mapexport&map_id=<?php echo $mapID; ?>"
+      method="post">
+</form>
+                
+<form name="formImport" 
+      id="formImport"
+      action="?page=easy2map&action=mapimport&map_id=<?php echo $mapID; ?>"
+      method="post">
+</form>                
 
 <div id="mapShortCode" style="width:700px" 
      class="modal hide fade" tabindex="-1" 

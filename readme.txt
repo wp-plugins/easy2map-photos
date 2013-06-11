@@ -5,7 +5,7 @@ Tags: google maps, store finder, online maps, store locater, google, dealer loca
 
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.0.7
+Stable tag: 2.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -73,8 +73,14 @@ When adding a new marker (or editing an existing marker), click on the 'Change I
 5. Upload your own marker icons, to tailor your map to your exact requirements.
 6. Resize your map to a preset size, or to a custom size (pixel or percentage).
 7. Add multiple markers to your map.
+7a. (Easy2Map Ultimate Version) - Choose from 6 different map templates; edit CSS of maps; import and export maps and markers.
+7b. (Easy2Map Ultimate Version) - an example of one of the map templates available.
+7c. (Easy2Map Ultimate Version) - display a list of markers alongside your map.
+7d. (Easy2Map Ultimate Version) - an example of a color CSS editor for changing the map's background color.
+7e. (Easy2Map Ultimate Version) - style your map to your exact requirements. 
 8. On saving your map, you are shown the map's shortcode for easy insertion into your pages or posts. Simply add your map's shortcode to your pages or posts to include the map.
 9. Voila, your Easy2Map!
+
 
 
 == Changelog ==
@@ -88,6 +94,9 @@ When adding a new marker (or editing an existing marker), click on the 'Change I
 = 1.0.6 =
 * Fix implemented that sorted out issue viewing maps when not logged into WordPress.
 
+= 2.0.1 =
+* Map Marker HTML editor fixed.
+* Easy2Map Ultimate Version added.
 
 == Upgrade Notice ==
 
@@ -99,3 +108,7 @@ When adding a new marker (or editing an existing marker), click on the 'Change I
 
 = 1.0.6 =
 * Fix implemented for viewing maps when not logged into WordPress. Please upgrade immediately.
+
+= 2.0.1 =
+* Map Marker HTML editor fixed.
+* Easy2Map Ultimate Version added.
