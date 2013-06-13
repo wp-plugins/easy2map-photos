@@ -1,6 +1,8 @@
 <link href="<?php echo easy2mapimg_get_plugin_url('/css/bootstrap.min.css'); ?>" rel="stylesheet" media="screen">
 <link href="<?php echo easy2mapimg_get_plugin_url('/css/bootstrap-wysihtml5.css'); ?>" rel="stylesheet" media="screen">
 <link href="<?php echo easy2mapimg_get_plugin_url('/css/colorpicker.css'); ?>" rel="stylesheet" media="screen">
+<link href="<?php echo easy2mapimg_get_plugin_url('/css/mapadmin.css'); ?>" rel="stylesheet" media="screen">
+
 <script src="http://maps.google.com/maps/api/js?sensor=true&libraries=drawing,places"></script>
 <script src="<?php echo easy2mapimg_get_plugin_url('/scripts/common.js'); ?>"></script>
 <script src="<?php echo easy2mapimg_get_plugin_url('/scripts/jquery.json2xml.js'); ?>"></script>
@@ -14,69 +16,10 @@
 <script src="<?php echo easy2mapimg_get_plugin_url('/scripts/bootstrap-colorpicker.js'); ?>"></script>
 
 <style type="text/css">
-
     #loadingImage{z-index:9999;position:fixed;left:50%;top:50%;width:75px;height:75px;margin-top:-37.5px;margin-left:-37.5px;border:1px single #FFFFFF;}
     #loadingImage img{border:none;}
     #loadingBackground{position:fixed;top:0;left:0;margin:0px;background-image: url("<?php echo easy2mapimg_get_plugin_url('/images/bg_white.png') ?>"); background-repeat: repeat; width:100%; height:100%; z-index: 9998}
-
-    input[type=text], input[type=password] {
-        height: 28px !important;
-    }
-
-    #divPreview img {
-        max-width: none !important;
-    }
-
-    td .instructions{
-        font-size:14px;
-        text-align:left;
-        font-weight:bold;
-    }
-
-    td .instructions2{
-        font-size:12px;
-        text-align:left;
-        font-weight:bold;
-    }
-
-    td .highlighted{
-        text-shadow:2px 2px 8px #575757;
-        font-weight:bold;
-    }
-
-    .smallE2MLink{
-        font-size:0.5em;
-        text-decoration: none;
-    }
-
-    .btn-custom {
-        background-color: hsl(88, 50%, 33%) !important;
-        background-repeat: repeat-x;
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#86c043", endColorstr="#567e2a");
-        background-image: -khtml-gradient(linear, left top, left bottom, from(#86c043), to(#567e2a));
-        background-image: -moz-linear-gradient(top, #86c043, #567e2a);
-        background-image: -ms-linear-gradient(top, #86c043, #567e2a);
-        background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #86c043), color-stop(100%, #567e2a));
-        background-image: -webkit-linear-gradient(top, #86c043, #567e2a);
-        background-image: -o-linear-gradient(top, #86c043, #567e2a);
-        background-image: linear-gradient(#86c043, #567e2a);
-        border-color: #567e2a #567e2a hsl(88, 50%, 28.5%);
-        color: #fff !important;
-        text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.29);
-        -webkit-font-smoothing: antialiased;
-    }
-
-    #easy2mapslidertext {display:none;text-align:center;color:#FFFFFF;font-family:Arial, Helvetica, sans-serif;font-size:0.9em;position:absolute;width:100%;top:15px;font-weight:bold;z-index:999;border-color:transparent;border-radius:0px;border-style:solid;border-width:1px;text-shadow:#333333 0.09em 0.09em 0.09em;background-color:transparent;white-space:nowrap;}
     #easy2mapslider {padding-top:6px;display:none;position: absolute; bottom:0px;left:0px;z-index:99999;width: 100%; vertical-align: middle; height:67px;background-image: url("<?php echo easy2mapimg_get_plugin_url('/images/bg_grey.png') ?>"); background-repeat: repeat; }
-    #easy2mapslider .easy2mapholder_cont {width: 100%; margin: 0 auto; overflow: hidden;  height:60px;}
-    #easy2mapslider .easy2mapholder { vertical-align:middle; margin-left: 43px; margin-right: 37px; background-image: url("<?php echo easy2mapimg_get_plugin_url('/images/bg_grey.png') ?>"); background-repeat: repeat; }
-    #easy2mapslider .easy2mapslide {cursor:pointer; vertical-align:middle; margin-top:auto;margin-bottom:auto;position: relative; margin-right: 8px; float:left; min-width: 60px; height: 60px;}
-    #easy2mapslider .easy2mapbutton {position: absolute;}
-    #easy2mapslider .easy2mapprev {top: 25px; margin-left:3px;left:5px;}
-    #easy2mapslider .easy2mapnext {top: 25px; margin-right:3px;right:5px;}
-    .easy2mapclear {clear:both;}
-    .easy2maplogo{position: absolute; bottom:2px;right:2px;z-index:99999;}
-
 </style>
 
 <?php
@@ -398,6 +341,13 @@ $mapID = $_REQUEST["map_id"];
 
     </form>
 </div>
+                    
+<form name="formCopymapSettings" 
+              id="formCopymapSettings"
+              action="?page=easy2mapimg&action=copymapsettings&map_id=<?php echo $mapID; ?>"
+              method="post">
+<input type="hidden" name="CopyMapID" id="CopyMapID">
+</form>                    
 
 <form name="formAddPinIcon" 
       target="frameAddPinIcon" 
