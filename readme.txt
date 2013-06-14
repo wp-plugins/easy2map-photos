@@ -4,7 +4,7 @@ Contributors: stevenellis
 Tags: photo maps, image maps, image map, geo, map images, map photos, google maps, map plugins, mapping plugins, maps, mapping, mapper, blog maps, blogging maps, travel maps, plugin, posts, post, page, coordinates, latitude, longitude, geocoding, geotag images, geotag photos, image slider, photo slider, image gallery, photo gallery
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.0.6
+Stable tag: 1.0.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,7 @@ Upload one or many photos, indicate the location where each photo was taken (usi
 * Photos containing GPS data are automatically geotagged
 * Add unlimited photos to your gallery
 * Add custom HTML and hyperlinks to each photo's description text
+* Control exact height and width of photo maps (fixed or responsive)
 * Manage unlimited galleries with the photo-map manager
 * Easily administer your gallery's photos
 * Add galleries directly to your pages and posts with a simple shortcode
@@ -57,6 +58,9 @@ No, you can add unlimited photos or images to each photo gallery you create with
 
 If the photo was taken on a device that records the photo's geolocation, then yes. Otherwise you need to manually place the photos' marker on the map to indicate where it was taken (this is a very simple process). It should be noted that most modern digital cameras and smartphones now allow you to set photos' geolocation.
 
+= Can I make my photo maps responsive? =
+
+Yes, width of photos can be made as percentage or pixel value.
 
 == Screenshots ==
 
@@ -71,7 +75,7 @@ If the photo was taken on a device that records the photo's geolocation, then ye
 09. Indicate the photo's location by entering the marker's address (auto-prompts assist with address selection). For photos already containing geolocation data, this step is not necessary. 
 10. Give each photo an optional title or description. Add custom HTML and links to this description if you wish to.
 11. Upload your own marker icons. (Pro version).
-12. Choose from a number of great-looking photo map templates. Edit the photo's and map's height and width, as well as the map type and default zoom. Administer the style of individual elements on the template to your exact requirements. (Pro version). 
+12. Choose from a number of great-looking photo map templates. Edit the photo's and map's height and width (fixed or responsive), as well as the map type and default zoom. Administer the style of individual elements on the template to your exact requirements. (Pro version). 
 13. On saving your photo map, you are shown the photo map's shortcode for easy insertion into your pages or posts. Simply add this shortcode to your pages or posts to include the photo map.
 14. Voila, your Photo Map!
 
@@ -81,15 +85,23 @@ If the photo was taken on a device that records the photo's geolocation, then ye
 = 1.0.1 =
 * Plugin uploaded to WordPress
 
- = 1.0.6 = 
+ = 1.0.5 = 
 * Various fixes and enhancements
 * Ability to copy settings from another photo map (pro version)
+
+ = 1.0.7 = 
+* Background color removed from maps' CSS (causes issues in some browsers)
+* Photo maps made responsive
 
 == Upgrade Notice ==
 
 = 1.0.1 =
 * Plugin uploaded to WordPress
 
- = 1.0.6 = 
+ = 1.0.5 = 
 * Various fixes and enhancements
 * Ability to copy settings from another photo map (pro version)
+
+ = 1.0.7 = 
+* Background color removed from maps' CSS (causes issues in some browsers)
+* Photo maps made responsive
