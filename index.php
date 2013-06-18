@@ -5,7 +5,7 @@
   URI: http://easy2map.com/ 
   Description: The easiest tool available for creating geo-tagged photo galleries. Display photos & their geographic location in a great-looking slider gallery.
   Author: Steven Ellis 
-  Version: 1.0.7 
+  Version: 1.0.8 
   Author URI: http://easy2map.com/ 
  */
 

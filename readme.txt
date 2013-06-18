@@ -4,7 +4,7 @@ Contributors: stevenellis
 Tags: photo maps, image maps, image map, geo, map images, map photos, google maps, map plugins, mapping plugins, maps, mapping, mapper, blog maps, blogging maps, travel maps, plugin, posts, post, page, coordinates, latitude, longitude, geocoding, geotag images, geotag photos, image slider, photo slider, image gallery, photo gallery
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.0.7
+Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,6 +93,10 @@ Yes, width of photos can be made as percentage or pixel value.
 * Background color removed from maps' CSS (causes issues in some browsers)
 * Photo maps made responsive
 
+ = 1.0.8 = 
+* Fix made for incompatabilities with certain themes
+
+
 == Upgrade Notice ==
 
 = 1.0.1 =
@@ -105,3 +109,6 @@ Yes, width of photos can be made as percentage or pixel value.
  = 1.0.7 = 
 * Background color removed from maps' CSS (causes issues in some browsers)
 * Photo maps made responsive
+
+ = 1.0.8 = 
+* Fix made for incompatabilities with certain themes
