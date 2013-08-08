@@ -417,6 +417,7 @@ class Easy2Map {
 
             //set all old templates to ZERO
             $wpdb->query("UPDATE `$map_templates_table` SET `Active` = 0 WHERE ID NOT IN (94,95,96,97,98,99,100,101,102,103,104);");
+            $wpdb->query("UPDATE `$map_templates_table` SET `Active` = 1 WHERE ID IN (94,95,96,97,98,99,100,101,102,103,104);");
             //set all maps to default template
             $wpdb->query("UPDATE `$map_table` SET `TemplateID` = 94 WHERE `TemplateID` NOT IN (94,95,96,97,98,99,100,101,102,103,104);");
         }
