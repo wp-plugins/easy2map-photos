@@ -3,7 +3,104 @@
 <script src="<?php echo easy2map_get_plugin_url('/scripts/functions.map.admin.js'); ?>"></script>
 <script src="<?php echo easy2map_get_plugin_url('/scripts/common.js'); ?>"></script>
 <?php
-eval(base64_decode('ZXZhbChiYXNlNjRfZGVjb2RlKCdhV1lnS0hObGJHWTZPbVZoYzNreVRXRndRMjlrWlZaaGJHbGtZWFJ2Y2loblpYUmZiM0IwYVc5dUtDZGxZWE41TW0xaGNDMXJaWGtuS1NrZ1BUMDlJR1poYkhObEtTQjdDaUFnSUNCa2FXVW9KenhrYVhZZ2MzUjViR1U5SW1OdmJHOXlPaU0zTUdGaE1EQTdkMmxrZEdnNk9UQWxPM1JsZUhRdFlXeHBaMjQ2WTJWdWRHVnlPMjFoY21kcGJpMWliM1IwYjIwNk5YQjRPMlp2Ym5RdGQyVnBaMmgwT21KdmJHUTdJajVRYkdWaGMyVWdkWEJuY21Ga1pTQjBieUIwYUdVZ1ZXeDBhVzFoZEdVZ1ZtVnljMmx2YmlCMGJ5QmhZMk5sYzNNZ2RHaHBjeUJtZFc1amRHbHZibUZzYVhSNVBDOWthWFkrSnlrN0NuMEtKRzFoY0VsRUlEMGdKRjlTUlZGVlJWTlVXeUp0WVhCZmFXUWlYVHNLWjJ4dlltRnNJQ1IzY0dSaU93cG5iRzlpWVd3Z0pHTjFjbkpsYm5SZmRYTmxjanNLSkdOMWNuSmxiblJmZFhObGNpQTlJSGR3WDJkbGRGOWpkWEp5Wlc1MFgzVnpaWElvS1RzS0pHMWhjSE5VWVdKc1pTQTlJQ1IzY0dSaUxUNXdjbVZtYVhnZ0xpQWlaV0Z6ZVRKdFlYQmZiV0Z3Y3lJN0NpUnRZWEpyWlhKelZHRmliR1VnUFNBa2QzQmtZaTArY0hKbFptbDRJQzRnSW1WaGMza3liV0Z3WDIxaGNGOXdiMmx1ZEhNaU93b0thV1lnS0dselgzVndiRzloWkdWa1gyWnBiR1VvSkY5R1NVeEZVMXNpZUcxc1ptbHNaU0pkV3lkMGJYQmZibUZ0WlNkZEtTa2dld29LSUNBZ0lIUnllU0I3Q2dvZ0lDQWdJQ0FnSUM4dlkyOXVkbVZ5ZENCWVRVd2daRzlqZFcxbGJuUWdhVzUwYnlCdlltcGxZM1FLSUNBZ0lDQWdJQ0FrZUcxc1QySnFaV04wSUQwZ2MybHRjR3hsZUcxc1gyeHZZV1JmYzNSeWFXNW5LR1pwYkdWZloyVjBYMk52Ym5SbGJuUnpLQ1JmUmtsTVJWTmJJbmh0YkdacGJHVWlYVnNuZEcxd1gyNWhiV1VuWFNrcE93b2dJQ0FnSUNBZ0lBb2dJQ0FnSUNBZ0lHbG1JQ2hwYzNObGRDZ2tlRzFzVDJKcVpXTjBMVDV0WVhBcEtTQjdDZ29nSUNBZ0lDQWdJQ0FnSUNBdkwyOXViSGtnYVcxd2IzSjBJRzFoY0NCelpYUjBhVzVuY3lCcFppQnlaWEYxYVhKbFpBb2dJQ0FnSUNBZ0lDQWdJQ0JwWmlBb0lXbHpjMlYwS0NSZlVrVlJWVVZUVkZzaWJXRnlhMlZ5YzI5dWJIa2lYU2twSUhzS0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNCcFppQW9hVzUwZG1Gc0tDUnRZWEJKUkNrZ1BUMDlJREFwSUhzS0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdMeTlwYm5ObGNuUWdiV0Z3SUNZZ2MyVjBkR2x1WjNNS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWtVMUZNSUQwZ0pIZHdaR0l0UG5CeVpYQmhjbVVvSWtsT1UwVlNWQ0JKVGxSUElDUnRZWEJ6VkdGaWJHVW9DaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lGUmxiWEJzWVhSbFNVUXNDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lFMWhjRTVoYldVc0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUVSbFptRjFiSFJRYVc1SmJXRm5aU3dLSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdVMlYwZEdsdVozTXNDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lFeGhjM1JKYm5admEyVmtMQW9nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQkRVMU5XWVd4MVpYTXNDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lFTlRVMVpoYkhWbGMweHBjM1FzQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJRU5UVTFaaGJIVmxjMGhsWVdScGJtY3NDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lFMWhjRWhVVFV3c0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUVselFXTjBhWFpsQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0tTQUtJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0JXUVV4VlJWTWdLQ2NsY3ljc0lDY2xjeWNzSUNjbGN5Y3NJQ2NsY3ljc0lFTlZVbEpGVGxSZlZFbE5SVk5VUVUxUUxDQW5KWE1uTENBbkpYTW5MQ0FuSlhNbkxDQW5KWE1uTENBd0tUc2lMQ0FrZUcxc1QySnFaV04wTFQ1dFlYQXRQbFJsYlhCc1lYUmxTVVFzSUNSNGJXeFBZbXBsWTNRdFBtMWhjQzArVFdGd1RtRnRaU3dnYzNSeVgzSmxjR3hoWTJVb0oybHVaR1Y0TG5Cb2NDY3NJQ2NuTENCbFlYTjVNbTFoY0Y5blpYUmZjR3gxWjJsdVgzVnliQ2duTDJsdVpHVjRMbkJvY0NjcEtTQXVJQ0pwYldGblpYTXZiV0Z3WDNCcGJuTXZjR2x1Y3k4eE1URXVjRzVuSWl3Z2RYSnNaR1ZqYjJSbEtDUjRiV3hQWW1wbFkzUXRQbTFoY0MwK1UyVjBkR2x1WjNNcExDQjFjbXhrWldOdlpHVW9KSGh0YkU5aWFtVmpkQzArYldGd0xUNURVMU5XWVd4MVpYTXBMQ0IxY214a1pXTnZaR1VvSkhodGJFOWlhbVZqZEMwK2JXRndMVDVEVTFOV1lXeDFaWE5NYVhOMEtTd2dkWEpzWkdWamIyUmxLQ1I0Yld4UFltcGxZM1F0UG0xaGNDMCtRMU5UVm1Gc2RXVnpTR1ZoWkdsdVp5a3NJSFZ5YkdSbFkyOWtaU2drZUcxc1QySnFaV04wTFQ1dFlYQXRQazFoY0VoVVRVd3BLVHNLQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ2FXWWdLQ0VrZDNCa1lpMCtjWFZsY25rb0pGTlJUQ2twSUhzS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnWkdsbEtDSkZjbkp2Y2lFaUtUc0tJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0I5Q2dvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDUnVaWGRTYjNjZ1BTQWtkM0JrWWkwK1oyVjBYM0psYzNWc2RITW9JbE5GVEVWRFZDQk1RVk5VWDBsT1UwVlNWRjlKUkNncElFRlRJRTVsZDAxaGNFbEVPeUlwT3dvS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQXZMM0psZEhKcFpYWmxJRzVsZHlCTllYQkpSQW9nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUdadmNtVmhZMmdnS0NSdVpYZFNiM2NnWVhNZ0pISnZkeWtnZXdvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FrYldGd1NVUWdQU0FrY205M0xUNU9aWGROWVhCSlJEc0tJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0I5Q2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNCOUlHVnNjMlVnZXdvS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQXZMM1Z3WkdGMFpTQnRZWEFnWVc1a0lITmxkSFJwYm1kekNpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdKRk5SVENBOUlDUjNjR1JpTFQ1d2NtVndZWEpsS0NJS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQlZVRVJCVkVVZ0pHMWhjSE5VWVdKc1pRb2dJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNCVFJWUWdUV0Z3VG1GdFpTQTlJQ2NsY3ljc0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUZSbGJYQnNZWFJsU1VRZ1BTQW5KWE1uTEFvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0JUWlhSMGFXNW5jeUE5SUNjbGN5Y3NDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lFTlRVMVpoYkhWbGN5QTlJQ2NsY3ljc0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUUxaGNFaFVUVXdnUFNBbkpYTW5MQW9nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQk1ZWE4wU1c1MmIydGxaQ0E5SUVOVlVsSkZUbFJmVkVsTlJWTlVRVTFRQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ1YwaEZVa1VnU1VRZ1BTQWxjenNpTENBa2VHMXNUMkpxWldOMExUNXRZWEF0UGsxaGNFNWhiV1VzSUNSNGJXeFBZbXBsWTNRdFBtMWhjQzArVkdWdGNHeGhkR1ZKUkN3Z2RYSnNaR1ZqYjJSbEtDUjRiV3hQWW1wbFkzUXRQbTFoY0MwK1UyVjBkR2x1WjNNcExDQjFjbXhrWldOdlpHVW9KSGh0YkU5aWFtVmpkQzArYldGd0xUNURVMU5XWVd4MVpYTXBMQ0IxY214a1pXTnZaR1VvSkhodGJFOWlhbVZqZEMwK2JXRndMVDVOWVhCSVZFMU1LU3dnSkcxaGNFbEVLVHNLQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0x5OTFjR1JoZEdVZ2JXRndJSE5sZEhScGJtZHpDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSkhkd1pHSXRQbkYxWlhKNUtDUlRVVXdwT3dvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnZlFvZ0lDQWdJQ0FnSUNBZ0lDQjlDZ29nSUNBZ0lDQWdJQ0FnSUNBdkwybHRjRzl5ZENCdFlYQWdiV0Z5YTJWeWN5QnBaaUJoY0hCc2FXTmhZbXhsQ2lBZ0lDQWdJQ0FnSUNBZ0lHbG1JQ2hwYzNObGRDZ2tlRzFzVDJKcVpXTjBMVDV0WVhBdFBtMWhjbXRsY25NdFBtMWhjbXRsY2lrZ0ppWWdZMjkxYm5Rb0pIaHRiRTlpYW1WamRDMCtiV0Z3TFQ1dFlYSnJaWEp6TFQ1dFlYSnJaWElwSUQ0Z01Da2dld29LSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJR1p2Y21WaFkyZ2dLQ1I0Yld4UFltcGxZM1F0UG0xaGNDMCtiV0Z5YTJWeWN5MCtiV0Z5YTJWeUlHRnpJQ1J0WVhKclpYSXBJSHNLQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0pIQnBia2x0WVdkbElEMGdjM1J5WDNKbGNHeGhZMlVvSjJsdVpHVjRMbkJvY0Njc0lDY25MQ0JsWVhONU1tMWhjRjluWlhSZmNHeDFaMmx1WDNWeWJDZ25MMmx1WkdWNExuQm9jQ2NwS1NBdUlDSnBiV0ZuWlhNdmJXRndYM0JwYm5NdmNHbHVjeTh4TVRFdWNHNW5JanNLQ2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ2FXWWdLR1pwYkdWZmFYTmZkbUZzYVdSZmFXMWhaMlVvYzNSeVgzSmxjR3hoWTJVb0oybHVaR1Y0TG5Cb2NDY3NJQ2NuTENCbFlYTjVNbTFoY0Y5blpYUmZjR3gxWjJsdVgzVnliQ2duTDJsdVpHVjRMbkJvY0NjcEtTQXVJQ0pwYldGblpYTXZiV0Z3WDNCcGJuTXZjR2x1Y3k4aUlDNGdKRzFoY210bGNpMCtVR2x1U1cxaFoyVXBLU0I3Q2lBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ1J3YVc1SmJXRm5aU0E5SUhOMGNsOXlaWEJzWVdObEtDZHBibVJsZUM1d2FIQW5MQ0FuSnl3Z1pXRnplVEp0WVhCZloyVjBYM0JzZFdkcGJsOTFjbXdvSnk5cGJtUmxlQzV3YUhBbktTa2dMaUFpYVcxaFoyVnpMMjFoY0Y5d2FXNXpMM0JwYm5NdklpQXVJQ1J0WVhKclpYSXRQbEJwYmtsdFlXZGxPd29nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUgwS0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdKRk5SVENBOUlDUjNjR1JpTFQ1d2NtVndZWEpsS0NJS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQkpUbE5GVWxRZ1NVNVVUeUFrYldGeWEyVnljMVJoWW14bElDaE5ZWEJKUkN3S0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQkRjbVZoZEdWa1FubFZjMlZ5U1VRc0NpQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdUR0YwVEc5dVp5d0tJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0JVYVhSc1pTd0tJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0JRYVc1SmJXRm5aVlZTVEN3S0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQkVaWFJoYVd4elNGUk5UQ2tLSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNCV1FVeFZSVk1nS0NWekxDQW5KWE1uTENBbkpYTW5MQ0FuSlhNbkxDQW5KWE1uTENBbkpYTW5LVHNpTENBa2JXRndTVVFzSUNSamRYSnlaVzUwWDNWelpYSXRQa2xFTENBa2JXRnlhMlZ5TFQ1TVlYUk1iMjVuTENBa2JXRnlhMlZ5TFQ1VWFYUnNaU3dnSkhCcGJrbHRZV2RsTENCMWNteGtaV052WkdVb2RYSnNaR1ZqYjJSbEtDUnRZWEpyWlhJdFBrUmxkR0ZwYkhOSVZFMU1LU2twT3dvS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWtkM0JrWWkwK2NYVmxjbmtvSkZOUlRDazdDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQjlDaUFnSUNBZ0lDQWdJQ0FnSUgwS0lDQWdJQ0FnSUNCOUNnb2dJQ0FnSUNBZ0lHVmphRzhnSnp4elkzSnBjSFErSUdwUmRXVnllU2htZFc1amRHbHZiaWdwSUhzZ2QybHVaRzkzTG14dlkyRjBhVzl1SUQwZ0lqOXdZV2RsUFdWaGMza3liV0Z3Sm1GamRHbHZiajFsWkdsMEptMWhjRjlwWkQwbklDNGdKRzFoY0VsRUlDNGdKeUk3ZlNrN1BDOXpZM0pwY0hRK0p6c0tJQ0FnSUgwZ1kyRjBZMmdnS0VWNFkyVndkR2x2YmlBa1pTa2dld29nSUNBZ0lDQWdJR1ZqYUc4Z0lrWnBiR1VnWTI5MWJHUWdibTkwSUdKbElHbHRjRzl5ZEdWa0lITjFZMk5sYzNObWRXeHNlUzRnSWlBdUlDUmxMVDVuWlhSTlpYTnpZV2RsS0NrN0NpQWdJQ0I5Q24wPScpKTs='));
+if (self::easy2MapCodeValidator(get_option('easy2map-key')) === false) {
+    die('<div style="color:#70aa00;width:90%;text-align:center;margin-bottom:5px;font-weight:bold;">Please upgrade to the Ultimate Version to access this functionality</div>');
+}
+$mapID = $_REQUEST["map_id"];
+global $wpdb;
+global $current_user;
+$current_user = wp_get_current_user();
+$mapsTable = $wpdb->prefix . "easy2map_maps";
+$markersTable = $wpdb->prefix . "easy2map_map_points";
+
+if (is_uploaded_file($_FILES["xmlfile"]['tmp_name'])) {
+
+    try {
+
+        //convert XML document into object
+        $xmlObject = simplexml_load_string(file_get_contents($_FILES["xmlfile"]['tmp_name']));
+        
+        if (isset($xmlObject->map)) {
+
+            //only import map settings if required
+            if (!isset($_REQUEST["markersonly"])) {
+
+                if (intval($mapID) === 0) {
+
+                    //insert map & settings
+                    $SQL = $wpdb->prepare("INSERT INTO $mapsTable(
+                        TemplateID,
+                        MapName,
+                        DefaultPinImage,
+                        Settings,
+                        LastInvoked,
+                        CSSValues,
+                        CSSValuesList,
+                        CSSValuesHeading,
+                        MapHTML,
+                        IsActive
+                    ) 
+                    VALUES ('%s', '%s', '%s', '%s', CURRENT_TIMESTAMP, '%s', '%s', '%s', '%s', 0);", $xmlObject->map->TemplateID, $xmlObject->map->MapName, str_replace('index.php', '', easy2map_get_plugin_url('/index.php')) . "images/map_pins/pins/111.png", urldecode($xmlObject->map->Settings), urldecode($xmlObject->map->CSSValues), urldecode($xmlObject->map->CSSValuesList), urldecode($xmlObject->map->CSSValuesHeading), urldecode($xmlObject->map->MapHTML));
+
+                    if (!$wpdb->query($SQL)) {
+                        die("Error!");
+                    }
+
+                    $newRow = $wpdb->get_results("SELECT LAST_INSERT_ID() AS NewMapID;");
+
+                    //retrieve new MapID
+                    foreach ($newRow as $row) {
+                        $mapID = $row->NewMapID;
+                    }
+                    
+                } else {
+
+                    //update map and settings
+                    $SQL = $wpdb->prepare("
+                    UPDATE $mapsTable
+                        SET MapName = '%s',
+                        TemplateID = '%s',
+                        Settings = '%s',
+                        CSSValues = '%s',
+                        MapHTML = '%s',
+                        LastInvoked = CURRENT_TIMESTAMP
+                    WHERE ID = %s;", $xmlObject->map->MapName, $xmlObject->map->TemplateID, urldecode($xmlObject->map->Settings), urldecode($xmlObject->map->CSSValues), urldecode($xmlObject->map->MapHTML), $mapID);
+
+                    //update map settings
+                    $wpdb->query($SQL);
+                }
+            }
+
+            //import map markers if applicable
+            if (isset($xmlObject->map->markers->marker) && count($xmlObject->map->markers->marker) > 0) {
+
+                foreach ($xmlObject->map->markers->marker as $marker) {
+
+                    $pinImage = str_replace('index.php', '', easy2map_get_plugin_url('/index.php')) . "images/map_pins/pins/111.png";
+
+                    if (file_is_valid_image(str_replace('index.php', '', easy2map_get_plugin_url('/index.php')) . "images/map_pins/pins/" . $marker->PinImage)) {
+                        $pinImage = str_replace('index.php', '', easy2map_get_plugin_url('/index.php')) . "images/map_pins/pins/" . $marker->PinImage;
+                    }
+
+                    $SQL = $wpdb->prepare("
+                    INSERT INTO $markersTable (MapID,
+                    CreatedByUserID,
+                    LatLong,
+                    Title,
+                    PinImageURL,
+                    DetailsHTML)
+                    VALUES (%s, '%s', '%s', '%s', '%s', '%s');", $mapID, $current_user->ID, $marker->LatLong, $marker->Title, $pinImage, urldecode(urldecode($marker->DetailsHTML)));
+
+                    $wpdb->query($SQL);
+                }
+            }
+        }
+
+        echo '<script> jQuery(function() { window.location = "?page=easy2map&action=edit&map_id=' . $mapID . '";});</script>';
+    } catch (Exception $e) {
+        echo "File could not be imported successfully. " . $e->getMessage();
+    }
+}
 ?>
 
 <div class="wrap" id="bodyTag" style='width:100%;text-align:center'>

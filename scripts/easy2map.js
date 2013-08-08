@@ -1,1 +1,342 @@
-jQuery(function(){easy2map_functions.initialise_all_easy2maps()});var easy2map_functions=(function(){var b=[];var a;ajax_location=function(c){var d=c.split("_");var e=d[d.length-1];return jQuery("#easy2map_ajax_url_"+e).val()};insertNewMapPoint=function(g,k){var f=new google.maps.Marker({position:new google.maps.LatLng(g.lattitude,g.longitude),draggable:false,map:k,title:g.title.replace(/\\/gi,""),ID:g.ID,icon:g.icon,pinHTML:g.pinHTML});b.push(f);var h=jQuery.xml2json(g.settings);var d=1;var i="";if(h.load&&h.load!=""){d=parseInt(h.load)}if(h.url&&h.url!=""&&h.url!="http://"){i=h.url}try{var c='<p id="e2mpopuphook">'+decodeURIComponent(f.pinHTML)+"</p>"}catch(j){var c='<p id="e2mpopuphook">'+f.pinHTML+"</p>"}if(d===1||(d===3&&i==="")){google.maps.event.addListener(f,"click",function(e){if(a){a.close()}a=new google.maps.InfoWindow();a.setContent(c);a.open(f.map,f);google.maps.event.addListener(a,"domready",function(){try{var m=jQuery("#e2mpopuphook").parent().parent().parent().siblings();for(var n=0;n<m.length;n++){if(jQuery(m[n]).css("z-index")=="auto"){jQuery(m[n]).css("border-radius","7px")}}}catch(o){}})})}if(d===2){if(a){a.close()}a=new google.maps.InfoWindow();a.setContent(c);a.open(f.map,f)}if(d===3&&i!=""){google.maps.event.addListener(f,"click",function(e){window.location.href=i})}return f};replaceAll=function(d,c,f){var e=d.indexOf(c);while(e!=-1){d=replaceChars(d,e,c.length,f);e=d.indexOf(c)}return d};replaceChars=function(c,f,d,e){if(f<0){f=0}if(f>=c.length){f=c.length-1}if(d<0){d=0}if(d>c.length){d=c.length}return(c.substring(0,f)+e+c.substring(f+d))};retrieve_map_pins=function(h,g,d,j,i){var f=g.split("_");var c=f[f.length-1];var e={action:"retrieve_map_points",MapID:c,maxPins:d};jQuery.ajax({type:"POST",url:ajax_location(g),data:e,dataType:"json",success:function(o){if(typeof o=="undefined"||typeof o=="null"){return}if(!o){return}if(o.length==0){return}for(var n=0;n<o.length;n++){var p=replaceAll(replaceAll(replaceAll(o[n].LatLong," ",""),"(",""),")","").split(",");var l={lattitude:p[0],longitude:p[1],title:o[n].Title,ID:o[n].ID,icon:o[n].ImageURL,settings:o[n].Settings,pinHTML:o[n].MapPinHTML};j.push(l)}var k=[];for(var m=0;m<j.length;m++){k.push(insertNewMapPoint(j[m],h))}}})};retrieve_map_settings=function(f){var e;var g=[];var d=f.split("_");var c=d[d.length-1];jQuery.ajax({type:"POST",url:ajax_location(f),dataType:"json",data:{mapID:c,action:"retrieve_map_settings"},success:function(k){var v=jQuery.xml2json(k.Settings);var j=v.lattitude;var l=v.longitude;var u=parseInt(v.zoom);var s=new google.maps.LatLng(j,l);var r=v.mapType.toUpperCase();var q=v.mapTypeControl_style.toUpperCase();var w=v.mapTypeControl_position.toUpperCase();var t=v.zoomControl_style.toUpperCase();var n=v.zoomControl_position.toUpperCase();var o=v.zoomControl_position.toUpperCase();if(r==="ROADMAP"){r=google.maps.MapTypeId.ROADMAP}else{if(r==="HYBRID"){r=google.maps.MapTypeId.HYBRID}else{if(r==="SATELLITE"){r=google.maps.MapTypeId.SATELLITE}else{if(r==="TERRAIN"){r=google.maps.MapTypeId.TERRAIN}else{r=google.maps.MapTypeId.ROADMAP}}}}if(q==="DEFAULT"){q=google.maps.MapTypeControlStyle.DEFAULT}else{if(q==="DROPDOWN_MENU"){q=google.maps.MapTypeControlStyle.DROPDOWN_MENU}else{if(q==="SATELLITE"){q=google.maps.MapTypeControlStyle.SATELLITE}else{q=google.maps.MapTypeControlStyle.DEFAULT}}}if(w==="TOP_LEFT"){w=google.maps.ControlPosition.TOP_LEFT}else{if(w==="TOP_RIGHT"){w=google.maps.ControlPosition.TOP_RIGHT}else{if(w==="TOP_CENTER"){w=google.maps.ControlPosition.TOP_CENTER}else{w=google.maps.ControlPosition.TOP_RIGHT}}}if(t==="DEFAULT"){t=google.maps.ZoomControlStyle.DEFAULT}else{if(t==="LARGE"){t=google.maps.ZoomControlStyle.LARGE}else{t=google.maps.ZoomControlStyle.SMALL}}if(n==="TOP_LEFT"){n=google.maps.ControlPosition.TOP_LEFT}else{if(n==="TOP_RIGHT"){n=google.maps.ControlPosition.TOP_RIGHT}else{if(n==="TOP_CENTER"){n=google.maps.ControlPosition.TOP_CENTER}else{n=google.maps.ControlPosition.TOP_RIGHT}}}if(o==="TOP_LEFT"){o=google.maps.ControlPosition.TOP_LEFT}else{if(o==="TOP_RIGHT"){o=google.maps.ControlPosition.TOP_RIGHT}else{if(o==="TOP_CENTER"){o=google.maps.ControlPosition.TOP_CENTER}else{o=google.maps.ControlPosition.TOP_RIGHT}}}var i={zoom:u,center:s,mapTypeId:r,mapTypeControl:!!parseInt(v.mapTypeControl),mapTypeControlOptions:{style:q,position:w},zoomControl:!!parseInt(v.zoomControl),navigationControl:true,zoomControlOptions:{style:t,position:n},scaleControl:!!parseInt(v.scaleControl),scaleControlOptions:{position:o},streetViewControl:!!parseInt(v.streetViewControl),panControl:!!parseInt(v.panControl),draggable:!!parseInt(v.draggable)};e=new google.maps.Map(document.getElementById(f),i);if(!!parseInt(v.trafficlayer)){var h=new google.maps.TrafficLayer();h.setMap(e)}if(!!parseInt(v.transitlayer)){var p=new google.maps.TransitLayer();p.setMap(e)}if(!!parseInt(v.bicyclelayer)){var m=new google.maps.BicyclingLayer();m.setMap(e)}google.maps.event.addDomListener(window,"load",retrieve_map_pins(e,f,250,g,v))}})};return{displayPinItem:function(c){for(var d=0;d<b.length;d++){if(b[d].ID){if(parseInt(b[d].ID)===c){google.maps.event.trigger(b[d],"click");return}}}},initialise_all_easy2maps:function(){jQuery("div [id ^= easy2map_canvas_]").each(function(){var c=jQuery(this).attr("id");retrieve_map_settings(c)})}}})();
+jQuery(function() {
+    easy2map_functions.initialise_all_easy2maps();
+});
+
+var easy2map_functions = (function() {
+    
+    var markers = [];
+    var infoWindow;
+
+    ajax_location = function(mapID) {
+
+        var arrMapID = mapID.split("_");
+        var id = arrMapID[arrMapID.length - 1];
+        return jQuery('#easy2map_ajax_url_' + id).val();
+
+    };
+
+    insertNewMapPoint = function(objMapPoint, map) {
+
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(objMapPoint.lattitude, objMapPoint.longitude),
+            draggable: false,
+            map: map,
+            title: objMapPoint.title.replace(/\\/gi, ''),
+            ID: objMapPoint.ID,
+            icon: objMapPoint.icon,
+            pinHTML: objMapPoint.pinHTML
+        });
+        
+        markers.push(marker);
+
+        //retrieve pin settings
+        var pinSettings = jQuery.xml2json(objMapPoint.settings);
+
+        var loadBehaviour = 1;
+        var loadURL = "";
+
+        if (pinSettings.load && pinSettings.load != "") {
+            loadBehaviour = parseInt(pinSettings.load);
+        }
+
+        if (pinSettings.url && pinSettings.url != "" && pinSettings.url != "http://") {
+            loadURL = pinSettings.url;
+        }
+        
+        try{
+            var popup = '<p id="e2mpopuphook">' + decodeURIComponent(marker.pinHTML) + '</p>';
+        }catch(e){
+            var popup = '<p id="e2mpopuphook">' + marker.pinHTML + '</p>';
+        }
+
+        //if pin 'load' settings set to '1', open popup on pin click (default behaviour)
+        if (loadBehaviour === 1 || (loadBehaviour === 3 && loadURL === "")) {
+            google.maps.event.addListener(marker, "click", function(mEvent) {
+                
+                if (infoWindow) {
+                    infoWindow.close();
+                }
+
+                infoWindow = new google.maps.InfoWindow();
+                infoWindow.setContent(popup);
+                infoWindow.open(marker.map, marker);
+
+                google.maps.event.addListener(infoWindow, 'domready', function() {
+                    try{                    
+                    var l = jQuery('#e2mpopuphook').parent().parent().parent().siblings();
+
+                    for (var i = 0; i < l.length; i++) {
+
+                        if (jQuery(l[i]).css('z-index') == 'auto') {
+                            jQuery(l[i]).css('border-radius', '7px');
+                        }
+                    }} catch(e){}
+                });
+
+
+
+            });
+        }
+        //if pin 'load' settings set to '2', open popup on window load
+        if (loadBehaviour === 2) {
+            
+            if (infoWindow) {
+                infoWindow.close();
+            }
+
+            infoWindow = new google.maps.InfoWindow();
+            infoWindow.setContent(popup);
+            infoWindow.open(marker.map, marker);
+
+        }
+        //if pin 'load' settings set to '3', open URL
+        if (loadBehaviour === 3 && loadURL != "") {
+
+            google.maps.event.addListener(marker, "click", function(mEvent) {
+                window.location.href = loadURL;
+            });
+
+        }
+
+        return marker;
+    };
+
+    replaceAll = function(strOrig, strFind, strReplace) {
+
+        var intCount = strOrig.indexOf(strFind);
+        while (intCount != -1)
+        {
+            strOrig = replaceChars(strOrig, intCount, strFind.length, strReplace);
+            intCount = strOrig.indexOf(strFind);
+        }
+        return strOrig;
+    };
+
+    replaceChars = function(strOrig, intPos, intNoChars, strReplace) {
+        if (intPos < 0)
+            intPos = 0;
+        if (intPos >= strOrig.length)
+            intPos = strOrig.length - 1;
+        if (intNoChars < 0)
+            intNoChars = 0;
+        if (intNoChars > strOrig.length)
+            intNoChars = strOrig.length;
+        return (strOrig.substring(0, intPos) + strReplace + strOrig.substring(intPos + intNoChars));
+    };
+
+    retrieve_map_pins = function(map, mapControl, maxPins, arrMapPins, mapSettings) {
+
+        var arrMapID = mapControl.split("_");
+        var mapID = arrMapID[arrMapID.length - 1];
+
+        var data = {
+            action: 'retrieve_map_points',
+            MapID: mapID,
+            maxPins: maxPins
+        };
+
+        jQuery.ajax({
+            type: "POST",
+            url: ajax_location(mapControl),
+            data: data,
+            dataType: 'json',
+            success: function(returnData) {
+
+                if (typeof returnData == "undefined" || typeof returnData == "null")
+                    return;
+                if (!returnData)
+                    return;
+                if (returnData.length == 0)
+                    return;
+
+                for (var t = 0; t < returnData.length; t++) {
+
+                    var arrLatLng = replaceAll(replaceAll(replaceAll(returnData[t].LatLong, ' ', ''), '(', ''), ')', '').split(',');
+
+                    var objMapPoint = {
+                        lattitude: arrLatLng[0],
+                        longitude: arrLatLng[1],
+                        title: returnData[t].Title,
+                        ID: returnData[t].ID,
+                        icon: returnData[t].ImageURL,
+                        settings: returnData[t].Settings,
+                        pinHTML: returnData[t].MapPinHTML
+                    }
+                    arrMapPins.push(objMapPoint);
+                }
+
+                var markersArray = [];
+
+                for (var i = 0; i < arrMapPins.length; i++) {
+                    markersArray.push(insertNewMapPoint(arrMapPins[i], map));
+                }
+
+                /*if (!!mapSettings.clusterpins){
+                 var mcOptions       = {
+                 gridSize: 50, 
+                 maxZoom: 15
+                 };
+                 var markerClusterer = new MarkerClusterer(map, markersArray, mcOptions);
+                 }*/
+            }
+        });
+    };
+
+    retrieve_map_settings = function(mapControl) {
+
+        var map;
+        var arrMapPins = [];
+
+        var arrMapID = mapControl.split("_");
+        var mapID = arrMapID[arrMapID.length - 1];
+
+        jQuery.ajax({
+            type: 'POST',
+            url: ajax_location(mapControl),
+            dataType: 'json',
+            data: {
+                mapID: mapID,
+                action: "retrieve_map_settings"
+            },
+            success: function(returnData) {
+
+                var mapSettings = jQuery.xml2json(returnData.Settings);
+
+                var $lat = mapSettings.lattitude;
+                var $lng = mapSettings.longitude;
+                var $zoom = parseInt(mapSettings.zoom);
+                var $latlng = new google.maps.LatLng($lat, $lng);
+                var $mapType = mapSettings.mapType.toUpperCase();
+                var $mapTypeControl_style = mapSettings.mapTypeControl_style.toUpperCase();
+                var $mapTypeControl_position = mapSettings.mapTypeControl_position.toUpperCase();
+                var $zoomControlOptions_style = mapSettings.zoomControl_style.toUpperCase();
+                var $zoomControlOptions_position = mapSettings.zoomControl_position.toUpperCase();
+                var $scaleControlOptions_position = mapSettings.zoomControl_position.toUpperCase();
+
+                if ($mapType === "ROADMAP")
+                    $mapType = google.maps.MapTypeId.ROADMAP;
+                else if ($mapType === "HYBRID")
+                    $mapType = google.maps.MapTypeId.HYBRID;
+                else if ($mapType === "SATELLITE")
+                    $mapType = google.maps.MapTypeId.SATELLITE;
+                else if ($mapType === "TERRAIN")
+                    $mapType = google.maps.MapTypeId.TERRAIN;
+                else
+                    $mapType = google.maps.MapTypeId.ROADMAP;
+
+                if ($mapTypeControl_style === "DEFAULT")
+                    $mapTypeControl_style = google.maps.MapTypeControlStyle.DEFAULT;
+                else if ($mapTypeControl_style === "DROPDOWN_MENU")
+                    $mapTypeControl_style = google.maps.MapTypeControlStyle.DROPDOWN_MENU;
+                else if ($mapTypeControl_style === "SATELLITE")
+                    $mapTypeControl_style = google.maps.MapTypeControlStyle.SATELLITE;
+                else
+                    $mapTypeControl_style = google.maps.MapTypeControlStyle.DEFAULT;
+
+                if ($mapTypeControl_position === "TOP_LEFT")
+                    $mapTypeControl_position = google.maps.ControlPosition.TOP_LEFT;
+                else if ($mapTypeControl_position === "TOP_RIGHT")
+                    $mapTypeControl_position = google.maps.ControlPosition.TOP_RIGHT;
+                else if ($mapTypeControl_position === "TOP_CENTER")
+                    $mapTypeControl_position = google.maps.ControlPosition.TOP_CENTER;
+                else
+                    $mapTypeControl_position = google.maps.ControlPosition.TOP_RIGHT;
+
+                if ($zoomControlOptions_style === "DEFAULT")
+                    $zoomControlOptions_style = google.maps.ZoomControlStyle.DEFAULT;
+                else if ($zoomControlOptions_style === "LARGE")
+                    $zoomControlOptions_style = google.maps.ZoomControlStyle.LARGE;
+                else
+                    $zoomControlOptions_style = google.maps.ZoomControlStyle.SMALL;
+
+                if ($zoomControlOptions_position === "TOP_LEFT")
+                    $zoomControlOptions_position = google.maps.ControlPosition.TOP_LEFT;
+                else if ($zoomControlOptions_position === "TOP_RIGHT")
+                    $zoomControlOptions_position = google.maps.ControlPosition.TOP_RIGHT;
+                else if ($zoomControlOptions_position === "TOP_CENTER")
+                    $zoomControlOptions_position = google.maps.ControlPosition.TOP_CENTER;
+                else
+                    $zoomControlOptions_position = google.maps.ControlPosition.TOP_RIGHT;
+
+                if ($scaleControlOptions_position === "TOP_LEFT")
+                    $scaleControlOptions_position = google.maps.ControlPosition.TOP_LEFT;
+                else if ($scaleControlOptions_position === "TOP_RIGHT")
+                    $scaleControlOptions_position = google.maps.ControlPosition.TOP_RIGHT;
+                else if ($scaleControlOptions_position === "TOP_CENTER")
+                    $scaleControlOptions_position = google.maps.ControlPosition.TOP_CENTER;
+                else
+                    $scaleControlOptions_position = google.maps.ControlPosition.TOP_RIGHT;
+
+                var mapOptions = {
+                    zoom: $zoom,
+                    center: $latlng,
+                    mapTypeId: $mapType,
+                    mapTypeControl: !!parseInt(mapSettings.mapTypeControl),
+                    mapTypeControlOptions: {
+                        style: $mapTypeControl_style,
+                        position: $mapTypeControl_position
+                    },
+                    zoomControl: !!parseInt(mapSettings.zoomControl),
+                    navigationControl: true,
+                    zoomControlOptions: {
+                        style: $zoomControlOptions_style,
+                        position: $zoomControlOptions_position
+                    },
+                    scaleControl: !!parseInt(mapSettings.scaleControl),
+                    scaleControlOptions: {
+                        position: $scaleControlOptions_position
+                    },
+                    streetViewControl: !!parseInt(mapSettings.streetViewControl),
+                    panControl: !!parseInt(mapSettings.panControl),
+                    draggable: !!parseInt(mapSettings.draggable)
+                };
+
+                map = new google.maps.Map(document.getElementById(mapControl), mapOptions);
+
+                if (!!parseInt(mapSettings.trafficlayer)) {
+                    var trafficLayer = new google.maps.TrafficLayer();
+                    trafficLayer.setMap(map);
+                }
+
+                if (!!parseInt(mapSettings.transitlayer)) {
+                    var transitLayer = new google.maps.TransitLayer();
+                    transitLayer.setMap(map);
+                }
+
+                if (!!parseInt(mapSettings.bicyclelayer)) {
+                    var bicycleLayer = new google.maps.BicyclingLayer();
+                    bicycleLayer.setMap(map);
+                }
+
+                google.maps.event.addDomListener(window, 'load', retrieve_map_pins(map, mapControl, 250, arrMapPins, mapSettings));
+
+            }
+        });
+
+    }
+
+    return{
+        
+        displayPinItem : function(ID){
+            for (var i = 0; i < markers.length; i++){
+                if (markers[i].ID){
+                    
+                    if (parseInt(markers[i].ID) === ID){
+                        google.maps.event.trigger(markers[i], 'click');
+                        return;
+                    }
+                }
+            }
+        },
+        initialise_all_easy2maps: function() {
+
+            jQuery('div [id ^= easy2map_canvas_]').each(function() {
+
+                var mapID = jQuery(this).attr('id');
+                retrieve_map_settings(mapID);
+
+            });
+        }
+    }
+
+})();

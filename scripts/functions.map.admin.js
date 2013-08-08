@@ -1,1 +1,994 @@
-var easy2map_map_functions=(function(){displayGoogleMap=function(){var e=jQuery.xml2json($mapSettings.Settings);var h=e.lattitude;var d=e.longitude;var a=parseInt(e.zoom);if($map!=null){h=$map.getCenter().lat();d=$map.getCenter().lng();a=$map.getZoom()}var b=retrieveMapOptions(h,d,a);$map=new google.maps.Map(document.getElementById("divMap"),b);$overlay=new google.maps.OverlayView();$overlay.draw=function(){};$overlay.setMap($map);if(b.trafficlayer){var c=new google.maps.TrafficLayer();c.setMap($map)}if(b.transitlayer){var g=new google.maps.TransitLayer();g.setMap($map)}if(b.bicyclelayer){var f=new google.maps.BicyclingLayer();f.setMap($map)}};normaliseCSSElement=function(a){a=replaceAll(a,"_"," ");a=a.toLowerCase().replace(/\b[a-z]/g,function(b){return b.toUpperCase()});return a};refreshExampleMap=function(b){var a=parseInt(jQuery("#MapTemplateName").val());for(var c=0;c<$arrTemplates.length;c++){var d=$arrTemplates[c];if(parseInt(d.ID)==a){jQuery("#divPreview").html(replaceAll(d.TemplateHTML,"[siteurl]",$pluginsURL));if(parseInt(d.StyleParentOnly)===0){jQuery("[id ^= styleElement]").each(function(){jQuery("#divMap").css(replaceAll(jQuery(this).attr("item"),"_","-"),jQuery(this).attr("value"))})}else{jQuery("[id ^= styleElement]").each(function(){if(jQuery(this).attr("item")=="height"){jQuery("#divMap").height("200px");jQuery("#divPinList").height("186px")}jQuery("#divMapParent").css(replaceAll(jQuery(this).attr("item"),"_","-"),jQuery(this).attr("value"))});jQuery("#divMap").height(jQuery("#divMapParent").height());jQuery("#divPinList").height(jQuery("#divMapParent").height()-14);jQuery("#easy2mapIimgShadow").width(jQuery("#divMapParent").width());jQuery("#easy2mapIimgShadow").width(jQuery("#divMapParent").width());jQuery("#ulEasy2MapPinList").width(jQuery("#divMapParent").width());jQuery("#divMapHeading").html(jQuery("#mapName2").html()===""?"Untitled Map":jQuery("#mapName2").html())}jQuery("[id ^= styleList]").each(function(){jQuery("#divPinList").css(replaceAll(jQuery(this).attr("item"),"_","-"),jQuery(this).attr("value"));jQuery("#divPinList2").css(replaceAll(jQuery(this).attr("item"),"_","-"),jQuery(this).attr("value"))});jQuery("[id ^= styleHeading]").each(function(){jQuery("#divMapHeading").css(replaceAll(jQuery(this).attr("item"),"_","-"),jQuery(this).attr("value"))})}}if(!!b){easy2map_map_functions.saveMap(false,false)}displayGoogleMap();google.maps.event.addDomListener(window,"load",easy2map_mappin_functions.retrieveMapPoints())};retrieveHeadingCSS=function(){var b=[];jQuery("[id ^= styleHeading]").each(function(){var c=replaceAll(jQuery(this).attr("item"),"_","-");b[c]=jQuery(this).attr("value")});var a={formatOutput:true,rootTagName:"settings"};return jQuery.json2xml(b,a)};retrieveListCSS=function(){var b=[];jQuery("[id ^= styleList]").each(function(){var c=replaceAll(jQuery(this).attr("item"),"_","-");b[c]=jQuery(this).attr("value")});var a={formatOutput:true,rootTagName:"settings"};return jQuery.json2xml(b,a)};retrieveMapCSS=function(){var b=[];jQuery("[id ^= styleElement]").each(function(){var c=replaceAll(jQuery(this).attr("item"),"_","-");b[c]=jQuery(this).attr("value")});var a={formatOutput:true,rootTagName:"settings"};return jQuery.json2xml(b,a)};retrieveMapOptions=function(h,f,b){var e=jQuery("#mapType").val().toUpperCase();if(e==="ROADMAP"){e=google.maps.MapTypeId.ROADMAP}else{if(e==="HYBRID"){e=google.maps.MapTypeId.HYBRID}else{if(e==="SATELLITE"){e=google.maps.MapTypeId.SATELLITE}else{if(e==="TERRAIN"){e=google.maps.MapTypeId.TERRAIN}else{e=google.maps.MapTypeId.ROADMAP}}}}var g=google.maps.MapTypeControlStyle.DEFAULT;var d=google.maps.ControlPosition.TOP_LEFT;var a=new google.maps.LatLng(h,f);var c={zoom:b,center:a,mapTypeId:e,mapTypeControl:false,clusterpins:false,trafficlayer:false,transitlayer:false,bicyclelayer:false,polyline_strokecolor:"000000",polyline_opacity:"1.0",polyline_strokeweight:"1",mapTypeControlOptions:{style:g,position:d},zoomControl:true,navigationControl:true,zoomControlOptions:{style:google.maps.ZoomControlStyle.SMALL,position:google.maps.ControlPosition.LEFT_TOP},scaleControl:false,scaleControlOptions:{position:google.maps.ControlPosition.TOP_LEFT},streetViewControl:true,panControl:false,draggable:true};return c};retrieveMapTemplates=function(b,a){jQuery.ajax({type:"POST",url:ajaxurl,dataType:"json",data:{mapID:b,action:"retrieve_map_templates"},success:function(d){$arrTemplates=d;for(var c=0;c<d.length;c++){jQuery("#MapTemplateName").append("<option value='"+d[c].ID+"'>"+d[c].TemplateName+"</option>")}if(parseInt(a)===0){jQuery("#MapTemplateName").val(d[0].ID)}else{jQuery("#MapTemplateName").val(a)}easy2map_map_functions.changeMapTemplate()},error:function(c,e,d){alert("A"+d)}})};return{changeElementValue:function(c,b,a){if(a===false){return}var e,f;if(b===1){e=jQuery("#styleElement"+c).attr("item");f=replaceAll(replaceAll(jQuery("#styleElement"+c).attr("value"),"px",""),"#","")}else{if(b===2){e=jQuery("#styleList"+c).attr("item");f=replaceAll(replaceAll(jQuery("#styleList"+c).attr("value"),"px",""),"#","")}else{if(b===3){e=jQuery("#styleHeading"+c).attr("item");f=replaceAll(replaceAll(jQuery("#styleHeading"+c).attr("value"),"px",""),"#","")}}}$styleElementIndex=c;$styleSelectedElement=b;jQuery("div[id ^= div_edit_]").hide();switch(e){case"border_style":jQuery("#tdheading_style").html("Border Style");jQuery("#div_edit_style").modal();jQuery("#txtDefaultValue_style").val(f).focus();break;case"font_family":jQuery("#tdheading_fontfamily").html("Font Family");jQuery("#div_edit_fontfamily").modal();jQuery("#txtDefaultValue_fontfamily").val(f).focus();break;case"border_width":jQuery("#tdheading_pixel").html("Border Width");jQuery("#txtDefaultValue_pixel").find("option").remove();for(var c=parseInt(0);c<=parseInt(50);c++){jQuery("#txtDefaultValue_pixel").append('<option value="'+c+'">'+c+"</option>")}jQuery("#div_edit_pixel").modal();jQuery("#txtDefaultValue_pixel").val(f).focus();break;case"font_size":jQuery("#tdheading_pixel").html("Font Size");jQuery("#txtDefaultValue_pixel").find("option").remove();for(var c=parseInt(5);c<=parseInt(25);c++){jQuery("#txtDefaultValue_pixel").append('<option value="'+c+'">'+c+"</option>")}jQuery("#div_edit_pixel").modal();jQuery("#txtDefaultValue_pixel").val(f).focus();break;case"padding":jQuery("#tdheading_pixel").html("Padding");jQuery("#txtDefaultValue_pixel").find("option").remove();for(var c=parseInt(10);c<=parseInt(2000);c++){jQuery("#txtDefaultValue_pixel").append('<option value="'+c+'">'+c+"</option>")}jQuery("#div_edit_pixel").modal();jQuery("#txtDefaultValue_pixel").val(f).focus();break;break;case"text_align":jQuery("#tdheading_textalign").html("Text Align");jQuery("#div_edit_textalign").modal();jQuery("#txtDefaultValue_textalign").val(f).focus();break;case"width":if(f.indexOf("%")!=-1){jQuery("#tdheading_percentage").html("Width");jQuery("#txtDefaultValue_percentage").find("option").remove();for(var c=parseInt(1);c<=parseInt(110);c++){jQuery("#txtDefaultValue_percentage").append('<option value="'+c+'">'+c+"</option>")}jQuery("#div_edit_percentage").modal();jQuery("#txtDefaultValue_percentage").val(replaceAll(f,"%","")).focus()}else{jQuery("#tdheading_pixel").html("Width");jQuery("#div_edit_pixel").modal();jQuery("#txtDefaultValue_pixel").val(f).focus()}break;case"height":jQuery("#tdheading_pixel").html("Height");jQuery("#txtDefaultValue_pixel").find("option").remove();for(var c=parseInt(10);c<=parseInt(2000);c++){jQuery("#txtDefaultValue_pixel").append('<option value="'+c+'">'+c+"</option>")}jQuery("#div_edit_pixel").modal();jQuery("#txtDefaultValue_pixel").val(f).focus();break;case"margin_bottom":jQuery("#tdheading_margin").html("Bottom Margin");jQuery("#txtDefaultValue_margin").find("option").remove();jQuery("#txtDefaultValue_margin").append('<option value="auto">auto</option>');for(var c=parseInt(0);c<=parseInt(500);c++){jQuery("#txtDefaultValue_margin").append('<option value="'+c+'">'+c+"</option>")}jQuery("#div_edit_margin").modal();jQuery("#txtDefaultValue_margin").val(f).focus();break;case"margin_top":jQuery("#tdheading_margin").html("Top Margin");jQuery("#txtDefaultValue_margin").find("option").remove();jQuery("#txtDefaultValue_margin").append('<option value="auto">auto</option>');for(var c=parseInt(0);c<=parseInt(500);c++){jQuery("#txtDefaultValue_margin").append('<option value="'+c+'">'+c+"</option>")}jQuery("#div_edit_margin").modal();jQuery("#txtDefaultValue_margin").val(f).focus();break;case"margin_left":jQuery("#tdheading_margin").html("Left Margin");jQuery("#txtDefaultValue_margin").find("option").remove();jQuery("#txtDefaultValue_margin").append('<option value="auto">auto</option>');for(var c=parseInt(0);c<=parseInt(500);c++){jQuery("#txtDefaultValue_margin").append('<option value="'+c+'">'+c+"</option>")}jQuery("#div_edit_margin").modal();jQuery("#txtDefaultValue_margin").val(f).focus();break;case"margin_right":jQuery("#tdheading_margin").html("Right Margin");jQuery("#txtDefaultValue_margin").find("option").remove();jQuery("#txtDefaultValue_margin").append('<option value="auto">auto</option>');for(var c=parseInt(0);c<=parseInt(500);c++){jQuery("#txtDefaultValue_margin").append('<option value="'+c+'">'+c+"</option>")}jQuery("#div_edit_margin").modal();jQuery("#txtDefaultValue_margin").val(f).focus();break;case"border_radius":jQuery("#tdheading_pixel").html("Border Radius");jQuery("#txtDefaultValue_pixel").find("option").remove();for(var c=parseInt(0);c<=parseInt(500);c++){jQuery("#txtDefaultValue_pixel").append('<option value="'+c+'">'+c+"</option>")}jQuery("#div_edit_pixel").modal();jQuery("#txtDefaultValue_pixel").val(f).focus();break;case"border_color":jQuery("#tdheading_color").html("Border Color");jQuery("#div_edit_color").modal();jQuery("#txtDefaultValue_color").css("background-color","#"+f).val(f).focus();jQuery("#txtDefaultValue_color2").val(f);var d=new jscolor.color(document.getElementById("txtDefaultValue_color"),{});d.fromString(document.getElementById("txtDefaultValue_color").value);break;case"background_color":jQuery("#tdheading_color").html("Background Color");jQuery("#div_edit_color").modal();jQuery("#txtDefaultValue_color").css("background-color","#"+f).val(f).focus();jQuery("#txtDefaultValue_color2").val(f);var d=new jscolor.color(document.getElementById("txtDefaultValue_color"),{});d.fromString(document.getElementById("txtDefaultValue_color").value);break;case"color":jQuery("#tdheading_color").html("Color");jQuery("#div_edit_color").modal();jQuery("#txtDefaultValue_color").css("color","#"+f).val(f).focus();jQuery("#txtDefaultValue_color2").val(f);var d=new jscolor.color(document.getElementById("txtDefaultValue_color"),{});d.fromString(document.getElementById("txtDefaultValue_color").value);break}},changeMapTemplate:function(){var e=jQuery("#MapTemplateName").val();jQuery("#divPreview").html("");var c=!!jQuery("#mapType").attr("proVersion");for(var i=0;i<$arrTemplates.length;i++){var f=$arrTemplates[i];if(parseInt(f.ID)==e){jQuery("#MapTemplateExampleImg").attr("src",$pluginsURL+f.ExampleImage);var d=jQuery.xml2json(f.CSSValues);var l=jQuery.xml2json(f.CSSValuesList);var k=jQuery.xml2json(f.CSSValuesHeading);jQuery("#MapTemplateCSS").html("");jQuery("#MapTemplateListCSS").html("");jQuery("#MapTemplateHeadingCSS").html("");var b=0;var a="",g="";for(var h in d){if(h==="width"){a=d[h]}if(h==="height"){g=d[h]}jQuery("#MapTemplateCSS").append('<div class="cssStyleEditorParent"><a id="styleElement'+b+'" class="cssEdit" href="javascript:easy2map_map_functions.changeElementValue('+b+", 1, "+c+');" item="'+h+'" value="'+d[h]+'">'+normaliseCSSElement(h)+" ("+d[h]+")</a></div>");b+=1}b=0;for(var h in l){jQuery("#MapTemplateListCSS").append('<div class="cssStyleEditorParent"><a id="styleList'+b+'" class="cssEdit" href="javascript:easy2map_map_functions.changeElementValue('+b+", 2, "+c+');" item="'+h+'" value="'+l[h]+'">'+normaliseCSSElement(h)+" ("+l[h]+")</a></div>");b+=1}b=0;for(var h in k){jQuery("#MapTemplateHeadingCSS").append('<div class="cssStyleEditorParent"><a id="styleHeading'+b+'" class="cssEdit" href="javascript:easy2map_map_functions.changeElementValue('+b+", 3, "+c+');" item="'+h+'" value="'+k[h]+'">'+normaliseCSSElement(h)+" ("+k[h]+")</a></div>");b+=1}jQuery("#mapSize").html("");jQuery("#mapSize").append("<option value='640px,480px'>640px x 480px</option>");jQuery("#mapSize").append("<option value='425px,350px'>425px x 350px</option>");jQuery("#mapSize").append("<option value='300px,300px'>300px x 300px</option>");jQuery("#mapSize").append("<option value='custom'>Set Custom Size</option>");jQuery("#mapSize").val(a+","+g).attr("selected","selected");if(jQuery("#mapSize option:selected").val()!=a+","+g){jQuery("#mapSize option:eq("+parseInt(jQuery("#mapSize option").length-2)+")").after("<option selected='selected' value='"+a+","+g+"'>"+a+" x "+g+"</option>")}}}refreshExampleMap(true)},changeMapType:function(){var a=jQuery("#mapType").val().toUpperCase();if(a==="ROADMAP"){a=google.maps.MapTypeId.ROADMAP}else{if(a==="HYBRID"){a=google.maps.MapTypeId.HYBRID}else{if(a==="SATELLITE"){a=google.maps.MapTypeId.SATELLITE}else{if(a==="TERRAIN"){a=google.maps.MapTypeId.TERRAIN}else{a=google.maps.MapTypeId.ROADMAP}}}}$map.setMapTypeId(a)},cloneExistingMap:function(a){this.retrieveMapSettings(a,true);jQuery("#MapClone").hide()},setCustomMapSize:function(){if(isNaN(document.getElementById("txtCustomWidthValue").value)){return}if(isNaN(document.getElementById("txtCustomHeightValue").value)){return}if(parseInt(document.getElementById("txtCustomWidthValue").value)<0){return}if(parseInt(document.getElementById("txtCustomHeightValue").value)<0){return}var b=jQuery("#txtCustomWidthValue").val()+jQuery("#mapWidthDimension").val();var a=jQuery("#txtCustomHeightValue").val()+"px";easy2map_map_functions.changeMapSize(b+","+a)},changeMapSize:function(b){if(b=="custom"){jQuery("[id ^= styleElement]").each(function(){if(jQuery(this).attr("item")==="width"){var c=jQuery(this).attr("value");if(c.indexOf("px")>0){jQuery("#mapWidthDimension").val("px")}else{jQuery("#mapWidthDimension").val("%")}jQuery("#txtCustomWidthValue").val(parseInt(c))}if(jQuery(this).attr("item")==="height"){jQuery("#txtCustomHeightValue").val(parseInt(jQuery(this).attr("value")))}});jQuery("#div_edit_widthheight").modal();return}var a=b.split(",");if(a.length<2){return}jQuery("[id ^= styleElement]").each(function(){if(jQuery(this).attr("item")==="width"){jQuery(this).attr("value",a[0]);jQuery(this).html("Width ("+a[0]+")")}if(jQuery(this).attr("item")==="height"){jQuery(this).attr("value",a[1]);jQuery(this).html("Height ("+a[1]+")")}});jQuery("#mapSize").val(a[0]+","+a[1]).attr("selected","selected");if(jQuery("#mapSize option:selected").val()!=a[0]+","+a[1]){jQuery("#mapSize option:eq("+parseInt(jQuery("#mapSize option").length-2)+")").after("<option selected='selected' value='"+a[0]+","+a[1]+"'>"+a[0]+" x "+a[1]+"</option>")}refreshExampleMap(true)},retrieveMapSettings:function(a,b){jQuery.ajax({type:"POST",url:ajaxurl,dataType:"json",data:{mapID:a,action:"retrieve_map_settings"},success:function(d){$mapSettings=d;var c=jQuery.xml2json($mapSettings.Settings);jQuery("#draggable").attr("src",$mapSettings.DefaultPinImage);if(!!b===false){if($mapSettings.MapName){jQuery("#mapName").val($mapSettings.MapName);jQuery("#mapName2").html($mapSettings.MapName)}else{jQuery("#mapName2").html("Untitled Map")}}jQuery("#mapType").val(c.mapType.toUpperCase());jQuery("#mapEditPencil").show();retrieveMapTemplates(a,$mapSettings.TemplateID)},error:function(c,e,d){alert("could not retrieve map settings")}})},saveItemValue:function(){var a;if($styleSelectedElement===1){a=jQuery("#styleElement"+$styleElementIndex).attr("item")}else{if($styleSelectedElement===2){a=jQuery("#styleList"+$styleElementIndex).attr("item")}else{a=jQuery("#styleHeading"+$styleElementIndex).attr("item")}}var b="";switch(a){case"border_style":b=jQuery("#txtDefaultValue_style").val();jQuery("#div_edit_style").hide();break;case"font_family":b=jQuery("#txtDefaultValue_fontfamily").val();jQuery("#div_edit_fontfamily").hide();break;case"font_size":b=jQuery("#txtDefaultValue_pixel").val()+"px";jQuery("#div_edit_em").hide();break;case"padding":b=jQuery("#txtDefaultValue_pixel").val()+"px";jQuery("#div_edit_em").hide();break;case"text_align":b=jQuery("#txtDefaultValue_textalign").val();jQuery("#div_edit_textalign").hide();break;case"border_width":b=jQuery("#txtDefaultValue_pixel").val()+"px";jQuery("#div_edit_pixel").hide();break;case"width":if(jQuery("#styleElement"+$styleElementIndex).attr("value").indexOf("%")!=-1){b=jQuery("#txtDefaultValue_percentage").val()+"%";jQuery("#div_edit_percentage").hide()}else{b=jQuery("#txtDefaultValue_pixel").val()+"px";jQuery("#div_edit_pixel").hide()}break;case"height":b=jQuery("#txtDefaultValue_pixel").val()+"px";jQuery("#div_edit_pixel").hide();break;case"margin_top":b=jQuery("#txtDefaultValue_margin").val();if(b!="auto"){b+="px"}jQuery("#div_edit_margin").hide();break;case"margin_bottom":b=jQuery("#txtDefaultValue_margin").val();if(b!="auto"){b+="px"}jQuery("#div_edit_margin").hide();break;case"margin_left":b=jQuery("#txtDefaultValue_margin").val();if(b!="auto"){b+="px"}jQuery("#div_edit_margin").hide();break;case"margin_right":b=jQuery("#txtDefaultValue_margin").val();if(b!="auto"){b+="px"}jQuery("#div_edit_margin").hide();break;case"border_color":b="#"+jQuery("#txtDefaultValue_color").val();jQuery("#tdItemElementValue").css("background-Color","#"+jQuery("#txtDefaultValue_color").val());jQuery("#div_edit_color").hide();break;case"background_color":b="#"+jQuery("#txtDefaultValue_color").val();jQuery("#tdItemElementValue").css("background-Color","#"+jQuery("#txtDefaultValue_color").val());jQuery("#div_edit_color").hide();break;case"color":b="#"+jQuery("#txtDefaultValue_color").val();jQuery("#tdItemElementValue").css("color","#"+jQuery("#txtDefaultValue_color").val());jQuery("#div_edit_color").hide();break;case"z-index":b=jQuery("#txtDefaultValue_pixel").val();jQuery("#div_edit_pixel").hide();break;case"border_radius":b=jQuery("#txtDefaultValue_pixel").val()+"px";jQuery("#div_edit_pixel").hide();break}if($styleSelectedElement===1){jQuery("#styleElement"+$styleElementIndex).attr("value",b);jQuery("#styleElement"+$styleElementIndex).html(normaliseCSSElement(a)+" ("+b+")")}else{if($styleSelectedElement===2){jQuery("#styleList"+$styleElementIndex).attr("value",b);jQuery("#styleList"+$styleElementIndex).html(normaliseCSSElement(a)+" ("+b+")")}else{jQuery("#styleHeading"+$styleElementIndex).attr("value",b);jQuery("#styleHeading"+$styleElementIndex).html(normaliseCSSElement(a)+" ("+b+")")}}refreshExampleMap(true)},saveMap:function(f,i){var c=jQuery.xml2json($mapSettings.Settings);var b=c.lattitude;var e=c.longitude;var h=parseInt(c.zoom);if($map!=null){b=$map.getCenter().lat();e=$map.getCenter().lng();h=$map.getZoom()}var g=jQuery("#mapType").val().toUpperCase();if(g==="ROADMAP"){g=google.maps.MapTypeId.ROADMAP}else{if(g==="HYBRID"){g=google.maps.MapTypeId.HYBRID}else{if(g==="SATELLITE"){g=google.maps.MapTypeId.SATELLITE}else{if(g==="TERRAIN"){g=google.maps.MapTypeId.TERRAIN}else{g=google.maps.MapTypeId.ROADMAP}}}}var a={lattitude:b,longitude:e,zoom:h,mapType:g,backgroundColor:"FFFFFF",draggable:1,clusterpins:0,trafficlayer:0,transitlayer:0,bicyclelayer:0,scrollWheel:0,mapTypeControl:0,panControl:0,rotateControl:0,scaleControl:0,streetViewControl:1,zoomControl:1,mapTypeControl_style:"DROPDOWN_MENU",mapTypeControl_position:"TOP_RIGHT",panControl_position:"TOP_LEFT",rotateControl_position:"TOP_LEFT",scaleControl_position:"TOP_LEFT",streetViewControl_position:"TOP_LEFT",zoomControl_position:"TOP_LEFT",zoomControl_style:"SMALL",polyline_strokecolor:"000000",polyline_opacity:"1.0",polyline_strokeweight:"1"};var j={formatOutput:true,rootTagName:"settings"};jQuery("#divMap").html("");var d=jQuery("#divPreview").html();jQuery.ajax({type:"POST",url:ajaxurl,dataType:"json",data:{mapID:$mapID,mapName:jQuery("#mapName").val()==""?"Untitled Map":jQuery("#mapName").val(),mapTemplateName:jQuery("#MapTemplateName").val(),action:"save_map",mapSettingsXML:jQuery.json2xml(a,j),mapCSSXML:encodeURIComponent(retrieveMapCSS()),listCSSXML:encodeURIComponent(retrieveListCSS()),headingCSSXML:encodeURIComponent(retrieveHeadingCSS()),mapHTML:encodeURIComponent(d)},success:function(k){if(f){if(i){jQuery("#txtShortCode").val("[easy2map id="+k+"]");jQuery("#mapShortCode").modal({keyboard:false});jQuery("#mapShortCode").on("shown",function(){document.getElementById("txtShortCode").focus();document.getElementById("txtShortCode").select()})}else{window.location="?page=easy2map&action=viewmaps"}return}$mapID=k;jQuery("#formAddPinIcon").attr("action","?page=easy2map&action=mappinimagesave&map_id="+$mapID)},error:function(k,m,l){alert("B"+l)}})},saveMapName:function(){jQuery.ajax({type:"POST",url:ajaxurl,dataType:"json",data:{mapID:$mapID,mapName:jQuery("#mapName").val()==""?"Untitled Map":jQuery("#mapName").val(),action:"save_map_name"},success:function(){jQuery("#divMapHeading").html(jQuery("#mapName").val()===""?"Untitled Map":jQuery("#mapName").val())},error:function(a,c,b){alert("C"+b)}})},uploadImportFile:function(){if(document.getElementById("xmlfile").value===""){return}var a=true;var b=checkFileExtensionSilent(document.getElementById("xmlfile"));if(b!=""){alert("Invalid XML file.");a=false;return}if(a==true){busy();document.formImport.submit()}}}})();
+var easy2map_map_functions = (function() {
+
+    displayGoogleMap = function() {
+
+        var settings = jQuery.xml2json($mapSettings.Settings);
+        var $lat = settings.lattitude;
+        var $lng = settings.longitude;
+        var $zoom = parseInt(settings.zoom);
+
+        if ($map != null) {
+            $lat = $map.getCenter().lat();
+            $lng = $map.getCenter().lng();
+            $zoom = $map.getZoom();
+        }
+
+        var mapOptions = retrieveMapOptions($lat, $lng, $zoom);
+
+        $map = new google.maps.Map(document.getElementById("divMap"), mapOptions);
+        $overlay = new google.maps.OverlayView();
+        $overlay.draw = function() {
+        };
+        $overlay.setMap($map);
+
+        if (mapOptions.trafficlayer) {
+            var trafficLayer = new google.maps.TrafficLayer();
+            trafficLayer.setMap($map);
+        }
+
+        if (mapOptions.transitlayer) {
+            var transitLayer = new google.maps.TransitLayer();
+            transitLayer.setMap($map);
+        }
+
+        if (mapOptions.bicyclelayer) {
+            var bicycleLayer = new google.maps.BicyclingLayer();
+            bicycleLayer.setMap($map);
+        }
+
+    };
+
+    //change 'border_width' into 'Border Width', for example
+    normaliseCSSElement = function(item) {
+        item = replaceAll(item, "_", " ");
+        item = item.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+            return letter.toUpperCase();
+        });
+        return item;
+    };
+
+    //refresh the example map
+    refreshExampleMap = function(saveMapToDatabase) {
+
+        var templateID = parseInt(jQuery("#MapTemplateName").val());
+
+        for (var t = 0; t < $arrTemplates.length; t++) {
+
+            var template = $arrTemplates[t];
+
+            if (parseInt(template.ID) == templateID) {
+
+                jQuery('#divPreview').html(replaceAll(template.TemplateHTML, '[siteurl]', $pluginsURL));
+
+                if (parseInt(template.StyleParentOnly) === 0) {
+
+                    jQuery('[id ^= styleElement]').each(function() {
+                        jQuery('#divMap').css(replaceAll(jQuery(this).attr('item'), "_", "-"), jQuery(this).attr('value'));
+                    });
+
+                } else {
+
+                    jQuery('[id ^= styleElement]').each(function() {
+
+                        if (jQuery(this).attr('item') == "height") {
+                            jQuery("#divMap").height('200px');
+                            jQuery("#divPinList").height('186px');
+                        }
+
+                        jQuery('#divMapParent').css(replaceAll(jQuery(this).attr('item'), "_", "-"), jQuery(this).attr('value'));
+                    });
+
+                    jQuery("#divMap").height(jQuery("#divMapParent").height());
+                    jQuery("#divPinList").height(jQuery("#divMapParent").height() - 14);
+
+                    jQuery("#easy2mapIimgShadow").width(jQuery("#divMapParent").width());
+                    jQuery("#easy2mapIimgShadow").width(jQuery("#divMapParent").width());
+                    jQuery("#ulEasy2MapPinList").width(jQuery("#divMapParent").width());
+                    jQuery("#divMapHeading").html(jQuery('#mapName2').html() === "" ? "Untitled Map" : jQuery('#mapName2').html());
+                    //jQuery("#easy2mapIimgShadow").css('marginLeft', jQuery("#divMapParent").css('marginLeft'));
+                    //jQuery("#easy2mapIimgShadow").css('marginRight', jQuery("#divMapParent").css('marginRight'));
+                }
+
+                jQuery('[id ^= styleList]').each(function() {
+                    jQuery('#divPinList').css(replaceAll(jQuery(this).attr('item'), "_", "-"), jQuery(this).attr('value'));
+                    jQuery('#divPinList2').css(replaceAll(jQuery(this).attr('item'), "_", "-"), jQuery(this).attr('value'));
+                });
+
+                jQuery('[id ^= styleHeading]').each(function() {
+                    jQuery('#divMapHeading').css(replaceAll(jQuery(this).attr('item'), "_", "-"), jQuery(this).attr('value'));
+                });
+            }
+        }
+
+        //save the map to the database if required to do so
+        if (!!saveMapToDatabase) {
+
+            easy2map_map_functions.saveMap(false, false);
+
+        }
+
+        displayGoogleMap();
+
+        //google.maps.event.addListenerOnce($map, 'idle', function(){
+        //    //once the map is loaded, retrieve the map pins
+        //    easy2map_mappin_functions.retrieveMapPoints();
+        //});
+
+        google.maps.event.addDomListener(window, 'load', easy2map_mappin_functions.retrieveMapPoints());
+
+    };
+
+    //retrieve map heading CSS elements for saving to the database
+    retrieveHeadingCSS = function() {
+
+        var arrCSS = [];
+
+        jQuery('[id ^= styleHeading]').each(function() {
+            var item = replaceAll(jQuery(this).attr('item'), "_", "-");
+            arrCSS[item] = jQuery(this).attr('value');
+        });
+
+        var options = {
+            formatOutput: true,
+            rootTagName: 'settings'
+        };
+        return jQuery.json2xml(arrCSS, options);
+
+    };
+
+    //retrieve map pin list CSS elements for saving to the database
+    retrieveListCSS = function() {
+
+        var arrCSS = [];
+
+        jQuery('[id ^= styleList]').each(function() {
+            var item = replaceAll(jQuery(this).attr('item'), "_", "-");
+            arrCSS[item] = jQuery(this).attr('value');
+        });
+
+        var options = {
+            formatOutput: true,
+            rootTagName: 'settings'
+        };
+        return jQuery.json2xml(arrCSS, options);
+
+    };
+
+    //retrieve map's CSS elements for saving to the database
+    retrieveMapCSS = function() {
+
+        var arrCSS = [];
+
+        jQuery('[id ^= styleElement]').each(function() {
+            var item = replaceAll(jQuery(this).attr('item'), "_", "-");
+            arrCSS[item] = jQuery(this).attr('value');
+        });
+
+        var options = {
+            formatOutput: true,
+            rootTagName: 'settings'
+        };
+        return jQuery.json2xml(arrCSS, options);
+
+    };
+
+    //retrieve the map settings for rendering/saving the map
+    retrieveMapOptions = function($lat, $lng, $zoom) {
+
+        var $mapType = jQuery('#mapType').val().toUpperCase();
+        if ($mapType === "ROADMAP")
+            $mapType = google.maps.MapTypeId.ROADMAP;
+        else if ($mapType === "HYBRID")
+            $mapType = google.maps.MapTypeId.HYBRID;
+        else if ($mapType === "SATELLITE")
+            $mapType = google.maps.MapTypeId.SATELLITE;
+        else if ($mapType === "TERRAIN")
+            $mapType = google.maps.MapTypeId.TERRAIN;
+        else
+            $mapType = google.maps.MapTypeId.ROADMAP;
+
+        var $mapTypeControl_style = google.maps.MapTypeControlStyle.DEFAULT;
+        var $mapTypeControl_position = google.maps.ControlPosition.TOP_LEFT;
+        var $latlng = new google.maps.LatLng($lat, $lng);
+
+        var mapOptions = {
+            zoom: $zoom,
+            center: $latlng,
+            mapTypeId: $mapType,
+            mapTypeControl: false,
+            clusterpins: false,
+            trafficlayer: false,
+            transitlayer: false,
+            bicyclelayer: false,
+            polyline_strokecolor: '000000',
+            polyline_opacity: '1.0',
+            polyline_strokeweight: '1',
+            mapTypeControlOptions: {
+                style: $mapTypeControl_style,
+                position: $mapTypeControl_position
+            },
+            zoomControl: true,
+            navigationControl: true,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.SMALL,
+                position: google.maps.ControlPosition.LEFT_TOP
+            },
+            scaleControl: false,
+            scaleControlOptions: {
+                position: google.maps.ControlPosition.TOP_LEFT
+            },
+            streetViewControl: true,
+            panControl: false,
+            draggable: true
+        };
+
+        return mapOptions;
+
+    };
+
+    //retrieve all map templates from the database
+    retrieveMapTemplates = function(mapID, templateID) {
+
+        jQuery.ajax({
+            type: 'POST',
+            url: ajaxurl,
+            dataType: 'json',
+            data: {
+                mapID: mapID,
+                action: "retrieve_map_templates"
+            },
+            success: function(arrTemplates) {
+
+                $arrTemplates = arrTemplates;
+
+                for (var t = 0; t < arrTemplates.length; t++) {
+                    jQuery("#MapTemplateName").append("<option value='" + arrTemplates[t].ID + "'>" + arrTemplates[t].TemplateName + "</option>");
+                }
+
+                if (parseInt(templateID) === 0) {
+                    //this is a new map - set it to the first template in the list
+                    jQuery("#MapTemplateName").val(arrTemplates[0].ID);
+                } else {
+                    jQuery("#MapTemplateName").val(templateID);
+                }
+
+                easy2map_map_functions.changeMapTemplate();
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) {
+                alert('A' + errorThrown);
+            }
+        });
+
+    };
+
+    return {
+        //Change a single CSS value
+        changeElementValue: function(i, element, proVersion) {
+            
+            if (proVersion === false) return;
+
+            var attribute, value;
+
+            if (element === 1) {
+                attribute = jQuery('#styleElement' + i).attr('item');
+                value = replaceAll(replaceAll(jQuery('#styleElement' + i).attr('value'), "px", ""), "#", "");
+            } else if (element === 2) {
+                attribute = jQuery('#styleList' + i).attr('item');
+                value = replaceAll(replaceAll(jQuery('#styleList' + i).attr('value'), "px", ""), "#", "");
+            } else if (element === 3) {
+                attribute = jQuery('#styleHeading' + i).attr('item');
+                value = replaceAll(replaceAll(jQuery('#styleHeading' + i).attr('value'), "px", ""), "#", "");
+            }
+
+            $styleElementIndex = i;
+            $styleSelectedElement = element;
+            jQuery('div[id ^= div_edit_]').hide();
+
+            switch (attribute) {
+
+                case "border_style":
+                    {
+                        jQuery('#tdheading_style').html("Border Style");
+                        jQuery('#div_edit_style').modal();
+                        jQuery('#txtDefaultValue_style').val(value).focus();
+                        break;
+                    }
+
+                case "font_family":
+                    {
+                        jQuery('#tdheading_fontfamily').html("Font Family");
+                        jQuery('#div_edit_fontfamily').modal();
+                        jQuery('#txtDefaultValue_fontfamily').val(value).focus();
+                        break;
+                    }
+
+                case "border_width":
+                    {
+
+                        jQuery('#tdheading_pixel').html("Border Width");
+                        jQuery('#txtDefaultValue_pixel').find('option').remove();
+                        for (var i = parseInt(0); i <= parseInt(50); i++)
+                            jQuery('#txtDefaultValue_pixel').append('<option value="' + i + '">' + i + '</option>');
+                        jQuery('#div_edit_pixel').modal();
+                        jQuery('#txtDefaultValue_pixel').val(value).focus();
+                        break;
+                    }
+
+                case "font_size":
+                    {
+                        jQuery('#tdheading_pixel').html("Font Size");
+                        jQuery('#txtDefaultValue_pixel').find('option').remove();
+                        for (var i = parseInt(5); i <= parseInt(25); i++)
+                            jQuery('#txtDefaultValue_pixel').append('<option value="' + i + '">' + i + '</option>');
+                        jQuery('#div_edit_pixel').modal();
+                        jQuery('#txtDefaultValue_pixel').val(value).focus();
+                        break;
+                    }
+
+                case "padding":
+                    {
+                        jQuery('#tdheading_pixel').html("Padding");
+                        jQuery('#txtDefaultValue_pixel').find('option').remove();
+                        for (var i = parseInt(10); i <= parseInt(2000); i++)
+                            jQuery('#txtDefaultValue_pixel').append('<option value="' + i + '">' + i + '</option>');
+                        jQuery('#div_edit_pixel').modal();
+                        jQuery('#txtDefaultValue_pixel').val(value).focus();
+                        break;
+                        break;
+                    }
+
+                case "text_align":
+                    {
+                        jQuery('#tdheading_textalign').html("Text Align");
+                        jQuery('#div_edit_textalign').modal();
+                        jQuery('#txtDefaultValue_textalign').val(value).focus();
+                        break;
+                    }
+
+                case "width":
+                    {
+
+                        if (value.indexOf("%") != -1) {
+
+                            //percentage-based width
+                            jQuery('#tdheading_percentage').html("Width");
+                            jQuery('#txtDefaultValue_percentage').find('option').remove();
+                            for (var i = parseInt(1); i <= parseInt(110); i++)
+                                jQuery('#txtDefaultValue_percentage').append('<option value="' + i + '">' + i + '</option>');
+                            jQuery('#div_edit_percentage').modal();
+                            jQuery('#txtDefaultValue_percentage').val(replaceAll(value, "%", "")).focus();
+
+                        } else {
+
+                            //pixel-based width
+                            jQuery('#tdheading_pixel').html("Width");
+                            jQuery('#div_edit_pixel').modal();
+                            jQuery('#txtDefaultValue_pixel').val(value).focus();
+                        }
+
+
+                        break;
+                    }
+
+                case "height":
+                    {
+
+                        jQuery('#tdheading_pixel').html("Height");
+                        jQuery('#txtDefaultValue_pixel').find('option').remove();
+                        for (var i = parseInt(10); i <= parseInt(2000); i++)
+                            jQuery('#txtDefaultValue_pixel').append('<option value="' + i + '">' + i + '</option>');
+                        jQuery('#div_edit_pixel').modal();
+                        jQuery('#txtDefaultValue_pixel').val(value).focus();
+                        break;
+                    }
+
+                case "margin_bottom":
+                    {
+
+                        jQuery('#tdheading_margin').html("Bottom Margin");
+                        jQuery('#txtDefaultValue_margin').find('option').remove();
+                        jQuery('#txtDefaultValue_margin').append('<option value="auto">auto</option>');
+                        for (var i = parseInt(0); i <= parseInt(500); i++)
+                            jQuery('#txtDefaultValue_margin').append('<option value="' + i + '">' + i + '</option>');
+                        jQuery('#div_edit_margin').modal();
+                        jQuery('#txtDefaultValue_margin').val(value).focus();
+                        break;
+                    }
+
+                case "margin_top":
+                    {
+
+                        jQuery('#tdheading_margin').html("Top Margin");
+                        jQuery('#txtDefaultValue_margin').find('option').remove();
+                        jQuery('#txtDefaultValue_margin').append('<option value="auto">auto</option>');
+                        for (var i = parseInt(0); i <= parseInt(500); i++)
+                            jQuery('#txtDefaultValue_margin').append('<option value="' + i + '">' + i + '</option>');
+                        jQuery('#div_edit_margin').modal();
+                        jQuery('#txtDefaultValue_margin').val(value).focus();
+                        break;
+                    }
+
+                case "margin_left":
+                    {
+
+                        jQuery('#tdheading_margin').html("Left Margin");
+                        jQuery('#txtDefaultValue_margin').find('option').remove();
+                        jQuery('#txtDefaultValue_margin').append('<option value="auto">auto</option>');
+                        for (var i = parseInt(0); i <= parseInt(500); i++)
+                            jQuery('#txtDefaultValue_margin').append('<option value="' + i + '">' + i + '</option>');
+                        jQuery('#div_edit_margin').modal();
+                        jQuery('#txtDefaultValue_margin').val(value).focus();
+                        break;
+                    }
+
+                case "margin_right":
+                    {
+
+                        jQuery('#tdheading_margin').html("Right Margin");
+                        jQuery('#txtDefaultValue_margin').find('option').remove();
+                        jQuery('#txtDefaultValue_margin').append('<option value="auto">auto</option>');
+                        for (var i = parseInt(0); i <= parseInt(500); i++)
+                            jQuery('#txtDefaultValue_margin').append('<option value="' + i + '">' + i + '</option>');
+                        jQuery('#div_edit_margin').modal();
+                        jQuery('#txtDefaultValue_margin').val(value).focus();
+                        break;
+                    }
+
+                case "border_radius":
+                    {
+
+                        jQuery('#tdheading_pixel').html("Border Radius");
+                        jQuery('#txtDefaultValue_pixel').find('option').remove();
+                        for (var i = parseInt(0); i <= parseInt(500); i++)
+                            jQuery('#txtDefaultValue_pixel').append('<option value="' + i + '">' + i + '</option>');
+                        jQuery('#div_edit_pixel').modal();
+                        jQuery('#txtDefaultValue_pixel').val(value).focus();
+                        break;
+                    }
+
+                case "border_color":
+                    {
+                        jQuery('#tdheading_color').html("Border Color");
+                        jQuery('#div_edit_color').modal();
+                        jQuery('#txtDefaultValue_color').css('background-color', '#' + value).val(value).focus();
+                        jQuery('#txtDefaultValue_color2').val(value);
+                        var myPicker = new jscolor.color(document.getElementById('txtDefaultValue_color'), {});
+                        myPicker.fromString(document.getElementById("txtDefaultValue_color").value);
+                        break;
+                    }
+
+                case "background_color":
+                    {
+                        jQuery('#tdheading_color').html("Background Color");
+                        jQuery('#div_edit_color').modal();
+                        jQuery('#txtDefaultValue_color').css('background-color', '#' + value).val(value).focus();
+                        jQuery('#txtDefaultValue_color2').val(value);
+                        var myPicker = new jscolor.color(document.getElementById('txtDefaultValue_color'), {});
+                        myPicker.fromString(document.getElementById("txtDefaultValue_color").value);
+                        break;
+                    }
+
+                case "color":
+                    {
+                        jQuery('#tdheading_color').html("Color");
+                        jQuery('#div_edit_color').modal();
+                        jQuery('#txtDefaultValue_color').css('color', '#' + value).val(value).focus();
+                        jQuery('#txtDefaultValue_color2').val(value);
+                        var myPicker = new jscolor.color(document.getElementById('txtDefaultValue_color'), {});
+                        myPicker.fromString(document.getElementById("txtDefaultValue_color").value);
+                        break;
+                    }
+
+            }
+
+        },
+        //change a map's template
+        changeMapTemplate: function() {
+
+            var templateID = jQuery("#MapTemplateName").val();
+            jQuery('#divPreview').html('');
+            var proVersion = !!jQuery("#mapType").attr("proVersion");
+
+            for (var t = 0; t < $arrTemplates.length; t++) {
+
+                var template = $arrTemplates[t];
+                if (parseInt(template.ID) == templateID) {
+
+                    jQuery('#MapTemplateExampleImg').attr("src", $pluginsURL + template.ExampleImage);
+
+                    var css = jQuery.xml2json(template.CSSValues);
+                    var css2 = jQuery.xml2json(template.CSSValuesList);
+                    var css3 = jQuery.xml2json(template.CSSValuesHeading);
+                    jQuery('#MapTemplateCSS').html('');
+                    jQuery('#MapTemplateListCSS').html('');
+                    jQuery('#MapTemplateHeadingCSS').html('');
+
+                    var j = 0;
+                    var width = "", height = "";
+                    for (var item in css) {
+
+                        if (item === "width") {
+                            width = css[item];
+                        }
+                        if (item === "height") {
+                            height = css[item];
+                        }
+
+                        jQuery('#MapTemplateCSS').append('<div class="cssStyleEditorParent"><a id="styleElement' + j + '" class="cssEdit" href="javascript:easy2map_map_functions.changeElementValue(' + j + ', 1, ' + proVersion + ');" item="' + item + '" value="' + css[item] + '">' + normaliseCSSElement(item) + " (" + css[item] + ")</a></div>");
+                        j += 1;
+                    }
+
+                    j = 0;
+                    for (var item in css2) {
+                        jQuery('#MapTemplateListCSS').append('<div class="cssStyleEditorParent"><a id="styleList' + j + '" class="cssEdit" href="javascript:easy2map_map_functions.changeElementValue(' + j + ', 2, ' + proVersion + ');" item="' + item + '" value="' + css2[item] + '">' + normaliseCSSElement(item) + " (" + css2[item] + ")</a></div>");
+                        j += 1;
+                    }
+
+                    j = 0;
+                    for (var item in css3) {
+                        jQuery('#MapTemplateHeadingCSS').append('<div class="cssStyleEditorParent"><a id="styleHeading' + j + '" class="cssEdit" href="javascript:easy2map_map_functions.changeElementValue(' + j + ', 3, ' + proVersion + ');" item="' + item + '" value="' + css3[item] + '">' + normaliseCSSElement(item) + " (" + css3[item] + ")</a></div>");
+                        j += 1;
+                    }
+
+                    jQuery("#mapSize").html("");
+                    jQuery("#mapSize").append("<option value='640px,480px'>640px x 480px</option>");
+                    jQuery("#mapSize").append("<option value='425px,350px'>425px x 350px</option>");
+                    jQuery("#mapSize").append("<option value='300px,300px'>300px x 300px</option>");
+                    jQuery("#mapSize").append("<option value='custom'>Set Custom Size</option>");
+
+                    jQuery("#mapSize").val(width + "," + height).attr("selected", "selected");
+
+                    if (jQuery("#mapSize option:selected").val() != width + "," + height) {
+                        jQuery("#mapSize option:eq(" + parseInt(jQuery("#mapSize option").length - 2) + ")").after("<option selected='selected' value='" + width + "," + height + "'>" + width + " x " + height + "</option>");
+                    }
+
+                }
+            }
+            refreshExampleMap(true);
+        },
+        changeMapType: function() {
+
+
+            var $mapType = jQuery('#mapType').val().toUpperCase();
+            if ($mapType === "ROADMAP")
+                $mapType = google.maps.MapTypeId.ROADMAP;
+            else if ($mapType === "HYBRID")
+                $mapType = google.maps.MapTypeId.HYBRID;
+            else if ($mapType === "SATELLITE")
+                $mapType = google.maps.MapTypeId.SATELLITE;
+            else if ($mapType === "TERRAIN")
+                $mapType = google.maps.MapTypeId.TERRAIN;
+            else
+                $mapType = google.maps.MapTypeId.ROADMAP;
+
+            $map.setMapTypeId($mapType);
+
+        },
+        cloneExistingMap: function(mapID) {
+
+            this.retrieveMapSettings(mapID, true);
+            jQuery('#MapClone').hide();
+
+        },
+        //allow the user to set a custom size for their map
+        setCustomMapSize: function() {
+
+            if (isNaN(document.getElementById('txtCustomWidthValue').value))
+                return;
+            if (isNaN(document.getElementById('txtCustomHeightValue').value))
+                return;
+
+            if (parseInt(document.getElementById('txtCustomWidthValue').value) < 0)
+                return;
+            if (parseInt(document.getElementById('txtCustomHeightValue').value) < 0)
+                return;
+
+            var width = jQuery('#txtCustomWidthValue').val() + jQuery('#mapWidthDimension').val();
+            var height = jQuery('#txtCustomHeightValue').val() + 'px';
+            easy2map_map_functions.changeMapSize(width + ',' + height);
+        },
+        //save the map's new size 
+        changeMapSize: function(size) {
+
+            if (size == "custom") {
+                jQuery('[id ^= styleElement]').each(function() {
+
+                    if (jQuery(this).attr('item') === 'width') {
+
+                        var currentWidth = jQuery(this).attr('value');
+                        if (currentWidth.indexOf('px') > 0) {
+                            jQuery('#mapWidthDimension').val('px');
+                        } else {
+                            jQuery('#mapWidthDimension').val('%');
+                        }
+
+                        jQuery('#txtCustomWidthValue').val(parseInt(currentWidth));
+
+                    }
+                    if (jQuery(this).attr('item') === 'height') {
+                        jQuery('#txtCustomHeightValue').val(parseInt(jQuery(this).attr('value')));
+                    }
+                });
+                jQuery('#div_edit_widthheight').modal();
+                return;
+            }
+            var arrSize = size.split(',');
+            if (arrSize.length < 2)
+                return;
+
+            jQuery('[id ^= styleElement]').each(function() {
+
+                if (jQuery(this).attr('item') === 'width') {
+                    jQuery(this).attr('value', arrSize[0]);
+                    jQuery(this).html('Width' + ' (' + arrSize[0] + ')');
+                }
+                if (jQuery(this).attr('item') === 'height') {
+                    jQuery(this).attr('value', arrSize[1]);
+                    jQuery(this).html('Height' + ' (' + arrSize[1] + ')');
+                }
+
+            });
+
+            jQuery("#mapSize").val(arrSize[0] + "," + arrSize[1]).attr("selected", "selected");
+
+            if (jQuery("#mapSize option:selected").val() != arrSize[0] + "," + arrSize[1]) {
+                jQuery("#mapSize option:eq(" + parseInt(jQuery("#mapSize option").length - 2) + ")").after("<option selected='selected' value='" + arrSize[0] + "," + arrSize[1] + "'>" + arrSize[0] + " x " + arrSize[1] + "</option>");
+            }
+
+            refreshExampleMap(true);
+
+        },
+        //retrieve map's settings from the database
+        retrieveMapSettings: function(mapID, ignoreMapName) {
+
+            jQuery.ajax({
+                type: 'POST',
+                url: ajaxurl,
+                dataType: 'json',
+                data: {
+                    mapID: mapID,
+                    action: "retrieve_map_settings"
+                },
+                success: function(mapSettings) {
+
+                    $mapSettings = mapSettings;
+                    var settings = jQuery.xml2json($mapSettings.Settings);
+                    jQuery('#draggable').attr("src", $mapSettings.DefaultPinImage);
+
+                    if (!!ignoreMapName === false) {
+                        if ($mapSettings.MapName) {
+                            jQuery('#mapName').val($mapSettings.MapName);
+                            jQuery('#mapName2').html($mapSettings.MapName);
+                        } else {
+                            jQuery('#mapName2').html("Untitled Map");
+                        }
+                    }
+
+                    jQuery('#mapType').val(settings.mapType.toUpperCase());
+                    jQuery('#mapEditPencil').show();
+                    retrieveMapTemplates(mapID, $mapSettings.TemplateID);
+
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert('could not retrieve map settings');
+                }
+            });
+
+        },
+        //save the CSS element that has been edited
+        saveItemValue: function() {
+
+            var attribute;
+
+            if ($styleSelectedElement === 1)
+                attribute = jQuery('#styleElement' + $styleElementIndex).attr('item');
+            else if ($styleSelectedElement === 2)
+                attribute = jQuery('#styleList' + $styleElementIndex).attr('item');
+            else
+                attribute = jQuery('#styleHeading' + $styleElementIndex).attr('item');
+
+            var alteredValue = '';
+            switch (attribute) {
+                case "border_style":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_style').val();
+                        jQuery('#div_edit_style').hide();
+                        break;
+                    }
+                case "font_family":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_fontfamily').val();
+                        jQuery('#div_edit_fontfamily').hide();
+                        break;
+                    }
+
+                case "font_size":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_pixel').val() + "px";
+                        jQuery('#div_edit_em').hide();
+                        break;
+
+                    }
+
+                case "padding":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_pixel').val() + "px";
+                        jQuery('#div_edit_em').hide();
+                        break;
+                    }
+
+                case "text_align":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_textalign').val();
+                        jQuery('#div_edit_textalign').hide();
+                        break;
+                    }
+
+                case "border_width":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_pixel').val() + "px";
+                        jQuery('#div_edit_pixel').hide();
+                        break;
+                    }
+                case "width":
+                    {
+
+                        if (jQuery('#styleElement' + $styleElementIndex).attr('value').indexOf("%") != -1) {
+                            //percentage-based width
+                            alteredValue = jQuery('#txtDefaultValue_percentage').val() + "%";
+                            jQuery('#div_edit_percentage').hide();
+                        }
+                        else {
+                            //pixel based width
+                            alteredValue = jQuery('#txtDefaultValue_pixel').val() + "px";
+                            jQuery('#div_edit_pixel').hide();
+
+                        }
+                        break;
+                    }
+                case "height":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_pixel').val() + "px";
+                        jQuery('#div_edit_pixel').hide();
+                        break;
+                    }
+                case "margin_top":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_margin').val();
+                        if (alteredValue != "auto")
+                            alteredValue += "px";
+                        jQuery('#div_edit_margin').hide();
+                        break;
+                    }
+                case "margin_bottom":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_margin').val();
+                        if (alteredValue != "auto")
+                            alteredValue += "px";
+                        jQuery('#div_edit_margin').hide();
+                        break;
+                    }
+                case "margin_left":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_margin').val();
+                        if (alteredValue != "auto")
+                            alteredValue += "px";
+                        jQuery('#div_edit_margin').hide();
+                        break;
+                    }
+                case "margin_right":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_margin').val();
+                        if (alteredValue != "auto")
+                            alteredValue += "px";
+                        jQuery('#div_edit_margin').hide();
+                        break;
+                    }
+
+                case "border_color":
+                    {
+                        alteredValue = '#' + jQuery('#txtDefaultValue_color').val();
+                        jQuery('#tdItemElementValue').css('background-Color', '#' + jQuery('#txtDefaultValue_color').val());
+                        jQuery('#div_edit_color').hide();
+                        break;
+                    }
+                case "background_color":
+                    {
+                        alteredValue = '#' + jQuery('#txtDefaultValue_color').val();
+                        jQuery('#tdItemElementValue').css('background-Color', '#' + jQuery('#txtDefaultValue_color').val());
+                        jQuery('#div_edit_color').hide();
+                        break;
+                    }
+                case "color":
+                    {
+                        alteredValue = '#' + jQuery('#txtDefaultValue_color').val();
+                        jQuery('#tdItemElementValue').css('color', '#' + jQuery('#txtDefaultValue_color').val());
+                        jQuery('#div_edit_color').hide();
+                        break;
+                    }
+                case "z-index":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_pixel').val();
+                        jQuery('#div_edit_pixel').hide();
+                        break;
+                    }
+                case "border_radius":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_pixel').val() + "px";
+                        jQuery('#div_edit_pixel').hide();
+                        break;
+                    }
+            }
+
+            if ($styleSelectedElement === 1) {
+                jQuery('#styleElement' + $styleElementIndex).attr('value', alteredValue);
+                jQuery('#styleElement' + $styleElementIndex).html(normaliseCSSElement(attribute) + ' (' + alteredValue + ')');
+
+            }
+            else if ($styleSelectedElement === 2) {
+                jQuery('#styleList' + $styleElementIndex).attr('value', alteredValue);
+                jQuery('#styleList' + $styleElementIndex).html(normaliseCSSElement(attribute) + ' (' + alteredValue + ')');
+
+            }
+            else {
+                jQuery('#styleHeading' + $styleElementIndex).attr('value', alteredValue);
+                jQuery('#styleHeading' + $styleElementIndex).html(normaliseCSSElement(attribute) + ' (' + alteredValue + ')');
+
+            }
+
+            refreshExampleMap(true);
+        },
+        //save the map to the database
+        saveMap: function(redirect, showMapID) {
+
+            var settings = jQuery.xml2json($mapSettings.Settings);
+            var $lat = settings.lattitude;
+            var $lng = settings.longitude;
+            var $zoom = parseInt(settings.zoom);
+
+            if ($map != null) {
+                $lat = $map.getCenter().lat();
+                $lng = $map.getCenter().lng();
+                $zoom = $map.getZoom();
+            }
+
+            var $mapType = jQuery('#mapType').val().toUpperCase();
+            if ($mapType === "ROADMAP")
+                $mapType = google.maps.MapTypeId.ROADMAP;
+            else if ($mapType === "HYBRID")
+                $mapType = google.maps.MapTypeId.HYBRID;
+            else if ($mapType === "SATELLITE")
+                $mapType = google.maps.MapTypeId.SATELLITE;
+            else if ($mapType === "TERRAIN")
+                $mapType = google.maps.MapTypeId.TERRAIN;
+            else
+                $mapType = google.maps.MapTypeId.ROADMAP;
+
+            var mapOptions = {
+                lattitude: $lat,
+                longitude: $lng,
+                zoom: $zoom,
+                mapType: $mapType,
+                backgroundColor: 'FFFFFF',
+                draggable: 1,
+                clusterpins: 0,
+                trafficlayer: 0,
+                transitlayer: 0,
+                bicyclelayer: 0,
+                scrollWheel: 0,
+                mapTypeControl: 0,
+                panControl: 0,
+                rotateControl: 0,
+                scaleControl: 0,
+                streetViewControl: 1,
+                zoomControl: 1,
+                mapTypeControl_style: 'DROPDOWN_MENU',
+                mapTypeControl_position: 'TOP_RIGHT',
+                panControl_position: 'TOP_LEFT',
+                rotateControl_position: 'TOP_LEFT',
+                scaleControl_position: 'TOP_LEFT',
+                streetViewControl_position: 'TOP_LEFT',
+                zoomControl_position: 'TOP_LEFT',
+                zoomControl_style: 'SMALL',
+                polyline_strokecolor: '000000',
+                polyline_opacity: '1.0',
+                polyline_strokeweight: '1'
+            };
+            var options = {
+                formatOutput: true,
+                rootTagName: 'settings'
+            };
+
+            jQuery('#divMap').html('');
+            var HTMLToSave = jQuery('#divPreview').html();
+
+            jQuery.ajax({
+                type: 'POST',
+                url: ajaxurl,
+                dataType: 'json',
+                data: {
+                    mapID: $mapID,
+                    mapName: jQuery('#mapName').val() == "" ? "Untitled Map" : jQuery('#mapName').val(),
+                    mapTemplateName: jQuery('#MapTemplateName').val(),
+                    action: "save_map",
+                    mapSettingsXML: jQuery.json2xml(mapOptions, options),
+                    mapCSSXML: encodeURIComponent(retrieveMapCSS()),
+                    listCSSXML: encodeURIComponent(retrieveListCSS()),
+                    headingCSSXML: encodeURIComponent(retrieveHeadingCSS()),
+                    mapHTML: encodeURIComponent(HTMLToSave)
+                },
+                success: function(mapID) {
+                    if (redirect) {
+
+                        if (showMapID) {
+
+                            jQuery('#txtShortCode').val('[easy2map id=' + mapID + ']');
+                            jQuery('#mapShortCode').modal({
+                                keyboard: false
+                            });
+
+                            jQuery('#mapShortCode').on('shown', function() {
+                                document.getElementById('txtShortCode').focus();
+                                document.getElementById('txtShortCode').select();
+                            });
+
+                        } else {
+
+                            window.location = '?page=easy2map&action=viewmaps';
+
+                        }
+
+                        return;
+                    }
+                    $mapID = mapID;
+                    //set the action of the pin upload form to reflect the new mapID!
+                    jQuery('#formAddPinIcon').attr('action', '?page=easy2map&action=mappinimagesave&map_id=' + $mapID);
+
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert('B' + errorThrown);
+                }
+            });
+        },
+        //save the map to the database
+        saveMapName: function() {
+
+            jQuery.ajax({
+                type: 'POST',
+                url: ajaxurl,
+                dataType: 'json',
+                data: {
+                    mapID: $mapID,
+                    mapName: jQuery('#mapName').val() == "" ? "Untitled Map" : jQuery('#mapName').val(),
+                    action: "save_map_name"
+                },
+                success: function() {
+                    jQuery("#divMapHeading").html(jQuery('#mapName').val() === "" ? "Untitled Map" : jQuery('#mapName').val());
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    alert('C' + errorThrown);
+                }
+            });
+        },
+        //verify that the import file is a valid XML document
+        uploadImportFile: function() {
+
+            if (document.getElementById('xmlfile').value === "")
+                return;
+            var bContinue = true;
+
+            var validateFileType = checkFileExtensionSilent(document.getElementById('xmlfile'));
+            if (validateFileType != '') {
+                alert('Invalid XML file.');
+                bContinue = false;
+                return;
+            }
+
+            if (bContinue == true) {
+                busy();
+                document.formImport.submit();
+            }
+        }
+    };
+
+})();
