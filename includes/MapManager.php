@@ -47,11 +47,11 @@ global $wpdb;
 $mapsTable = $wpdb->prefix . "easy2map_maps";
 
 if (isset($_POST["mapName"])) {
-    easy2map_save_map();
+    Easy2Map_AJAXFunctions::Save_map();
 }
 
 if (isset($_GET["action"]) && strcasecmp($_GET["action"], "deletemap") == 0 && isset($_GET["map_id"])){
-    easy2map_delete_map($_GET["map_id"]);
+    Easy2Map_MapFunctions::Delete_map($_GET["map_id"]);
 }
 
 ?>

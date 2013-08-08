@@ -70,14 +70,14 @@ $mapID = $_REQUEST["map_id"];
 ?>
 
 <script>
-    var $overlay, $styleElementIndex, $geocoder, $map, $mapSettings, $latlng, $arrTemplates, $mapPinID, $pinsArray = [], $markersArray = [], $selectedPin;
+    var $overlay, $styleElementIndex, $styleSelectedElement, $geocoder, $map, $mapSettings, $latlng, $arrTemplates, $mapPinID, $pinsArray = [], $markersArray = [], $selectedPin;
     var $pluginsURL = "<?php echo str_replace('index.php', '', easy2map_get_plugin_url('/index.php')); ?>";
     var $mapID = <?php echo $mapID; ?>;
 
     jQuery.noConflict();
 
     jQuery(function() {
-
+        
         $geocoder = new google.maps.Geocoder();
         easy2map_map_functions.retrieveMapSettings($mapID);
 
@@ -342,7 +342,13 @@ $mapID = $_REQUEST["map_id"];
       id="formImport"
       action="?page=easy2map&action=mapimport&map_id=<?php echo $mapID; ?>"
       method="post">
-</form>                
+</form> 
+
+<form name="formImport2" 
+      id="formImport2"
+      action="?page=easy2map&action=mapimport&markersonly=true&map_id=<?php echo $mapID; ?>"
+      method="post">
+</form>                   
 
 <div id="mapShortCode" style="width:700px" 
      class="modal hide fade" tabindex="-1" 

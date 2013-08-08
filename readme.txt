@@ -5,7 +5,7 @@ Tags: google maps, store finder, online maps, store locater, google, dealer loca
 
 Requires at least: 3.0.1
 Tested up to: 3.5.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -98,6 +98,13 @@ When adding a new marker (or editing an existing marker), click on the 'Change I
 * Map Marker HTML editor fixed.
 * Easy2Map Ultimate Version added.
 
+= 1.1.2 =
+* 5 new map templates added (Ultimate Version).
+* Map Type added (Ultimate Version).
+* Style editor enhanced (Ultimate Version).
+* Ability to import only markers from another map (Ultimate Version).
+* General fixes.
+
 == Upgrade Notice ==
 
 = 1.0.1 =
@@ -111,4 +118,11 @@ When adding a new marker (or editing an existing marker), click on the 'Change I
 
 = 1.1.0 =
 * Map Marker HTML editor fixed.
-* Easy2Map Ultimate Version added.
+* Easy2Map Ultimate Version added.'
+
+= 1.1.2 =
+* 5 new map templates added (Ultimate Version).
+* Map Type added (Ultimate Version).
+* Style editor enhanced (Ultimate Version).
+* Ability to import only markers from another map (Ultimate Version).
+* General fixes.

@@ -5,16 +5,16 @@
   URI: http://easy2map.com/ 
   Description: The easiest tool available for creating custom & great-looking Google Maps. Add multiple pins and customize maps with drag-and-drop simplicity.
   Author: Steven Ellis 
-  Version: 1.1.1
+  Version: 2.0.1
   Author URI: http://easy2map.com/ 
  */
 
-$e2m_function_names_used = array('easy2map_retrieve_map_pins_callback', 'easy2map_save_map_polylines_callback',
-    'easy2map_on_uninstall_hook', 'easy2map_delete_map_point_callback', 'easy2map_delete_map',
-    'easy2map_save_default_pin_image_callback', 'easy2map_get_plugin_url', 'easy2map_save_map_pin',
-    'easy2map_update_map_pin_location', 'easy2map_save_map', 'easy2map_save_map_name', 'easy2map_retrieve_pin_icons_callback',
-    'easy2map_retrieve_map_settings', 'easy2map_retrieve_map_HTML',
-    'easy2map_retrieve_map_settings_callback', 'easy2map_retrieve_map_templates_callback', 'easy2map_retrieve_mappin_templates_callback');
+$e2m_function_names_used = array('Easy2Map_AJAXFunctions::Retrieve_map_pins_callback', 'Easy2Map_AJAXFunctions::Save_map_polylines_callback',
+    'Easy2Map_AJAXFunctions::easy2map_on_uninstall_hook', 'Easy2Map_AJAXFunctions::Delete_map_point_callback', 'Easy2Map_MapFunctions::Delete_map',
+    'Easy2Map_AJAXFunctions::Save_default_pin_image_callback', 'easy2map_get_plugin_url', 'Easy2Map_AJAXFunctions::Save_map_pin',
+    'Easy2Map_AJAXFunctions::Update_map_pin_location', 'Easy2Map_AJAXFunctions::Save_map', 'Easy2Map_AJAXFunctions::Save_map_name', 'Easy2Map_AJAXFunctions::Retrieve_pin_icons_callback',
+    'Easy2Map_MapFunctions::Retrieve_map_settings', 'Easy2Map_MapFunctions::Retrieve_map_HTML',
+    'Easy2Map_AJAXFunctions::Retrieve_map_settings_callback', 'Easy2Map_AJAXFunctions::Retrieve_map_templates_callback', 'Easy2Map_AJAXFunctions::Retrieve_mappin_templates_callback');
 
 $e2m_class_names_used = array('Easy2Map', 'Easy2MapTest', 'easy2MapItem', 'easy2mapTemplate', 'easy2mapPinTemplate', 'easy2mapmatchedPoint');
 $e2m_constants_used = array('EASY2MAP_PLUGIN_BOOTSTRAP', 'EASY2MAP_PLUGIN_DIR');
@@ -79,31 +79,31 @@ if (!function_exists('easy2map_add_actions')):
         add_action('init', 'Easy2Map::register_shortcodes');
         add_action('admin_menu', 'Easy2Map::create_admin_menu');
 
-        add_action('wp_ajax_retrieve_map_points', 'easy2map_retrieve_map_pins_callback');
-        add_action('wp_ajax_delete_map_point', 'easy2map_delete_map_point_callback');
-        add_action('wp_ajax_retrieve_pin_icons', 'easy2map_retrieve_pin_icons_callback');
-        add_action('wp_ajax_save_default_pin_image', 'easy2map_save_default_pin_image_callback');
-        add_action('wp_ajax_retrieve_map_settings', 'easy2map_retrieve_map_settings_callback');
-        add_action('wp_ajax_retrieve_map_templates', 'easy2map_retrieve_map_templates_callback');
-        add_action('wp_ajax_retrieve_mappin_templates', 'easy2map_retrieve_mappin_templates_callback');
-        add_action('wp_ajax_save_map_polylines', 'easy2map_save_map_polylines_callback');
-        add_action('wp_ajax_save_map', 'easy2map_save_map');
-        add_action('wp_ajax_save_map_name', 'easy2map_save_map_name');
-        add_action('wp_ajax_save_map_pin', 'easy2map_save_map_pin');
-        add_action('wp_ajax_update_map_pin_location', 'easy2map_update_map_pin_location');
+        add_action('wp_ajax_retrieve_map_points', 'Easy2Map_AJAXFunctions::Retrieve_map_pins_callback');
+        add_action('wp_ajax_delete_map_point', 'Easy2Map_AJAXFunctions::Delete_map_point_callback');
+        add_action('wp_ajax_retrieve_pin_icons', 'Easy2Map_AJAXFunctions::Retrieve_pin_icons_callback');
+        add_action('wp_ajax_save_default_pin_image', 'Easy2Map_AJAXFunctions::Save_default_pin_image_callback');
+        add_action('wp_ajax_retrieve_map_settings', 'Easy2Map_AJAXFunctions::Retrieve_map_settings_callback');
+        add_action('wp_ajax_retrieve_map_templates', 'Easy2Map_AJAXFunctions::Retrieve_map_templates_callback');
+        add_action('wp_ajax_retrieve_mappin_templates', 'Easy2Map_AJAXFunctions::Retrieve_mappin_templates_callback');
+        add_action('wp_ajax_save_map_polylines', 'Easy2Map_AJAXFunctions::Save_map_polylines_callback');
+        add_action('wp_ajax_save_map', 'Easy2Map_AJAXFunctions::Save_map');
+        add_action('wp_ajax_save_map_name', 'Easy2Map_AJAXFunctions::Save_map_name');
+        add_action('wp_ajax_save_map_pin', 'Easy2Map_AJAXFunctions::Save_map_pin');
+        add_action('wp_ajax_update_map_pin_location', 'Easy2Map_AJAXFunctions::Update_map_pin_location');
         
-        add_action('wp_ajax_nopriv_retrieve_map_points', 'easy2map_retrieve_map_pins_callback');
-        add_action('wp_ajax_nopriv_delete_map_point', 'easy2map_delete_map_point_callback');
-        add_action('wp_ajax_nopriv_retrieve_pin_icons', 'easy2map_retrieve_pin_icons_callback');
-        add_action('wp_ajax_nopriv_save_default_pin_image', 'easy2map_save_default_pin_image_callback');
-        add_action('wp_ajax_nopriv_retrieve_map_settings', 'easy2map_retrieve_map_settings_callback');
-        add_action('wp_ajax_nopriv_retrieve_map_templates', 'easy2map_retrieve_map_templates_callback');
-        add_action('wp_ajax_nopriv_retrieve_mappin_templates', 'easy2map_retrieve_mappin_templates_callback');
-        add_action('wp_ajax_nopriv_save_map_polylines', 'easy2map_save_map_polylines_callback');
-        add_action('wp_ajax_nopriv_save_map', 'easy2map_save_map');
-        add_action('wp_ajax_nopriv_save_map_name', 'easy2map_save_map_name');
-        add_action('wp_ajax_nopriv_save_map_pin', 'easy2map_save_map_pin');
-        add_action('wp_ajax_nopriv_update_map_pin_location', 'easy2map_update_map_pin_location');
+        add_action('wp_ajax_nopriv_retrieve_map_points', 'Easy2Map_AJAXFunctions::Retrieve_map_pins_callback');
+        add_action('wp_ajax_nopriv_delete_map_point', 'Easy2Map_AJAXFunctions::Delete_map_point_callback');
+        add_action('wp_ajax_nopriv_retrieve_pin_icons', 'Easy2Map_AJAXFunctions::Retrieve_pin_icons_callback');
+        add_action('wp_ajax_nopriv_save_default_pin_image', 'Easy2Map_AJAXFunctions::Save_default_pin_image_callback');
+        add_action('wp_ajax_nopriv_retrieve_map_settings', 'Easy2Map_AJAXFunctions::Retrieve_map_settings_callback');
+        add_action('wp_ajax_nopriv_retrieve_map_templates', 'Easy2Map_AJAXFunctions::Retrieve_map_templates_callback');
+        add_action('wp_ajax_nopriv_retrieve_mappin_templates', 'Easy2Map_AJAXFunctions::Retrieve_mappin_templates_callback');
+        add_action('wp_ajax_nopriv_save_map_polylines', 'Easy2Map_AJAXFunctions::Save_map_polylines_callback');
+        add_action('wp_ajax_nopriv_save_map', 'Easy2Map_AJAXFunctions::Save_map');
+        add_action('wp_ajax_nopriv_save_map_name', 'Easy2Map_AJAXFunctions::Save_map_name');
+        add_action('wp_ajax_nopriv_save_map_pin', 'Easy2Map_AJAXFunctions::Save_map_pin');
+        add_action('wp_ajax_nopriv_update_map_pin_location', 'Easy2Map_AJAXFunctions::Update_map_pin_location');
     }
 
 endif;
