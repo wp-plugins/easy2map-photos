@@ -31,23 +31,23 @@ $mapID = $_REQUEST["map_id"];
     var $overlay, $styleElementIndex, $styleSelectedElement, $geocoder, $map, $mapSettings, $latlng, $arrTemplates, $mapPinID, $pinsArray = [], $markersArray = [], $selectedPin, $pinsClicked = [];
     var $pluginsURL = "<?php echo str_replace('index.php', '', easy2mapimg_get_plugin_url('/index.php')); ?>";
     var $mapID = <?php echo $mapID; ?>;
-    
+
     jQuery.noConflict();
-    
+
     jQuery("document").ready(function() {
-        
+
         $geocoder = new google.maps.Geocoder();
         easy2map_imgmap_functions.retrieveMapSettings($mapID);
-                
+
         //add autocomplete to the address search textbox
         var input = document.getElementById('address');
         var autocomplete = new google.maps.places.Autocomplete(input);
-        google.maps.event.addListener(autocomplete, 'place_changed', function(){
-            
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+
             var place = autocomplete.getPlace();
-            easy2map_imgmappin_functions.SetPinPosition(place.geometry.location.lat(),place.geometry.location.lng());
+            easy2map_imgmappin_functions.SetPinPosition(place.geometry.location.lat(), place.geometry.location.lng());
         });
-        
+
         jQuery('#pinDescription').wysihtml5({
             "font-styles": false, //Font styling, e.g. h1, h2, etc. Default true
             "emphasis": true, //Italics, bold, etc. Default true
@@ -58,54 +58,55 @@ $mapID = $_REQUEST["map_id"];
             "color": true //Button to change color of font  
         });
         
+        jQuery('.fileupload').fileupload();
         notBusy();
-        
-        jQuery('#colourpicker').colorpicker().on('changeColor', function(ev){
+
+        jQuery('#colourpicker').colorpicker().on('changeColor', function(ev) {
             document.getElementById('txtDefaultValue_color').style.backgroundColor = ev.color.toHex();
         });
-        
+
     });
-    
-    function showMapNameEdit(){
-        
+
+    function showMapNameEdit() {
+
         jQuery('#mapName').val(jQuery('#mapName2').html()).toggle().select();
         jQuery('#mapEditPencil').toggle();
         jQuery('#mapName2').toggle();
-        
+
     }
-    
+
     function runMapNameEdit(e) {
         if (e.keyCode == 13) {
             document.getElementById('btnBack').focus();
             return false;
         }
     }
-    
-    function saveMapNameEdit(){
-        
+
+    function saveMapNameEdit() {
+
         var mapName = jQuery.trim(jQuery('#mapName').val()) == "" ? "Untitled Image Map" : jQuery.trim(jQuery('#mapName').val());
-        
+
         jQuery('#mapName2').html(mapName).toggle();
         jQuery('#mapEditPencil').toggle();
         jQuery('#mapName').toggle();
         easy2map_imgmap_functions.saveMapName();
     }
-    
-    var easy2mapimg_functions = (function(){ 
-        
+
+    var easy2mapimg_functions = (function() {
+
         //prepare a pin item for editing
         return {
-            clickPinItem : function(selectedPinID){
-                
-                if ($pinsClicked.indexOf(selectedPinID) === -1){
-                    jQuery('#easy2mapmainimage').css({'background-image' : 'url(<?php echo easy2mapimg_get_plugin_url('/images/busy.gif'); ?>)', 'background-repeat': 'no-repeat', 'background-position': 'center'}).fadeIn('slow');
+            clickPinItem: function(selectedPinID) {
+
+                if ($pinsClicked.indexOf(selectedPinID) === -1) {
+                    jQuery('#easy2mapmainimage').css({'background-image': 'url(<?php echo easy2mapimg_get_plugin_url('/images/busy.gif'); ?>)', 'background-repeat': 'no-repeat', 'background-position': 'center'}).fadeIn('slow');
                     $pinsClicked.push(selectedPinID);
                 }
-                
-                for (i = 0; i < $pinsArray.length; i++){
+
+                for (i = 0; i < $pinsArray.length; i++) {
 
                     $pinsArray[i].setVisible(false);
-                    if ($pinsArray[i].ID == selectedPinID){
+                    if ($pinsArray[i].ID == selectedPinID) {
 
                         $selectedPin = $pinsArray[i];
                         $selectedPin.setVisible(true);
@@ -113,22 +114,22 @@ $mapID = $_REQUEST["map_id"];
 
                         jQuery('<img/>').attr('src', $selectedPin.large).load(function() {
                             jQuery('#easy2mapslidertext').html($selectedPin.pinText).show();
-                            jQuery('#easy2mapmainimage').css({'background-image' : 'url(' + $selectedPin.large + ')', 'background-repeat': 'no-repeat', 'background-position': 'center'}).fadeIn();
+                            jQuery('#easy2mapmainimage').css({'background-image': 'url(' + $selectedPin.large + ')', 'background-repeat': 'no-repeat', 'background-position': 'center'}).fadeIn();
                             $map.setZoom(parseInt(jQuery('#markerZoom').val()));
                             $map.setCenter(new google.maps.LatLng($selectedPin.position.lat(), $selectedPin.position.lng()));
                         });
                     }
                 }
-                
+
             },
-            noPinsLoaded : function(){
-                jQuery('#easy2mapmainimage').css({'background-image' : 'url(<?php echo easy2mapimg_get_plugin_url('/images/frame.png') ?>)', 'background-repeat': 'no-repeat', 'background-position': 'center'}).fadeIn();
-                        
+            noPinsLoaded: function() {
+                jQuery('#easy2mapmainimage').css({'background-image': 'url(<?php echo easy2mapimg_get_plugin_url('/images/frame.png') ?>)', 'background-repeat': 'no-repeat', 'background-position': 'center'}).fadeIn();
+
             }
         }
-        
+
     })();
-    
+
     function pause(numberMillis) {
         var now = new Date();
         var exitTime = now.getTime() + numberMillis;
@@ -138,17 +139,17 @@ $mapID = $_REQUEST["map_id"];
                 return;
         }
     }
-    function busy(){
+    function busy() {
         jQuery('#loadingBackground').show();
         jQuery('#loadingImage').show();
         pause(150);
     }
 
-    function notBusy(){
+    function notBusy() {
         jQuery('#loadingBackground').hide();
         jQuery('#loadingImage').hide();
     }
-    
+
 </script>
 
 <div id="loadingBackground">
@@ -184,9 +185,9 @@ $mapID = $_REQUEST["map_id"];
                                class="input-large" style="display:none;width:300px;margin-bottom:-6px" />
 
                         <!---<?php if (!isset($_REQUEST["no_back"])) { ?>
-                                                                                                    <button onclick="window.location='?page=easy2mapimg&action=viewMaps'" type="button" 
-                                                                                                            style="margin-left:30px;width:100px;" 
-                                                                                                            class="btn">Back</button> 
+                                                                                                        <button onclick="window.location='?page=easy2mapimg&action=viewMaps'" type="button" 
+                                                                                                                style="margin-left:30px;width:100px;" 
+                                                                                                                class="btn">Back</button> 
                         <?php } ?>--->
 
                 </td>
@@ -235,14 +236,24 @@ $mapID = $_REQUEST["map_id"];
 
                                     <tr id="pinImageUploadParent"><td colspan="2" align="center" style="text-align:center">
 
-                                            <h5><input type='file' name='pinimage' 
-                                                       id='pinimage' 
-                                                       size='30' style="width:300px;vertical-align:middle;"
-                                                       acceptedFileList='JPG;JPEG;PJPEG;GIF;PNG;X-PNG'
-                                                       accept='image/*'></h5>
+
+                                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image" /></div>
+                                                <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 20px;"></div>
+                                                <div>
+                                                    <span class="btn btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span>
+                                                        <input type='file' name='pinimage' 
+                                                               id='pinimage' 
+                                                               size='30' style="width:300px;vertical-align:middle;"
+                                                               acceptedFileList='JPG;JPEG;PJPEG;GIF;PNG;X-PNG'
+                                                               accept='image/*'></span>
+                                                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+                                                </div>
+                                            </div>
+
                                             <h6><i>Valid image files accepted (.jpg, .png, .gif)</i></h6>
                                             <button style="margin-right:auto;margin-left:auto;" class="btn btn-primary" data-dismiss="modal" 
-                                                    onclick="easy2map_imgmappin_functions.uploadPinPicture()" aria-hidden="true">Upload Photo</button>
+                                                    onclick="easy2map_imgmappin_functions.uploadPinPicture()" aria-hidden="true">Upload This Photo</button>
 
                                         </td></tr>
 
@@ -341,12 +352,12 @@ $mapID = $_REQUEST["map_id"];
 
     </form>
 </div>
-                    
+
 <form name="formCopymapSettings" 
-              id="formCopymapSettings"
-              action="?page=easy2mapimg&action=copymapsettings&map_id=<?php echo $mapID; ?>"
-              method="post">
-<input type="hidden" name="CopyMapID" id="CopyMapID">
+      id="formCopymapSettings"
+      action="?page=easy2mapimg&action=copymapsettings&map_id=<?php echo $mapID; ?>"
+      method="post">
+    <input type="hidden" name="CopyMapID" id="CopyMapID">
 </form>                    
 
 <form name="formAddPinIcon" 

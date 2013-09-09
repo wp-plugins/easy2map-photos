@@ -115,7 +115,8 @@ if (isset($_GET["action"]) && strcasecmp($_GET["action"], "deletemap") == 0 && i
         ?>
     </table>
     <?php if (count($results) > 0) { ?>
-    <a style="float:right;margin-right:5%;font-size:1.1em;font-weight:bold" href="http://easy2map.com/contactUs.php" target="_blank">Your comments and feedback are always welcome</a>
+    <a style="float:left;margin-left:5%;font-size:1.1em;font-weight:bold;text-decoration: underline;" href="http://wordpress.org/plugins/easy2map-photos/" target="_blank">If you like this plugin, please rate us on Wordpress</a>
+    <a style="float:right;margin-right:5%;font-size:1.1em;font-weight:bold;text-decoration: underline;" href="http://easy2map.com/contactUs.php" target="_blank">Your comments and feedback are always welcome</a>
     <?php } ?>
 
 </div>

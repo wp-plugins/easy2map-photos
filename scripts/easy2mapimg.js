@@ -1,1 +1,419 @@
-jQuery(function(){easy2mapimg_functions.initialise_all_easy2imgmaps()});var easy2mapimg_functions=(function(){var a=[];var d=[];var j="right";var h=this;var c=0;var g=200;var f=[];var b=[];easy2mapimg_ajax_location=function(e){var i=e.split("_");var k=i[i.length-1];return jQuery("#easy2mapimg_ajax_url_"+k).val()};easy2mapimg_creategooglemap=function(i,l,e,k){f[i]=new google.maps.Map(document.getElementById(l),e);b[i]=k};insertNewImgMapPoint=function(i,m){this.Marker=new google.maps.Marker({position:new google.maps.LatLng(i.lattitude,i.longitude),draggable:false,map:m,mapID:i.mapID,title:i.title.replace(/\\/gi,""),ID:i.ID,icon:i.icon,pinHTML:i.pinHTML,small:i.small,medium:i.medium,large:i.large,pinText:i.pinText,visible:false});var k=jQuery.xml2json(i.settings);var e=1;var l="";if(k.load&&k.load!=""){e=parseInt(k.load)}if(k.url&&k.url!=""&&k.url!="http://"){l=k.url}if(e===1||(e===3&&l==="")){google.maps.event.addListener(this.Marker,"click",function(n){})}if(e===2){}if(e===3&&l!=""){google.maps.event.addListener(this.Marker,"click",function(n){window.location.href=l})}};replaceAll=function(i,e,l){var k=i.indexOf(e);while(k!=-1){i=replaceChars(i,k,e.length,l);k=i.indexOf(e)}return i};replaceChars=function(e,l,i,k){if(l<0){l=0}if(l>=e.length){l=e.length-1}if(i<0){i=0}if(i>e.length){i=e.length}return(e.substring(0,l)+k+e.substring(l+i))};retrieve_easy2mapimg_pins=function(m,l,n){var k=l.split("_");var e=k[k.length-1];var i={action:"e2m_img_retrieve_map_points",MapID:e,maxPins:250};jQuery.ajax({type:"POST",url:easy2mapimg_ajax_location(l),data:i,dataType:"json",success:function(s){if(typeof s=="undefined"||typeof s=="null"){return}if(!s){return}if(s.length==0){return}for(var r=0;r<s.length;r++){var u=replaceAll(replaceAll(replaceAll(s[r].LatLong," ",""),"(",""),")","").split(",");var p={lattitude:u[0],longitude:u[1],title:s[r].Title,ID:s[r].ID,mapID:e,small:s[r].PinImageSmall,medium:s[r].PinImageMedium,large:s[r].PinImageLarge,icon:s[r].ImageURL,settings:s[r].Settings,pinHTML:s[r].MapPinHTML,pinText:s[r].MapPinText};n.push(p)}for(var q=0;q<n.length;q++){var o=new insertNewImgMapPoint(n[q],m);a.push(o)}jQuery("#easy2mapslider"+e+"Parent li:first").each(function(){easy2mapimg_functions.clickPinItem(jQuery(this).attr("sliderID"))})}});jQuery("#easy2mapslider"+e).css("display","block");jQuery("#easy2mapslider"+e).find(".easy2mapnext").click(function(){easy2mapimg_functions.e2mslider_animate("right",e);return false});jQuery("#easy2mapslider"+e).find(".easy2mapprev").click(function(){easy2mapimg_functions.e2mslider_animate("left",e);return false});if(jQuery("#easy2mapslider"+e+"Parent").find("li").length>1){jQuery("#easy2mapimg_canvas_"+e).hover(function(){jQuery("#easy2mapslider"+e).hide()});jQuery("#easy2mapmainimage"+e).hover(function(){if(jQuery("#easy2mapimg_canvas_"+e+":hover").length===0){jQuery("#easy2mapslider"+e).fadeIn()}else{jQuery("#easy2mapslider"+e).hide()}},function(){jQuery(this).find("#easy2mapslider"+e).fadeOut()})}else{jQuery("#easy2mapslider"+e).hide()}};retrieve_easy2mapimg_settings=function(k){var l=[];var i=k.split("_");var e=i[i.length-1];jQuery.ajax({type:"POST",url:easy2mapimg_ajax_location(k),dataType:"json",data:{mapID:e,action:"e2m_img_retrieve_map_settings"},success:function(o){var x=jQuery.xml2json(o.Settings);var n=x.lattitude;var p=x.longitude;var w=parseInt(x.zoom);var u=new google.maps.LatLng(n,p);var t=x.mapType.toUpperCase();var s=x.mapTypeControl_style.toUpperCase();var y=x.mapTypeControl_position.toUpperCase();var v=x.zoomControl_style.toUpperCase();var q=x.zoomControl_position.toUpperCase();var r=x.zoomControl_position.toUpperCase();if(t==="ROADMAP"){t=google.maps.MapTypeId.ROADMAP}else{if(t==="HYBRID"){t=google.maps.MapTypeId.HYBRID}else{if(t==="SATELLITE"){t=google.maps.MapTypeId.SATELLITE}else{if(t==="TERRAIN"){t=google.maps.MapTypeId.TERRAIN}else{t=google.maps.MapTypeId.ROADMAP}}}}if(s==="DEFAULT"){s=google.maps.MapTypeControlStyle.DEFAULT}else{if(s==="DROPDOWN_MENU"){s=google.maps.MapTypeControlStyle.DROPDOWN_MENU}else{if(s==="SATELLITE"){s=google.maps.MapTypeControlStyle.SATELLITE}else{s=google.maps.MapTypeControlStyle.DEFAULT}}}if(y==="TOP_LEFT"){y=google.maps.ControlPosition.TOP_LEFT}else{if(y==="TOP_RIGHT"){y=google.maps.ControlPosition.TOP_RIGHT}else{if(y==="TOP_CENTER"){y=google.maps.ControlPosition.TOP_CENTER}else{y=google.maps.ControlPosition.TOP_RIGHT}}}if(v==="DEFAULT"){v=google.maps.ZoomControlStyle.DEFAULT}else{if(v==="LARGE"){v=google.maps.ZoomControlStyle.LARGE}else{v=google.maps.ZoomControlStyle.SMALL}}if(q==="TOP_LEFT"){q=google.maps.ControlPosition.TOP_LEFT}else{if(q==="TOP_RIGHT"){q=google.maps.ControlPosition.TOP_RIGHT}else{if(q==="TOP_CENTER"){q=google.maps.ControlPosition.TOP_CENTER}else{q=google.maps.ControlPosition.TOP_RIGHT}}}if(r==="TOP_LEFT"){r=google.maps.ControlPosition.TOP_LEFT}else{if(r==="TOP_RIGHT"){r=google.maps.ControlPosition.TOP_RIGHT}else{if(r==="TOP_CENTER"){r=google.maps.ControlPosition.TOP_CENTER}else{r=google.maps.ControlPosition.TOP_RIGHT}}}var m={zoom:w,center:u,mapTypeId:t,mapTypeControl:!!parseInt(x.mapTypeControl),mapTypeControlOptions:{style:s,position:y},zoomControl:!!parseInt(x.zoomControl),navigationControl:true,zoomControlOptions:{style:v,position:q},scaleControl:!!parseInt(x.scaleControl),scaleControlOptions:{position:r},streetViewControl:!!parseInt(x.streetViewControl),panControl:!!parseInt(x.panControl),draggable:!!parseInt(x.draggable)};easy2mapimg_creategooglemap(e,k,m,parseInt(x.markerzoom));google.maps.event.addDomListener(window,"load",retrieve_easy2mapimg_pins(f[e],k,l))}})};return{clickPinItem:function(e){for(var l=0;l<a.length;l++){var m=a[l];if(parseInt(m.Marker.ID)===parseInt(e)){m.Marker.setVisible(true);for(var k=0;k<a.length;k++){if(parseInt(a[k].Marker.mapID)===parseInt(m.Marker.mapID)&&parseInt(a[k].Marker.ID)!=parseInt(e)){a[k].Marker.setVisible(false)}}if(d.indexOf(e)===-1){jQuery("#easy2mapmainimage"+m.Marker.mapID).css({"background-image":"url("+$easy2mapphotowaitingImage+")","background-repeat":"no-repeat","background-position":"center"}).fadeIn("slow");d.push(e)}jQuery("#easy2mapslider"+m.Marker.mapID+"text").html(m.Marker.pinText).show();jQuery("#easy2mapmainimage"+m.Marker.mapID).css({"background-image":"url("+m.Marker.large+")","background-repeat":"no-repeat","background-position":"center"}).show();f[m.Marker.mapID].setZoom(parseInt(b[m.Marker.mapID]));f[m.Marker.mapID].setCenter(new google.maps.LatLng(m.Marker.position.lat(),m.Marker.position.lng()))}}},e2mslider_animate:function(l,k){in_progress=true;var i=j;var n=jQuery("#easy2mapslider"+k).find(".easy2mapholder > li:first").width();if(l){i=l}if(i=="right"){var e=jQuery("#easy2mapslider"+k).find(".easy2mapholder").children("li:first");var m=jQuery(e).css("margin-right");jQuery(e).animate({"margin-left":"-"+n+"px","margin-right":"0px"},g,null,function(){jQuery(this).appendTo(jQuery(this).parent()).css({"margin-left":"0px","margin-right":m});in_progress=false})}else{jQuery("#easy2mapslider"+k).find(".easy2mapholder").children("li:eq(2)").animate({},g,null,function(){});jQuery("#easy2mapslider"+k).find(".easy2mapholder").children("li:last").css("margin-left","-"+n+"px").prependTo(".easy2mapholder").animate({"margin-left":"0px"},g,null,function(){in_progress=false})}},initialise_all_easy2imgmaps:function(){jQuery("div [id ^= easy2mapimg_canvas_]").each(function(){var e=jQuery(this).attr("id");retrieve_easy2mapimg_settings(e)})}}})();
+jQuery(function() {
+    easy2mapimg_functions.initialise_all_easy2imgmaps();
+});
+
+var easy2mapimg_functions = (function() {
+
+    var $markersArray = [];
+    var $markersClicked = [];
+    var direction = 'right';
+    var e = this;
+    var i = 0;
+    var speed = 200;
+    var $mapsArray = [];
+    var $mapZoomArray = [];
+
+    easy2mapimg_ajax_location = function(mapID) {
+        var arrMapID = mapID.split("_");
+        var id = arrMapID[arrMapID.length - 1];
+        return jQuery('#easy2mapimg_ajax_url_' + id).val();
+    };
+
+    easy2mapimg_creategooglemap = function(mapID, mapControl, mapOptions, markerzoom) {
+        $mapsArray[mapID] = new google.maps.Map(document.getElementById(mapControl), mapOptions);
+        $mapZoomArray[mapID] = markerzoom;
+    };
+
+    insertNewImgMapPoint = function(objMapPoint, map) {
+
+        this.Marker = new google.maps.Marker({
+            position: new google.maps.LatLng(objMapPoint.lattitude, objMapPoint.longitude),
+            draggable: false,
+            map: map,
+            mapID: objMapPoint.mapID,
+            title: objMapPoint.title.replace(/\\/gi, ''),
+            ID: objMapPoint.ID,
+            icon: objMapPoint.icon,
+            pinHTML: objMapPoint.pinHTML,
+            small: objMapPoint.small,
+            medium: objMapPoint.medium,
+            large: objMapPoint.large,
+            pinText: objMapPoint.pinText,
+            visible: false
+        });
+
+        //retrieve pin settings
+        var pinSettings = jQuery.xml2json(objMapPoint.settings);
+
+        var loadBehaviour = 1;
+        var loadURL = "";
+
+        if (pinSettings.load && pinSettings.load != "") {
+            loadBehaviour = parseInt(pinSettings.load);
+        }
+
+        if (pinSettings.url && pinSettings.url != "" && pinSettings.url != "http://") {
+            loadURL = pinSettings.url;
+        }
+
+        //if pin 'load' settings set to '1', open popup on pin click (default behaviour)
+        if (loadBehaviour === 1 || (loadBehaviour === 3 && loadURL === "")) {
+            google.maps.event.addListener(this.Marker, "click", function(mEvent) {
+                //var infoWindow = new google.maps.InfoWindow();
+                //infoWindow.setContent(marker.pinHTML);
+                //infoWindow.open(marker.map, marker);
+            });
+        }
+        //if pin 'load' settings set to '2', open popup on window load
+        if (loadBehaviour === 2) {
+
+            //var infoWindow = new google.maps.InfoWindow();
+            //infoWindow.setContent(marker.pinHTML);
+            // infoWindow.open(marker.map, marker);
+
+        }
+        //if pin 'load' settings set to '3', open URL
+        if (loadBehaviour === 3 && loadURL !== "") {
+
+            google.maps.event.addListener(this.Marker, "click", function(mEvent) {
+                window.location.href = loadURL;
+            });
+
+        }
+    };
+
+    replaceAll = function(strOrig, strFind, strReplace) {
+
+        var intCount = strOrig.indexOf(strFind);
+        while (intCount !== -1)
+        {
+            strOrig = replaceChars(strOrig, intCount, strFind.length, strReplace);
+            intCount = strOrig.indexOf(strFind);
+        }
+        return strOrig;
+    };
+
+    replaceChars = function(strOrig, intPos, intNoChars, strReplace) {
+        if (intPos < 0)
+            intPos = 0;
+        if (intPos >= strOrig.length)
+            intPos = strOrig.length - 1;
+        if (intNoChars < 0)
+            intNoChars = 0;
+        if (intNoChars > strOrig.length)
+            intNoChars = strOrig.length;
+        return (strOrig.substring(0, intPos) + strReplace + strOrig.substring(intPos + intNoChars));
+    };
+
+    retrieve_easy2mapimg_pins = function(map, mapControl, arrMapPins) {
+
+        var arrMapID = mapControl.split("_");
+        var mapID = arrMapID[arrMapID.length - 1];
+
+        var data = {
+            action: 'e2m_img_retrieve_map_points',
+            MapID: mapID,
+            maxPins: 250
+        };
+
+        jQuery.ajax({
+            type: "POST",
+            url: easy2mapimg_ajax_location(mapControl),
+            data: data,
+            dataType: 'json',
+            success: function(returnData) {
+
+                if (typeof returnData == "undefined" || typeof returnData == "null")
+                    return;
+                if (!returnData)
+                    return;
+                if (returnData.length == 0)
+                    return;
+
+                for (var t = 0; t < returnData.length; t++) {
+
+                    var arrLatLng = replaceAll(replaceAll(replaceAll(returnData[t].LatLong, ' ', ''), '(', ''), ')', '').split(',');
+
+                    var objMapPoint = {
+                        lattitude: arrLatLng[0],
+                        longitude: arrLatLng[1],
+                        title: returnData[t].Title,
+                        ID: returnData[t].ID,
+                        mapID: mapID,
+                        small: returnData[t].PinImageSmall,
+                        medium: returnData[t].PinImageMedium,
+                        large: returnData[t].PinImageLarge,
+                        icon: returnData[t].ImageURL,
+                        settings: returnData[t].Settings,
+                        pinHTML: returnData[t].MapPinHTML,
+                        pinText: returnData[t].MapPinText
+                    }
+                    arrMapPins.push(objMapPoint);
+                }
+
+                for (var i = 0; i < arrMapPins.length; i++) {
+                    var newMarker = new insertNewImgMapPoint(arrMapPins[i], map);
+                    $markersArray.push(newMarker);
+                }
+
+                jQuery("#easy2mapslider" + mapID + "Parent li:first").each(function() {
+                    easy2mapimg_functions.clickPinItem(jQuery(this).attr('sliderID'));
+                });
+            }
+        });
+
+        jQuery("#easy2mapslider" + mapID).css("display", "block");
+
+        jQuery('#easy2mapslider' + mapID).find('.easy2mapnext').click(function() {
+
+            easy2mapimg_functions.e2mslider_animate('right', mapID);
+            return false;
+        });
+
+        jQuery('#easy2mapslider' + mapID).find('.easy2mapprev').click(function() {
+            easy2mapimg_functions.e2mslider_animate('left', mapID);
+            return false;
+        });
+
+        if (jQuery('#easy2mapslider' + mapID + 'Parent').find('li').length > 1) {
+
+            jQuery("#easy2mapimg_canvas_" + mapID).hover(function() {
+                jQuery("#easy2mapslider" + mapID).hide();
+
+            });
+
+            jQuery("#easy2mapmainimage" + mapID).hover(function() {
+
+                if (jQuery('#easy2mapimg_canvas_' + mapID + ':hover').length === 0) {
+                    jQuery("#easy2mapslider" + mapID).fadeIn();
+                } else {
+                    jQuery("#easy2mapslider" + mapID).hide();
+                }
+
+            }
+            , function() {
+                jQuery(this).find("#easy2mapslider" + mapID).fadeOut();
+            }
+            );
+
+        } else {
+            jQuery("#easy2mapslider" + mapID).hide();
+        }
+
+    };
+
+    retrieve_easy2mapimg_settings = function(mapControl) {
+
+        var arrMapPins = [];
+        var arrMapID = mapControl.split("_");
+        var mapID = arrMapID[arrMapID.length - 1];
+
+        jQuery.ajax({
+            type: 'POST',
+            url: easy2mapimg_ajax_location(mapControl),
+            dataType: 'json',
+            data: {
+                mapID: mapID,
+                action: "e2m_img_retrieve_map_settings"
+            },
+            success: function(returnData) {
+
+                var mapSettings = jQuery.xml2json(returnData.Settings);
+
+                var $lat = mapSettings.lattitude;
+                var $lng = mapSettings.longitude;
+                var $zoom = parseInt(mapSettings.zoom);
+                var $latlng = new google.maps.LatLng($lat, $lng);
+                var $mapType = mapSettings.mapType.toUpperCase();
+                var $mapTypeControl_style = mapSettings.mapTypeControl_style.toUpperCase();
+                var $mapTypeControl_position = mapSettings.mapTypeControl_position.toUpperCase();
+                var $zoomControlOptions_style = mapSettings.zoomControl_style.toUpperCase();
+                var $zoomControlOptions_position = mapSettings.zoomControl_position.toUpperCase();
+                var $scaleControlOptions_position = mapSettings.zoomControl_position.toUpperCase();
+
+                if ($mapType === "ROADMAP")
+                    $mapType = google.maps.MapTypeId.ROADMAP;
+                else if ($mapType === "HYBRID")
+                    $mapType = google.maps.MapTypeId.HYBRID;
+                else if ($mapType === "SATELLITE")
+                    $mapType = google.maps.MapTypeId.SATELLITE;
+                else if ($mapType === "TERRAIN")
+                    $mapType = google.maps.MapTypeId.TERRAIN;
+                else
+                    $mapType = google.maps.MapTypeId.ROADMAP;
+
+                if ($mapTypeControl_style === "DEFAULT")
+                    $mapTypeControl_style = google.maps.MapTypeControlStyle.DEFAULT;
+                else if ($mapTypeControl_style === "DROPDOWN_MENU")
+                    $mapTypeControl_style = google.maps.MapTypeControlStyle.DROPDOWN_MENU;
+                else if ($mapTypeControl_style === "SATELLITE")
+                    $mapTypeControl_style = google.maps.MapTypeControlStyle.SATELLITE;
+                else
+                    $mapTypeControl_style = google.maps.MapTypeControlStyle.DEFAULT;
+
+                if ($mapTypeControl_position === "TOP_LEFT")
+                    $mapTypeControl_position = google.maps.ControlPosition.TOP_LEFT;
+                else if ($mapTypeControl_position === "TOP_RIGHT")
+                    $mapTypeControl_position = google.maps.ControlPosition.TOP_RIGHT;
+                else if ($mapTypeControl_position === "TOP_CENTER")
+                    $mapTypeControl_position = google.maps.ControlPosition.TOP_CENTER;
+                else
+                    $mapTypeControl_position = google.maps.ControlPosition.TOP_RIGHT;
+
+                if ($zoomControlOptions_style === "DEFAULT")
+                    $zoomControlOptions_style = google.maps.ZoomControlStyle.DEFAULT;
+                else if ($zoomControlOptions_style === "LARGE")
+                    $zoomControlOptions_style = google.maps.ZoomControlStyle.LARGE;
+                else
+                    $zoomControlOptions_style = google.maps.ZoomControlStyle.SMALL;
+
+                if ($zoomControlOptions_position === "TOP_LEFT")
+                    $zoomControlOptions_position = google.maps.ControlPosition.TOP_LEFT;
+                else if ($zoomControlOptions_position === "TOP_RIGHT")
+                    $zoomControlOptions_position = google.maps.ControlPosition.TOP_RIGHT;
+                else if ($zoomControlOptions_position === "TOP_CENTER")
+                    $zoomControlOptions_position = google.maps.ControlPosition.TOP_CENTER;
+                else
+                    $zoomControlOptions_position = google.maps.ControlPosition.TOP_RIGHT;
+
+                if ($scaleControlOptions_position === "TOP_LEFT")
+                    $scaleControlOptions_position = google.maps.ControlPosition.TOP_LEFT;
+                else if ($scaleControlOptions_position === "TOP_RIGHT")
+                    $scaleControlOptions_position = google.maps.ControlPosition.TOP_RIGHT;
+                else if ($scaleControlOptions_position === "TOP_CENTER")
+                    $scaleControlOptions_position = google.maps.ControlPosition.TOP_CENTER;
+                else
+                    $scaleControlOptions_position = google.maps.ControlPosition.TOP_RIGHT;
+
+                var mapOptions = {
+                    zoom: $zoom,
+                    center: $latlng,
+                    mapTypeId: $mapType,
+                    mapTypeControl: !!parseInt(mapSettings.mapTypeControl),
+                    mapTypeControlOptions: {
+                        style: $mapTypeControl_style,
+                        position: $mapTypeControl_position
+                    },
+                    zoomControl: !!parseInt(mapSettings.zoomControl),
+                    navigationControl: true,
+                    zoomControlOptions: {
+                        style: $zoomControlOptions_style,
+                        position: $zoomControlOptions_position
+                    },
+                    scaleControl: !!parseInt(mapSettings.scaleControl),
+                    scaleControlOptions: {
+                        position: $scaleControlOptions_position
+                    },
+                    streetViewControl: !!parseInt(mapSettings.streetViewControl),
+                    panControl: !!parseInt(mapSettings.panControl),
+                    draggable: !!parseInt(mapSettings.draggable)
+                };
+
+                easy2mapimg_creategooglemap(mapID, mapControl, mapOptions, parseInt(mapSettings.markerzoom));
+                google.maps.event.addDomListener(window, 'load', retrieve_easy2mapimg_pins($mapsArray[mapID], mapControl, arrMapPins));
+
+            }
+        });
+
+    };
+
+    return{
+        //prepare a pin item for editing
+        clickPinItem: function(selectedPinID) {
+            
+            for (var i = 0; i < $markersArray.length; i++) {
+
+                var $selectedPin = $markersArray[i];
+
+                if (parseInt($selectedPin.Marker.ID) === parseInt(selectedPinID)) {
+
+                    $selectedPin.Marker.setVisible(true);
+
+                    for (var j = 0; j < $markersArray.length; j++) {
+                        if (parseInt($markersArray[j].Marker.mapID) === parseInt($selectedPin.Marker.mapID) && parseInt($markersArray[j].Marker.ID) !== parseInt(selectedPinID)) {
+                            $markersArray[j].Marker.setVisible(false);
+                        }
+                    }
+
+                    if ($markersClicked.indexOf(selectedPinID) === -1) {
+                        jQuery('#easy2mapmainimage' + $selectedPin.Marker.mapID).css({
+                            'background-image': 'url(' + $easy2mapphotowaitingImage + ')',
+                            'background-repeat': 'no-repeat',
+                            'background-position': 'center'
+                        }).fadeIn('slow');
+                        $markersClicked.push(selectedPinID);
+                    }
+
+                    jQuery('#easy2mapslider' + $selectedPin.Marker.mapID + 'text').html($selectedPin.Marker.pinText).show();
+
+                    jQuery('#easy2mapmainimage' + $selectedPin.Marker.mapID)
+                            .css({'background-image': 'none', 'background-color': '#EBEBEB'})
+                            .fadeIn(800, function() {
+                        jQuery(this).css({
+                            'background-image': 'url(' + $selectedPin.Marker.large + ')',
+                            'background-repeat': 'no-repeat',
+                            'background-position': 'center'
+                        });
+                    });
+
+                    $mapsArray[$selectedPin.Marker.mapID].setZoom(parseInt($mapZoomArray[$selectedPin.Marker.mapID]));
+                    $mapsArray[$selectedPin.Marker.mapID].setCenter(new google.maps.LatLng($selectedPin.Marker.position.lat(), $selectedPin.Marker.position.lng()));
+
+                }
+            }
+
+        },
+        e2mslider_animate: function(new_dir, mapID)
+        {
+            //clearTimeout(timeout_id);
+            //timeout_id = setTimeout(auto_animate, 5000);
+            in_progress = true;
+
+            var dir = direction;
+            var slide_widths = jQuery('#easy2mapslider' + mapID).find('.easy2mapholder > li:first').width();
+
+            if (new_dir)
+            {
+                dir = new_dir;
+            }
+
+            if (dir === 'right')
+            {
+                var toMove = jQuery('#easy2mapslider' + mapID).find('.easy2mapholder').children('li:first');
+                var oldMargin = jQuery(toMove).css('margin-right');
+                jQuery(toMove).animate({
+                    'margin-left': '-' + slide_widths + 'px',
+                    'margin-right': '0px'
+                }, speed, null, function() {
+                    jQuery(this).appendTo(jQuery(this).parent()).css({
+                        'margin-left': '0px',
+                        'margin-right': oldMargin
+                    });
+                    in_progress = false;
+                });
+            }
+            else
+            {
+                jQuery('#easy2mapslider' + mapID).find('.easy2mapholder').children('li:eq(2)').animate({
+                }, speed, null, function() {
+                });
+                jQuery('#easy2mapslider' + mapID).find('.easy2mapholder').children('li:last').css('margin-left', '-' + slide_widths + 'px').prependTo('.easy2mapholder').animate({
+                    'margin-left': '0px'
+                }, speed, null, function() {
+                    in_progress = false;
+                });
+            }
+        },
+        initialise_all_easy2imgmaps: function() {
+
+            jQuery('div [id ^= easy2mapimg_canvas_]').each(function() {
+
+                var mapID = jQuery(this).attr('id');
+                retrieve_easy2mapimg_settings(mapID);
+
+            });
+
+        }
+    };
+
+})();

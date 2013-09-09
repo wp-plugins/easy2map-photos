@@ -1,3 +1,118 @@
 <?php
-eval(base64_decode('ZXZhbChiYXNlNjRfZGVjb2RlKCdablZ1WTNScGIyNGdjbVZ6YVhwbFNXMWhaMlVvSkdsdFlXZGxjMFJwY21WamRHOXllU3dnSkhWd2JHOWhaR1ZrUm1sc1pTd2dKR2x0WVdkbFRtRnRaU3dnSkhkcFpIUm9MQ0FrYUdWcFoyaDBMQ0FrZEhsd1pTd2dKSEpsY1hWcGNtVmtYM2RwWkhSb0xDQWtjbVZ4ZFdseVpXUmZhR1ZwWjJoMExDQWtabWxsYkdSVGFYcGxMQ0FrYldsdVUybDZaU2tnZXdvS0lDQWdJR2xtSUNna2JXbHVVMmw2WlNBOVBUMGdkSEoxWlNrZ2V3b0tJQ0FnSUNBZ0lDQXZMMVJvWlNCeVpYRjFhWEpsWkNCM2FXUjBhSE1nWVc1a0lHaGxhV2RvZEhNZ1lYSmxJSFJvWlNCTlNVNUpUVlZOSUhCbGNtMXBkSFJsWkNCemFYcGxjd29nSUNBZ0lDQWdJQ1JKUVZJZ1BTQWtkMmxrZEdnZ0x5QWthR1ZwWjJoME95QXZMMGxOUVVkRklFRlRVRVZEVkNCU1FWUkpUd29LSUNBZ0lDQWdJQ0JwWmlBb0pISmxjWFZwY21Wa1gzZHBaSFJvSUM4Z0pFbEJVaUE4SUNSeVpYRjFhWEpsWkY5b1pXbG5hSFFwSUhzS0NpQWdJQ0FnSUNBZ0lDQWdJQ1J1WlhkSVpXbG5hSFFnUFNBa2NtVnhkV2x5WldSZmFHVnBaMmgwT3dvZ0lDQWdJQ0FnSUNBZ0lDQWtibVYzVjJsa2RHZ2dQU0FrYm1WM1NHVnBaMmgwSUNvZ0pFbEJVanNLSUNBZ0lDQWdJQ0I5SUdWc2MyVWdld29LSUNBZ0lDQWdJQ0FnSUNBZ0pHNWxkMWRwWkhSb0lEMGdKSEpsY1hWcGNtVmtYM2RwWkhSb093b2dJQ0FnSUNBZ0lDQWdJQ0FrYm1WM1NHVnBaMmgwSUQwZ0pHNWxkMWRwWkhSb0lDOGdKRWxCVWpzS0lDQWdJQ0FnSUNCOUNpQWdJQ0I5SUdWc2MyVWdld29LSUNBZ0lDQWdJQ0F2TDFSb1pTQnlaWEYxYVhKbFpDQjNhV1IwYUhNZ1lXNWtJR2hsYVdkb2RITWdZWEpsSUhSb1pTQk5RVmhKVFZWTklIQmxjbTFwZEhSbFpDQnphWHBsY3dvS0lDQWdJQ0FnSUNCcFppQW9KSGRwWkhSb0lENGdKSEpsY1hWcGNtVmtYM2RwWkhSb0lIeDhJQ1JvWldsbmFIUWdQaUFrY21WeGRXbHlaV1JmYUdWcFoyaDBLU0I3Q2dvZ0lDQWdJQ0FnSUNBZ0lDQnBaaUFvSkhkcFpIUm9JRDRnSkdobGFXZG9kQ2tnZXdvS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNSM2FXUjBhRjlRWlhKalpXNTBZV2RsSUQwZ0tHbHVkQ2tnSkhKbGNYVnBjbVZrWDNkcFpIUm9JQzhnSkhkcFpIUm9Pd29nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdKRzVsZDFkcFpIUm9JRDBnY205MWJtUW9KSGRwWkhSb0lDb2dKSGRwWkhSb1gxQmxjbU5sYm5SaFoyVXBPd29nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdKRzVsZDBobGFXZG9kQ0E5SUhKdmRXNWtLQ1JvWldsbmFIUWdLaUFrZDJsa2RHaGZVR1Z5WTJWdWRHRm5aU2s3Q2dvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnYVdZZ0tDUnVaWGRJWldsbmFIUWdQaUFrY21WeGRXbHlaV1JmYUdWcFoyaDBLU0I3Q2dvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDUm9aV2xuYUhSZlVHVnlZMlZ1ZEdGblpTQTlJQ2hwYm5RcElDUnlaWEYxYVhKbFpGOW9aV2xuYUhRZ0x5QWtibVYzU0dWcFoyaDBPd29nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNSdVpYZFhhV1IwYUNBOUlISnZkVzVrS0NSdVpYZFhhV1IwYUNBcUlDUm9aV2xuYUhSZlVHVnlZMlZ1ZEdGblpTazdDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSkc1bGQwaGxhV2RvZENBOUlISnZkVzVrS0NSdVpYZElaV2xuYUhRZ0tpQWthR1ZwWjJoMFgxQmxjbU5sYm5SaFoyVXBPd29nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdmUW9nSUNBZ0lDQWdJQ0FnSUNCOUlHVnNjMlVnZXdvS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNSb1pXbG5hSFJmVUdWeVkyVnVkR0ZuWlNBOUlDaHBiblFwSUNSeVpYRjFhWEpsWkY5b1pXbG5hSFFnTHlBa2FHVnBaMmgwT3dvZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSkc1bGQxZHBaSFJvSUQwZ2NtOTFibVFvSkhkcFpIUm9JQ29nSkdobGFXZG9kRjlRWlhKalpXNTBZV2RsS1RzS0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNSdVpYZElaV2xuYUhRZ1BTQnliM1Z1WkNna2FHVnBaMmgwSUNvZ0pHaGxhV2RvZEY5UVpYSmpaVzUwWVdkbEtUc0tDaUFnSUNBZ0lDQWdJQ0FnSUNBZ0lDQnBaaUFvSkc1bGQxZHBaSFJvSUQ0Z0pISmxjWFZwY21Wa1gzZHBaSFJvS1NCN0Nnb2dJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ1IzYVdSMGFGOVFaWEpqWlc1MFlXZGxJRDBnS0dsdWRDa2dKSEpsY1hWcGNtVmtYM2RwWkhSb0lDOGdKRzVsZDFkcFpIUm9Pd29nSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FnSUNSdVpYZFhhV1IwYUNBOUlISnZkVzVrS0NSdVpYZFhhV1IwYUNBcUlDUjNhV1IwYUY5UVpYSmpaVzUwWVdkbEtUc0tJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lDQWdJQ0FrYm1WM1NHVnBaMmgwSUQwZ2NtOTFibVFvSkc1bGQwaGxhV2RvZENBcUlDUjNhV1IwYUY5UVpYSmpaVzUwWVdkbEtUc0tJQ0FnSUNBZ0lDQWdJQ0FnSUNBZ0lIMEtJQ0FnSUNBZ0lDQWdJQ0FnZlFvZ0lDQWdJQ0FnSUgwZ1pXeHpaU0I3Q2dvZ0lDQWdJQ0FnSUNBZ0lDQWtibVYzVjJsa2RHZ2dQU0FrZDJsa2RHZzdDaUFnSUNBZ0lDQWdJQ0FnSUNSdVpYZElaV2xuYUhRZ1BTQWthR1ZwWjJoME93b2dJQ0FnSUNBZ0lIMEtJQ0FnSUgwS0NpQWdJQ0FrYVcxaFoyVmZkRzF3SUQwZ2FXMWhaMlZqY21WaGRHVjBjblZsWTI5c2IzSW9KRzVsZDFkcFpIUm9MQ0FrYm1WM1NHVnBaMmgwS1RzS0NpQWdJQ0JwWmlBb0pIUjVjR1VnUFQwZ1NVMUJSMFZVV1ZCRlgwcFFSVWNwSUhzS0lDQWdJQ0FnSUNBa2FXMWhaMlZmYzNKaklEMGdhVzFoWjJWamNtVmhkR1ZtY205dGFuQmxaeWdrZFhCc2IyRmtaV1JHYVd4bEtUc0tJQ0FnSUgwZ1pXeHpaU0JwWmlBb0pIUjVjR1VnUFQwZ1NVMUJSMFZVV1ZCRlgxQk9SeWtnZXdvZ0lDQWdJQ0FnSUNScGJXRm5aVjl6Y21NZ1BTQnBiV0ZuWldOeVpXRjBaV1p5YjIxd2JtY29KSFZ3Ykc5aFpHVmtSbWxzWlNrN0NpQWdJQ0FnSUNBZ0x5OGdhVzUwWldkbGNpQnlaWEJ5WlhObGJuUmhkR2x2YmlCdlppQjBhR1VnWTI5c2IzSWdZbXhoWTJzZ0tISm5Zam9nTUN3d0xEQXBDaUFnSUNBZ0lDQWdKR0poWTJ0bmNtOTFibVFnUFNCcGJXRm5aV052Ykc5eVlXeHNiMk5oZEdVb0pHbHRZV2RsWDNSdGNDd2dNQ3dnTUN3Z01DazdDaUFnSUNBZ0lDQWdMeThnY21WdGIzWnBibWNnZEdobElHSnNZV05ySUdaeWIyMGdkR2hsSUhCc1lXTmxhRzlzWkdWeUNpQWdJQ0FnSUNBZ2FXMWhaMlZqYjJ4dmNuUnlZVzV6Y0dGeVpXNTBLQ1JwYldGblpWOTBiWEFzSUNSaVlXTnJaM0p2ZFc1a0tUc0tJQ0FnSUNBZ0lDQXZMeUIwZFhKdWFXNW5JRzltWmlCaGJIQm9ZU0JpYkdWdVpHbHVaeUFvZEc4Z1pXNXpkWEpsSUdGc2NHaGhJR05vWVc1dVpXd2dhVzVtYjNKdFlYUnBiMjRnQ2lBZ0lDQWdJQ0FnTHk4Z2FYTWdjSEpsYzJWeWRtVmtMQ0J5WVhSb1pYSWdkR2hoYmlCeVpXMXZkbVZrSUNoaWJHVnVaR2x1WnlCM2FYUm9JSFJvWlNCeVpYTjBJRzltSUhSb1pTQUtJQ0FnSUNBZ0lDQXZMeUJwYldGblpTQnBiaUIwYUdVZ1ptOXliU0J2WmlCaWJHRmpheWtwQ2lBZ0lDQWdJQ0FnYVcxaFoyVmhiSEJvWVdKc1pXNWthVzVuS0NScGJXRm5aVjkwYlhBc0lHWmhiSE5sS1RzS0lDQWdJQ0FnSUNBdkx5QjBkWEp1YVc1bklHOXVJR0ZzY0doaElHTm9ZVzV1Wld3Z2FXNW1iM0p0WVhScGIyNGdjMkYyYVc1bklDaDBieUJsYm5OMWNtVWdkR2hsSUdaMWJHd2djbUZ1WjJVZ0NpQWdJQ0FnSUNBZ0x5OGdiMllnZEhKaGJuTndZWEpsYm1ONUlHbHpJSEJ5WlhObGNuWmxaQ2tLSUNBZ0lDQWdJQ0JwYldGblpYTmhkbVZoYkhCb1lTZ2thVzFoWjJWZmRHMXdMQ0IwY25WbEtUc0tJQ0FnSUgwZ1pXeHpaU0I3Q2lBZ0lDQWdJQ0FnSkdsdFlXZGxYM055WXlBOUlHbHRZV2RsWTNKbFlYUmxabkp2YldkcFppZ2tkWEJzYjJGa1pXUkdhV3hsS1RzS0lDQWdJQ0FnSUNBdkx5QnBiblJsWjJWeUlISmxjSEpsYzJWdWRHRjBhVzl1SUc5bUlIUm9aU0JqYjJ4dmNpQmliR0ZqYXlBb2NtZGlPaUF3TERBc01Da0tJQ0FnSUNBZ0lDQWtZbUZqYTJkeWIzVnVaQ0E5SUdsdFlXZGxZMjlzYjNKaGJHeHZZMkYwWlNna2FXMWhaMlZmZEcxd0xDQXdMQ0F3TENBd0tUc0tJQ0FnSUNBZ0lDQXZMeUJ5WlcxdmRtbHVaeUIwYUdVZ1lteGhZMnNnWm5KdmJTQjBhR1VnY0d4aFkyVm9iMnhrWlhJS0lDQWdJQ0FnSUNCcGJXRm5aV052Ykc5eWRISmhibk53WVhKbGJuUW9KR2x0WVdkbFgzUnRjQ3dnSkdKaFkydG5jbTkxYm1RcE93b2dJQ0FnZlFvS0lDQWdJR2x0WVdkbFkyOXdlWEpsYzJGdGNHeGxaQ2drYVcxaFoyVmZkRzF3TENBa2FXMWhaMlZmYzNKakxDQXdMQ0F3TENBd0xDQXdMQ0FrYm1WM1YybGtkR2dzSUNSdVpYZElaV2xuYUhRc0lDUjNhV1IwYUN3Z0pHaGxhV2RvZENrN0Nnb2dJQ0FnSkhWd2JHOWhaR1ZrU1cxaFoyVk1iMk5oZEdsdmJpQTlJQ1JwYldGblpYTkVhWEpsWTNSdmNua2dMaUFrYVcxaFoyVk9ZVzFsT3dvZ0lDQWdKR2x0WVdkbFRtRnRaVVY0Y0d4dlpHVWdQU0JsZUhCc2IyUmxLQ0l1SWl3Z0pHbHRZV2RsVG1GdFpTazdDaUFnSUNBa2JtVjNTVzFoWjJWT1lXMWxJRDBnSkdsdFlXZGxUbUZ0WlVWNGNHeHZaR1ZiTUYwZ0xpQmtZWFJsS0NKWmJXUklhWE4xSWlrZ0xpQWlYeUlnTGlBa1ptbGxiR1JUYVhwbElDNGdJaTRpSUM0Z0pHbHRZV2RsVG1GdFpVVjRjR3h2WkdWYk1WMDdDaUFnSUNBa2JtVjNTVzFoWjJWT1lXMWxJRDBnYzNSeVgzSmxjR3hoWTJVb0lpQWlMQ0FpSWl3Z2MzUnlYM0psY0d4aFkyVW9JaTBpTENBaUlpd2dKRzVsZDBsdFlXZGxUbUZ0WlNrcE93b0tJQ0FnSUdsbUlDZ2tkSGx3WlNBOVBTQkpUVUZIUlZSWlVFVmZVRTVIS1NCN0NpQWdJQ0FnSUNBZ2FXMWhaMlZ3Ym1jb0pHbHRZV2RsWDNSdGNDd2dKR2x0WVdkbGMwUnBjbVZqZEc5eWVTQXVJQ1J1WlhkSmJXRm5aVTVoYldVc0lEa3BPd29nSUNBZ2ZTQmxiSE5sSUdsbUlDZ2tkSGx3WlNBOVBTQkpUVUZIUlZSWlVFVmZTbEJGUnlrZ2V3b2dJQ0FnSUNBZ0lHbHRZV2RsYW5CbFp5Z2thVzFoWjJWZmRHMXdMQ0FrYVcxaFoyVnpSR2x5WldOMGIzSjVJQzRnSkc1bGQwbHRZV2RsVG1GdFpTd2dNVEF3S1RzS0lDQWdJSDBnWld4elpTQnBaaUFvSkhSNWNHVWdQVDBnU1UxQlIwVlVXVkJGWDBkSlJpa2dld29nSUNBZ0lDQWdJR2x0WVdkbFoybG1LQ1JwYldGblpWOTBiWEFzSUNScGJXRm5aWE5FYVhKbFkzUnZjbmtnTGlBa2JtVjNTVzFoWjJWT1lXMWxLVHNLSUNBZ0lIMEtJQ0FnSUdsdFlXZGxaR1Z6ZEhKdmVTZ2thVzFoWjJWZmRHMXdLVHNLSUNBZ0lHbHRZV2RsWkdWemRISnZlU2drYVcxaFoyVmZjM0pqS1RzS0NpQWdJQ0FrWVhKeVVtVjBkWEp1SUQwZ1lYSnlZWGtvS1RzS0lDQWdJQ1JoY25KU1pYUjFjbTViTUYwZ1BTQWtibVYzU1cxaFoyVk9ZVzFsT3dvZ0lDQWdKR0Z5Y2xKbGRIVnlibHN4WFNBOUlDUnVaWGRYYVdSMGFEc0tJQ0FnSUNSaGNuSlNaWFIxY201Yk1sMGdQU0FrYm1WM1NHVnBaMmgwT3dvS0lDQWdJSEpsZEhWeWJpQWtZWEp5VW1WMGRYSnVPd3A5Q2dwbWRXNWpkR2x2YmlCblpYUkZlSFJsYm5OcGIyNG9KSE4wY2lrZ2V3b0tJQ0FnSUNScElEMGdjM1J5Y25CdmN5Z2tjM1J5TENBaUxpSXBPd29nSUNBZ2FXWWdLQ0VrYVNrZ2V3b2dJQ0FnSUNBZ0lISmxkSFZ5YmlBaUlqc0tJQ0FnSUgwS0lDQWdJQ1JzSUQwZ2MzUnliR1Z1S0NSemRISXBJQzBnSkdrN0NpQWdJQ0FrWlhoMElEMGdjM1ZpYzNSeUtDUnpkSElzSUNScElDc2dNU3dnSkd3cE93b2dJQ0FnY21WMGRYSnVJQ1JsZUhRN0NuMD0nKSk7'));
+
+function resizeImage($imagesDirectory, $uploadedFile, $imageName, $width, $height, $type, $required_width, $required_height, $fieldSize, $minSize) {
+
+    if ($minSize === true) {
+
+        //The required widths and heights are the MINIMUM permitted sizes
+        $IAR = $width / $height; //IMAGE ASPECT RATIO
+
+        if ($required_width / $IAR < $required_height) {
+
+            $newHeight = $required_height;
+            $newWidth = $newHeight * $IAR;
+        } else {
+
+            $newWidth = $required_width;
+            $newHeight = $newWidth / $IAR;
+        }
+    } else {
+
+        //The required widths and heights are the MAXIMUM permitted sizes
+
+        if ($width > $required_width || $height > $required_height) {
+
+            if ($width > $height) {
+
+                $width_Percentage = (int) $required_width / $width;
+                $newWidth = round($width * $width_Percentage);
+                $newHeight = round($height * $width_Percentage);
+
+                if ($newHeight > $required_height) {
+
+                    $height_Percentage = (int) $required_height / $newHeight;
+                    $newWidth = round($newWidth * $height_Percentage);
+                    $newHeight = round($newHeight * $height_Percentage);
+                }
+            } else {
+
+                $height_Percentage = (int) $required_height / $height;
+                $newWidth = round($width * $height_Percentage);
+                $newHeight = round($height * $height_Percentage);
+
+                if ($newWidth > $required_width) {
+
+                    $width_Percentage = (int) $required_width / $newWidth;
+                    $newWidth = round($newWidth * $width_Percentage);
+                    $newHeight = round($newHeight * $width_Percentage);
+                }
+            }
+        } else {
+
+            $newWidth = $width;
+            $newHeight = $height;
+        }
+    }
+
+    $image_tmp = imagecreatetruecolor($newWidth, $newHeight);
+
+    if ($type == IMAGETYPE_JPEG) {
+        $image_src = imagecreatefromjpeg($uploadedFile);
+    } else if ($type == IMAGETYPE_PNG) {
+        $image_src = imagecreatefrompng($uploadedFile);
+        // integer representation of the color black (rgb: 0,0,0)
+        $background = imagecolorallocate($image_tmp, 0, 0, 0);
+        // removing the black from the placeholder
+        imagecolortransparent($image_tmp, $background);
+        // turning off alpha blending (to ensure alpha channel information 
+        // is preserved, rather than removed (blending with the rest of the 
+        // image in the form of black))
+        imagealphablending($image_tmp, false);
+        // turning on alpha channel information saving (to ensure the full range 
+        // of transparency is preserved)
+        imagesavealpha($image_tmp, true);
+    } else {
+        $image_src = imagecreatefromgif($uploadedFile);
+        // integer representation of the color black (rgb: 0,0,0)
+        $background = imagecolorallocate($image_tmp, 0, 0, 0);
+        // removing the black from the placeholder
+        imagecolortransparent($image_tmp, $background);
+    }
+
+    imagecopyresampled($image_tmp, $image_src, 0, 0, 0, 0, $newWidth, $newHeight, $width, $height);
+
+    $uploadedImageLocation = $imagesDirectory . $imageName;
+    $imageNameExplode = explode(".", $imageName);
+    $newImageName = $imageNameExplode[0] . date("YmdHisu") . "_" . $fieldSize . "." . $imageNameExplode[1];
+    $newImageName = str_replace(" ", "", str_replace("-", "", $newImageName));
+
+    if ($type == IMAGETYPE_PNG) {
+        imagepng($image_tmp, $imagesDirectory . $newImageName, 9);
+    } else if ($type == IMAGETYPE_JPEG) {
+        imagejpeg($image_tmp, $imagesDirectory . $newImageName, 100);
+    } else if ($type == IMAGETYPE_GIF) {
+        imagegif($image_tmp, $imagesDirectory . $newImageName);
+    }
+    imagedestroy($image_tmp);
+    imagedestroy($image_src);
+
+    $arrReturn = array();
+    $arrReturn[0] = $newImageName;
+    $arrReturn[1] = $newWidth;
+    $arrReturn[2] = $newHeight;
+
+    return $arrReturn;
+}
+
+function getExtension($str) {
+
+    $i = strrpos($str, ".");
+    if (!$i) {
+        return "";
+    }
+    $l = strlen($str) - $i;
+    $ext = substr($str, $i + 1, $l);
+    return $ext;
+}
+
 ?>
