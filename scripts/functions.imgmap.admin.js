@@ -11,56 +11,56 @@ var easy2map_imgmap_functions = (function() {
             //refresh the example map
             refreshExampleMap = function(saveMapToDatabase) {
 
-        var templateID = parseInt(jQuery("#MapTemplateName").val());
-        var proVersion = !!jQuery("#photoSize").attr("proVersion");
+                var templateID = parseInt(jQuery("#MapTemplateName").val());
+                var proVersion = !!jQuery("#photoSize").attr("proVersion");
 
-        for (var t = 0; t < $arrTemplates.length; t++) {
+                for (var t = 0; t < $arrTemplates.length; t++) {
 
-            var template = $arrTemplates[t];
+                    var template = $arrTemplates[t];
 
-            if (parseInt(template.ID) == templateID) {
+                    if (parseInt(template.ID) == templateID) {
 
-                jQuery('#divPreview').html(replaceAll(template.TemplateHTML, '[siteurl]', $pluginsURL));
-                if (proVersion === true)
-                    jQuery('#easy2mapphotologo').remove();
+                        jQuery('#divPreview').html(replaceAll(template.TemplateHTML, '[siteurl]', $pluginsURL));
+                        if (proVersion === true)
+                            jQuery('#easy2mapphotologo').remove();
 
-                jQuery('[id ^= styleElement]').each(function() {
-                    jQuery('#divMapParent').css(replaceAll(jQuery(this).attr('item'), "_", "-"), jQuery(this).attr('value'));
-                });
+                        jQuery('[id ^= styleElement]').each(function() {
+                            jQuery('#divMapParent').css(replaceAll(jQuery(this).attr('item'), "_", "-"), jQuery(this).attr('value'));
+                        });
 
-                jQuery('[id ^= stylePhotoElement]').each(function() {
+                        jQuery('[id ^= stylePhotoElement]').each(function() {
 
-                    if (jQuery(this).attr('item') === "width") {
-                        jQuery('#divMapParent').css("width", jQuery(this).attr('value'));
-                        jQuery('#easy2mapmainimage').css("width", '');
+                            if (jQuery(this).attr('item') === "width") {
+                                jQuery('#divMapParent').css("width", jQuery(this).attr('value'));
+                                jQuery('#easy2mapmainimage').css("width", '');
 
-                    } else {
-                        jQuery('#easy2mapmainimage').css(replaceAll(jQuery(this).attr('item'), "_", "-"), jQuery(this).attr('value'));
+                            } else {
+                                jQuery('#easy2mapmainimage').css(replaceAll(jQuery(this).attr('item'), "_", "-"), jQuery(this).attr('value'));
+                            }
+                        });
+
+                        jQuery('[id ^= styleMapElement]').each(function() {
+                            jQuery('#divMap').css(replaceAll(jQuery(this).attr('item'), "_", "-"), jQuery(this).attr('value'));
+                        });
+
+                        jQuery("#easy2mapIimgShadow").width(jQuery("#divMapParent").width());
+                        jQuery("#easy2mapIimgShadow").width(jQuery("#divMapParent").width());
+                        jQuery("#easy2mapIimgShadow").css('marginLeft', jQuery("#divMapParent").css('marginLeft'));
+                        jQuery("#easy2mapIimgShadow").css('marginRight', jQuery("#divMapParent").css('marginRight'));
+
                     }
-                });
+                }
 
-                jQuery('[id ^= styleMapElement]').each(function() {
-                    jQuery('#divMap').css(replaceAll(jQuery(this).attr('item'), "_", "-"), jQuery(this).attr('value'));
-                });
+                //save the map to the database if required to do so
+                if (!!saveMapToDatabase) {
+                    easy2map_imgmap_functions.saveMap(false, false);
+                }
 
-                jQuery("#easy2mapIimgShadow").width(jQuery("#divMapParent").width());
-                jQuery("#easy2mapIimgShadow").width(jQuery("#divMapParent").width());
-                jQuery("#easy2mapIimgShadow").css('marginLeft', jQuery("#divMapParent").css('marginLeft'));
-                jQuery("#easy2mapIimgShadow").css('marginRight', jQuery("#divMapParent").css('marginRight'));
+                easy2map_imgmap_functions.displayGoogleMap();
 
-            }
-        }
+                google.maps.event.addDomListener(window, 'load', easy2map_imgmappin_functions.retrieveMapPoints());
 
-        //save the map to the database if required to do so
-        if (!!saveMapToDatabase) {
-            easy2map_imgmap_functions.saveMap(false, false);
-        }
-
-        easy2map_imgmap_functions.displayGoogleMap();
-
-        google.maps.event.addDomListener(window, 'load', easy2map_imgmappin_functions.retrieveMapPoints());
-
-    };
+            };
 
     //retrieve map's CSS elements for saving to the database
     retrieveMapCSS = function() {
@@ -253,7 +253,7 @@ var easy2map_imgmap_functions = (function() {
             $styleElementIndex = i;
             $styleSelectedElement = element;
             jQuery('div[id ^= div_edit_]').hide();
-
+            
             switch (attribute) {
 
                 case "border_style":
@@ -261,6 +261,39 @@ var easy2map_imgmap_functions = (function() {
                         jQuery('#tdheading_style').html("Border Style");
                         jQuery('#div_edit_style').modal();
                         jQuery('#txtDefaultValue_style').val(value).focus();
+                        break;
+                    }
+
+                case "font_family":
+                    {
+                        jQuery('#tdheading_fontfamily').html("Font Family");
+                        jQuery('#div_edit_fontfamily').modal();
+                        jQuery('#txtDefaultValue_fontfamily').val(value).focus();
+                        break;
+                    }
+
+                case "text_align":
+                    {
+                        jQuery('#tdheading_textalign').html("Text Align");
+                        jQuery('#div_edit_textalign').modal();
+                        jQuery('#txtDefaultValue_textalign').val(value).focus();
+                        break;
+                    }
+
+                case "font_weight":
+                    {
+                        jQuery('#tdheading_fontweight').html("Font Weight");
+                        jQuery('#div_edit_fontweight').modal();
+                        jQuery('#txtDefaultValue_fontweight').val(value).focus();
+                        break;
+                    }
+
+                case "font_size":
+                    {
+                        jQuery('#tdheading_em').html("Font Size");
+                        jQuery('#div_edit_em').modal();
+                        jQuery('#txtDefaultValue_em').val(value).focus();
+                        jQuery('#txtDefaultValue_em').val(type).prop('disabled', false);
                         break;
                     }
 
@@ -401,6 +434,17 @@ var easy2map_imgmap_functions = (function() {
                     {
 
                         jQuery('#tdheading_color').html("Background Color");
+                        jQuery('#div_edit_color').modal();
+                        jQuery('#txtDefaultValue_color').val(value).focus();
+                        jQuery('#txtDefaultValue_color').css('background-color', value);
+                        jQuery('#colourpicker').attr('data-color', hexToRgb(value));
+                        jQuery('#liDefaultValue_color').css('background-color', value);
+                        break;
+                    }
+
+                case "color":
+                    {
+                        jQuery('#tdheading_color').html("Color");
                         jQuery('#div_edit_color').modal();
                         jQuery('#txtDefaultValue_color').val(value).focus();
                         jQuery('#txtDefaultValue_color').css('background-color', value);
@@ -753,6 +797,32 @@ var easy2map_imgmap_functions = (function() {
 
             var alteredValue = '';
             switch (attribute) {
+                case "font_family":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_fontfamily').val();
+                        jQuery('#div_edit_fontfamily').hide();
+                        break;
+                    }
+
+                case "text_align":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_textalign').val();
+                        jQuery('#div_edit_textalign').hide();
+                        break;
+                    }
+                case "font_weight":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_fontweight').val();
+                        jQuery('#div_edit_fontweight').hide();
+                        break;
+                    }
+                case "font_size":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_em').val();
+                        jQuery('#div_edit_em').hide();
+                        break;
+
+                    }
                 case "border_style":
                     {
                         alteredValue = jQuery('#txtDefaultValue_style').val()
@@ -837,6 +907,13 @@ var easy2map_imgmap_functions = (function() {
                     {
                         alteredValue = jQuery('#txtDefaultValue_color').val();
                         jQuery('#tdItemElementValue').css('background-Color', jQuery('#txtDefaultValue_color').val());
+                        jQuery('#div_edit_color').hide();
+                        break;
+                    }
+                case "color":
+                    {
+                        alteredValue = jQuery('#txtDefaultValue_color').val();
+                        jQuery('#tdItemElementValue').css('color', jQuery('#txtDefaultValue_color').val());
                         jQuery('#div_edit_color').hide();
                         break;
                     }
@@ -971,6 +1048,8 @@ var easy2map_imgmap_functions = (function() {
                     //set the action of the pin upload form to reflect the new mapID!
                     jQuery('#formAddPinIcon').attr('action', '?page=easy2mapimg&action=mappiniconsave&map_id=' + $mapID);
                     jQuery('#formAddPinImage').attr('action', '?page=easy2mapimg&action=mappinimageupload&map_id=' + $mapID);
+                    jQuery('#formPhotoImport').attr('action', '?page=easy2mapimg&action=photoimport&map_id=' + $mapID);
+                    jQuery('#formRefresh').attr('action', '?page=easy2mapimg&action=edit&map_id=' + $mapID);
 
                 },
                 error: function(XMLHttpRequest, textStatus, errorThrown) {

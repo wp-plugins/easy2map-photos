@@ -5,10 +5,10 @@ class Easy2MapImg {
     const plugin_name = 'Easy2MapImg';
     const min_php_version = '5.0';
     const min_wp_version = '3.0';
-
     // Used to uniquely identify this plugin's menu page in the WP manager
     const admin_menu_slug = 'easy2mapimg';
 
+    //MERCURIAL COMMIT TEST 2
     /** Adds the necessary JavaScript and/or CSS to the pages to enable the Ajax search. */
     public static function head() {
 
@@ -193,7 +193,7 @@ class Easy2MapImg {
             VALUES
             ('Map On Bottom', '', 1,
             '<settings background-color=\"#FFFFFF\" border-style=\"solid\" border-width=\"1px\" border-color=\"#EBEBEB\" margin-left=\"auto\" margin-right=\"auto\" />',
-            '<settings width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
+            '<settings font-weight=\"bold\" color=\"#FFFFFF\" font-size=\"0.9em\" font-family=\"Arial, Helvetica, sans-serif\" width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
             '<settings height=\"120px\" border-radius=\"0px\" border-style=\"solid\" border-width=\"1px\" border-color=\"#faf9f9\" />',
             '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-bottom-width:0px;top:0px;left:0px;min-width:10px;margin-bottom:0px;margin-left:5px;margin-right:5px;margin-top:5px;position:relative;\"><div align=\"center\" id=\"easy2mapslidertext\"></div><a class=\"easy2maplogo\" id=\"easy2mapphotologo\" target=\"_blank\" href=\"http://easy2map.com\"><img src=\"[siteurl]images/e2mlogosmall.png\"></a><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td></tr><tr><td id=\"tdMap\" style=\"border-width:0px;vertical-align:top;\"><div id=\"divMap\" style=\"border-top-width:0px;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:5px;margin-top:5px;background-color:transparent;position:relative;\"></div></td></tr></table></div>', 1)";
 
@@ -215,7 +215,7 @@ class Easy2MapImg {
             VALUES
             ('Map On Top', '', 2,
             '<settings background-color=\"#FFFFFF\" border-style=\"solid\" border-width=\"1px\" border-color=\"#EBEBEB\" margin-left=\"auto\" margin-right=\"auto\" />',
-            '<settings width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
+            '<settings font-weight=\"bold\" color=\"#FFFFFF\" font-size=\"0.9em\" font-family=\"Arial, Helvetica, sans-serif\" width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
             '<settings height=\"120px\" border-radius=\"0px\" border-style=\"solid\" border-width=\"1px\" border-color=\"#faf9f9\" />',
             '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td id=\"tdMap\" style=\"border-width:0px;vertical-align:top;\"><div id=\"divMap\" style=\"background-color:transparent;border-style:solid;border-width:1px;border-bottom-width:0px;border-color:transparent;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:5px;margin-top:5px;position:relative;\"></div></td></tr><tr><td><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-top-width:0px;border-color:#FFFFFF;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:5px;margin-top:0px;position:relative;\"><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td></tr></table></div>', 1)";
 
@@ -237,7 +237,7 @@ class Easy2MapImg {
             VALUES
             ('Map On Left', '', 3,
             '<settings background-color=\"#FFFFFF\" border-style=\"solid\" border-width=\"1px\" border-color=\"#EBEBEB\" margin-left=\"auto\" margin-right=\"auto\" />',
-            '<settings width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
+            '<settings font-weight=\"bold\" color=\"#FFFFFF\" font-size=\"0.9em\" font-family=\"Arial, Helvetica, sans-serif\" width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
             '<settings width=\"150px\" height=\"390px\" border-radius=\"0px\" border-style=\"solid\" border-width=\"1px\" border-color=\"#faf9f9\" />',
             '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td id=\"tdMap\" style=\"border-width:0px;vertical-align:top;\"><div id=\"divMap\" style=\"background-color:transparent;border-style:solid;border-width:1px;border-right-width:0px;border-color:transparent;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:0px;margin-top:5px;position:relative;\"></div></td><td style=\"width:100%;\"><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-left-width:0px;border-color:#FFFFFF;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:5px;margin-top:5px;position:relative;\"><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td></tr></table></div>', 1)";
 
@@ -259,7 +259,7 @@ class Easy2MapImg {
             VALUES
             ('Map On Right', '', 4,
             '<settings background-color=\"#FFFFFF\" border-style=\"solid\" border-width=\"1px\" border-color=\"#EBEBEB\" margin-left=\"auto\" margin-right=\"auto\" />',
-            '<settings width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
+            '<settings font-weight=\"bold\" color=\"#FFFFFF\" font-size=\"0.9em\" font-family=\"Arial, Helvetica, sans-serif\" width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
             '<settings width=\"150px\" height=\"390px\" border-radius=\"0px\" border-style=\"solid\" border-width=\"1px\" border-color=\"#faf9f9\" />',
             '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td style=\"width:100%;\"><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-right-width:0px;border-color:#FFFFFF;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:5px;margin-top:5px;position:relative;\"><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td><td id=\"tdMap\" style=\"border-width:0px;vertical-align:top;\"><div id=\"divMap\" style=\"background-color:transparent;border-style:solid;border-width:1px;border-left-width:0px;border-color:transparent;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-right:5px;margin-left:0px;margin-top:5px;position:relative;\"></div></td></tr></table></div>', 1)";
 
@@ -281,7 +281,7 @@ class Easy2MapImg {
             VALUES
             ('Map In Photo On Top Left - Style 1', '', 5,
             '<settings background-color=\"#FFFFFF\" border-style=\"solid\" border-width=\"1px\" border-color=\"#EBEBEB\" margin-left=\"auto\" margin-right=\"auto\" />',
-            '<settings width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
+            '<settings font-weight=\"bold\" color=\"#FFFFFF\" font-size=\"0.9em\" font-family=\"Arial, Helvetica, sans-serif\" width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
             '<settings box-shadow=\"none\" width=\"120px\" height=\"120px\" border-radius=\"0px\" border-style=\"solid\" border-width=\"1px\" border-color=\"#faf9f9\" margin-left=\"0px\" margin-top=\"0px\" />',
             '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-color:#FFFFFF;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:5px;margin-top:5px;position:relative;\"><div id=\"divMap\" style=\"position:absolute;background-color:transparent;border-style:solid;border-width:1px;border-color:transparent;top:0px;left:0px;min-width:10px;\"></div><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td></tr></table></div>', 1)";
 
@@ -303,7 +303,7 @@ class Easy2MapImg {
             VALUES
             ('Map In Photo On Top Right - Style 1', '', 6,
             '<settings background-color=\"#FFFFFF\" border-style=\"solid\" border-width=\"1px\" border-color=\"#EBEBEB\" margin-left=\"auto\" margin-right=\"auto\" />',
-            '<settings width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
+            '<settings font-weight=\"bold\" color=\"#FFFFFF\" font-size=\"0.9em\" font-family=\"Arial, Helvetica, sans-serif\" width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
             '<settings box-shadow=\"none\" width=\"120px\" height=\"120px\" border-radius=\"0px\" border-style=\"solid\" border-width=\"1px\" border-color=\"#faf9f9\" margin-right=\"0px\" margin-top=\"0px\" />',
             '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-color:#FFFFFF;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:5px;margin-top:5px;position:relative;\"><div id=\"divMap\" style=\"position:absolute;background-color:transparent;border-style:solid;border-width:1px;border-color:transparent;top:0px;right:0px;min-width:10px;\"></div><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td></tr></table></div>', 1)";
 
@@ -325,7 +325,7 @@ class Easy2MapImg {
             VALUES
             ('Map In Photo On Bottom Left - Style 1', '', 7,
             '<settings background-color=\"#FFFFFF\" border-style=\"solid\" border-width=\"1px\" border-color=\"#EBEBEB\" margin-left=\"auto\" margin-right=\"auto\" />',
-            '<settings width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
+            '<settings font-weight=\"bold\" color=\"#FFFFFF\" font-size=\"0.9em\" font-family=\"Arial, Helvetica, sans-serif\" width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
             '<settings box-shadow=\"none\" width=\"120px\" height=\"120px\" border-radius=\"0px\" border-style=\"solid\" border-width=\"1px\" border-color=\"#faf9f9\" margin-left=\"0px\" margin-bottom=\"0px\" />',
             '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-color:#FFFFFF;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:5px;margin-top:5px;position:relative;\"><div id=\"divMap\" style=\"position:absolute;background-color:transparent;border-style:solid;border-width:1px;border-color:transparent;bottom:0px;left:0px;min-width:10px;\"></div><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td></tr></table></div>', 1)";
 
@@ -347,7 +347,7 @@ class Easy2MapImg {
             VALUES
             ('Map In Photo On Bottom Right - Style 1', '', 8,
             '<settings background-color=\"#FFFFFF\" border-style=\"solid\" border-width=\"1px\" border-color=\"#EBEBEB\" margin-left=\"auto\" margin-right=\"auto\" />',
-            '<settings width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
+            '<settings font-weight=\"bold\" color=\"#FFFFFF\" font-size=\"0.9em\" font-family=\"Arial, Helvetica, sans-serif\" width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#faf9f9\" background-color=\"#faf9f9\" />',
             '<settings box-shadow=\"none\" width=\"120px\" height=\"120px\" border-radius=\"0px\" border-style=\"solid\" border-width=\"1px\" border-color=\"#faf9f9\" margin-right=\"0px\" margin-bottom=\"0px\" />',
             '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-color:#FFFFFF;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:5px;margin-top:5px;position:relative;\"><div id=\"divMap\" style=\"position:absolute;background-color:transparent;border-style:solid;border-width:1px;border-color:transparent;bottom:0px;right:0px;min-width:10px;\"></div><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td></tr></table></div>', 1)";
 
@@ -355,7 +355,7 @@ class Easy2MapImg {
                 echo sprintf($error, __("Could not add data to easy2map templates table.", 'easy2mapimg'));
                 return;
             }
-            
+
             $SQLInsert11 = "INSERT INTO `$map_templates_table`
             (`TemplateName`,
             `ExampleImage`,
@@ -369,7 +369,7 @@ class Easy2MapImg {
             VALUES
             ('Map In Photo On Top Left - Style 2', '', 9,
             '<settings margin-left=\"auto\" margin-right=\"auto\" />',
-            '<settings width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#272727\" background-color=\"#faf9f9\" />',
+            '<settings font-weight=\"bold\" color=\"#FFFFFF\" font-size=\"0.9em\" font-family=\"Arial, Helvetica, sans-serif\" width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#272727\" background-color=\"#faf9f9\" />',
             '<settings box-shadow=\"-4px -4px 2px #888888\" width=\"120px\" height=\"120px\" border-radius=\"0px\" border-style=\"solid\" border-width=\"1px\" border-color=\"#272727\" margin-left=\"-15px\" margin-top=\"-15px\" />',
             '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-color:transparent;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;position:relative;\"><div id=\"divMap\" style=\"position:absolute;background-color:transparent;border-style:solid;border-width:1px;border-color:transparent;top:0px;left:0px;min-width:10px;\"></div><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td></tr></table></div>', 1)";
 
@@ -377,9 +377,9 @@ class Easy2MapImg {
                 echo sprintf($error, __("Could not add data to easy2map templates table.", 'easy2mapimg'));
                 return;
             }
-            
-            
-            
+
+
+
             $SQLInsert12 = "INSERT INTO `$map_templates_table`
             (`TemplateName`,
             `ExampleImage`,
@@ -393,7 +393,7 @@ class Easy2MapImg {
             VALUES
             ('Map In Photo On Top Right - Style 2', '', 10,
             '<settings margin-left=\"auto\" margin-right=\"auto\" />',
-            '<settings width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#272727\" background-color=\"#faf9f9\" />',
+            '<settings font-weight=\"bold\" color=\"#FFFFFF\" font-size=\"0.9em\" font-family=\"Arial, Helvetica, sans-serif\" width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#272727\" background-color=\"#faf9f9\" />',
             '<settings box-shadow=\"4px -4px 2px #888888\" width=\"120px\" height=\"120px\" border-radius=\"0px\" border-style=\"solid\" border-width=\"1px\" border-color=\"#272727\" margin-right=\"-15px\" margin-top=\"-15px\" />',
             '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-color:transparent;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;position:relative;\"><div id=\"divMap\" style=\"position:absolute;background-color:transparent;border-style:solid;border-width:1px;border-color:transparent;top:0px;right:0px;min-width:10px;\"></div><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td></tr></table></div>', 1)";
 
@@ -401,7 +401,7 @@ class Easy2MapImg {
                 echo sprintf($error, __("Could not add data to easy2map templates table.", 'easy2mapimg'));
                 return;
             }
-            
+
             $SQLInsert13 = "INSERT INTO `$map_templates_table`
             (`TemplateName`,
             `ExampleImage`,
@@ -415,7 +415,7 @@ class Easy2MapImg {
             VALUES
             ('Map In Photo On Bottom Left - Style 2', '', 11,
             '<settings margin-left=\"auto\" margin-right=\"auto\" />',
-            '<settings width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#272727\" background-color=\"#faf9f9\" />',
+            '<settings font-weight=\"bold\" color=\"#FFFFFF\" font-size=\"0.9em\" font-family=\"Arial, Helvetica, sans-serif\" width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#272727\" background-color=\"#faf9f9\" />',
             '<settings box-shadow=\"-4px 4px 2px #888888\" width=\"120px\" height=\"120px\" border-radius=\"0px\" border-style=\"solid\" border-width=\"1px\" border-color=\"#272727\" margin-left=\"-15px\" margin-bottom=\"-15px\" />',
             '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-color:transparent;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;position:relative;\"><div id=\"divMap\" style=\"position:absolute;background-color:transparent;border-style:solid;border-width:1px;border-color:transparent;bottom:0px;left:0px;min-width:10px;\"></div><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td></tr></table></div>', 1)";
 
@@ -423,7 +423,7 @@ class Easy2MapImg {
                 echo sprintf($error, __("Could not add data to easy2map templates table.", 'easy2mapimg'));
                 return;
             }
-            
+
             $SQLInsert14 = "INSERT INTO `$map_templates_table`
             (`TemplateName`,
             `ExampleImage`,
@@ -437,7 +437,7 @@ class Easy2MapImg {
             VALUES
             ('Map In Photo On Bottom Right - Style 2', '', 12,
             '<settings margin-left=\"auto\" margin-right=\"auto\" />',
-            '<settings width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#272727\" background-color=\"#faf9f9\" />',
+            '<settings font-weight=\"bold\" color=\"#FFFFFF\" font-size=\"0.9em\" font-family=\"Arial, Helvetica, sans-serif\" width=\"520px\" height=\"390px\" border-style=\"solid\" border-radius=\"0px\" border-width=\"1px\" border-color=\"#272727\" background-color=\"#faf9f9\" />',
             '<settings box-shadow=\"4px 4px 2px #888888\" width=\"120px\" height=\"120px\" border-radius=\"0px\" border-style=\"solid\" border-width=\"1px\" border-color=\"#272727\" margin-right=\"-15px\" margin-bottom=\"-15px\" />',
             '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-color:transparent;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;position:relative;\"><div id=\"divMap\" style=\"position:absolute;background-color:transparent;border-style:solid;border-width:1px;border-color:transparent;bottom:0px;right:0px;min-width:10px;\"></div><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td></tr></table></div>', 1)";
 
@@ -445,21 +445,18 @@ class Easy2MapImg {
                 echo sprintf($error, __("Could not add data to easy2map templates table.", 'easy2mapimg'));
                 return;
             }
-            
-             $SQLInsert15 = "UPDATE `$map_templates_table`
+
+            $SQLInsert15 = "UPDATE `$map_templates_table`
              SET `TemplateHTML` = '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td id=\"tdMap\" style=\"border-width:0px;vertical-align:top;\"><div id=\"divMap\" style=\"background-color:transparent;border-style:solid;border-width:1px;border-right-width:0px;border-color:transparent;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:0px;margin-top:5px;position:relative;\"></div></td><td style=\"width:100%;\"><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-left-width:0px;border-color:#FFFFFF;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:5px;margin-top:5px;position:relative;\"><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td></tr></table></div>'
              WHERE `TemplateName` = 'Map On Left'";
-             
-             $wpdb->query($SQLInsert15);
-             
-             $SQLInsert16 = "UPDATE `$map_templates_table`
+
+            $wpdb->query($SQLInsert15);
+
+            $SQLInsert16 = "UPDATE `$map_templates_table`
              SET `TemplateHTML` = '<div style=\"margin:auto;\"><table cellpadding=\"1\" cellspacing=\"1\" id=\"divMapParent\"><tr><td style=\"width:100%;\"><div align=\"center\" id=\"easy2mapmainimage\" style=\"text-align:center;border-style:solid;border-width:1px;border-right-width:0px;border-color:#FFFFFF;background-color:#FFFFFF;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-left:5px;margin-right:5px;margin-top:5px;position:relative;\"><div align=\"center\" id=\"easy2mapslidertext\"></div><div id=\"easy2mapslider\"><a class=\"easy2mapbutton easy2mapprev\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/prev.png\"></a><a class=\"easy2mapbutton easy2mapnext\" href=\"#\" rel=\"nofollow\"><img src=\"[siteurl]images/next.png\"></a><div class=\"easy2mapholder_cont\"><ul id=\"Easy2MapSliderParent\" class=\"easy2mapholder\"></ul></div><div class=\"easy2mapclear\"></div></div></div></td><td id=\"tdMap\" style=\"border-width:0px;vertical-align:top;\"><div id=\"divMap\" style=\"background-color:transparent;border-style:solid;border-width:1px;border-left-width:0px;border-color:transparent;top:0px;left:0px;min-width:10px;margin-bottom:5px;margin-right:5px;margin-left:0px;margin-top:5px;position:relative;\"></div></td></tr></table></div>'
              WHERE `TemplateName` = 'Map On Right'";
-             
-             $wpdb->query($SQLInsert16);
 
-            
-            
+            $wpdb->query($SQLInsert16);
         }
     }
 
@@ -507,13 +504,15 @@ class Easy2MapImg {
         } else if (isset($_GET["action"]) && strcasecmp($_GET["action"], "mappiniconsave") == 0 && isset($_GET["map_id"])) {
             include('MapPinIconSave.php');
         } else if (isset($_GET["action"]) && strcasecmp($_GET["action"], "copymapsettings") == 0 && isset($_GET["map_id"])) {
-            include('CopyMapSettings.php');    
+            include('CopyMapSettings.php');
         } else if (isset($_GET["action"]) && strcasecmp($_GET["action"], "mappinimageupload") == 0 && isset($_GET["map_id"])) {
             include('MapPinImageUpload.php');
         } else if (isset($_GET["action"]) && strcasecmp($_GET["action"], "mappreview") == 0 && isset($_GET["map_id"])) {
             include('MapPreview.php');
-        } else if (isset($_GET["action"]) && strcasecmp($_GET["action"], "activation") == 0) {
-            include('Validation.php');
+        } else if (isset($_GET["action"]) && strcasecmp($_GET["action"], "copymapsettings") == 0 && isset($_GET["map_id"])) {
+            include('CopyMapSettings.php');
+        } else if (isset($_GET["action"]) && strcasecmp($_GET["action"], "photoimport") == 0 && isset($_GET["map_id"])) {
+            include('ZipPhotoImport.php');
         } else {
             include('ImageMapManager.php');
         }
@@ -521,9 +520,10 @@ class Easy2MapImg {
 
     /** Validation fucntion */
     private static function easy2MapPhotoCodeValidator($code) {
-        
-        if (strlen($code) == "") $code = get_option('phe_171323_transient_17666766');
-        
+
+        if (strlen($code) == "")
+            $code = get_option('phe_171323_transient_17666766');
+
         //code validator
         $validation = true;
         $string = substr($code, 32, -32);

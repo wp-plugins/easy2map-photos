@@ -38,4 +38,5 @@ if (isset($activeMaps) && count($activeMaps) > 0) {
     }
     echo '</select></td></tr><tr><td style="text-align:center"><button onclick="easy2map_imgmap_functions.copyMapSettings()" class="btn" data-dismiss="modal" aria-hidden="true">Copy Map Settings</button></td></tr></table>';
 }
+   
 ?>
