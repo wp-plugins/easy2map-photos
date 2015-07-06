@@ -115,4 +115,72 @@ function getExtension($str) {
     return $ext;
 }
 
+function extractLocationFromImageExif($uploadedFile) {
+
+    $arrImage = array();
+    $arrResult = array(0, 0);
+    $lat = 0;
+    $lng = 0;
+
+    try {
+
+        if (extension_loaded('exif')) {
+            $arrImage = exif_read_data($uploadedFile, 0, true);
+        }
+
+        if (isset($arrImage['GPS'])) {
+
+            $GPS = $arrImage['GPS'];
+
+            if (isset($GPS['GPSLatitudeRef']) && isset($GPS['GPSLatitude'])) {
+
+                //LATITUDE
+                $LatitudeRef = $GPS['GPSLatitudeRef'];
+                $Latitude = $GPS['GPSLatitude'];
+
+                $arrLatDegrees = explode("/", $Latitude[0]);
+                $arrLatMinutes = explode("/", $Latitude[1]);
+                $arrLatSeconds = explode("/", $Latitude[2]);
+
+                $latDegrees = floatval($arrLatDegrees[0] / $arrLatDegrees[1]);
+                $latMinutes = floatval($arrLatMinutes[0] / $arrLatMinutes[1]);
+                $latSeconds = floatval($arrLatSeconds[0] / $arrLatSeconds[1]);
+
+                //LONGITUDE
+                $LongitudeRef = $GPS['GPSLongitudeRef'];
+                $Longitude = $GPS['GPSLongitude'];
+
+                $arrLngDegrees = explode("/", $Longitude[0]);
+                $arrLngMinutes = explode("/", $Longitude[1]);
+                $arrLngSeconds = explode("/", $Longitude[2]);
+
+                $lngDegrees = floatval($arrLngDegrees[0] / $arrLngDegrees[1]);
+                $lngMinutes = floatval($arrLngMinutes[0] / $arrLngMinutes[1]);
+                $lngSeconds = floatval($arrLngSeconds[0] / $arrLngSeconds[1]);
+
+                $lat = DMStoDEC($latDegrees, $latMinutes, $latSeconds);
+                if (strcasecmp($LatitudeRef, "S") === 0)
+                    $lat = -1 * $lat;
+
+                $lng = DMStoDEC($lngDegrees, $lngMinutes, $lngSeconds);
+                if (strcasecmp($LongitudeRef, "W") === 0)
+                    $lng = -1 * $lng;
+            }
+        }
+    } catch (Exception $e) {
+        
+    }
+
+    $arrResult = array($lat, $lng);
+    return $arrResult;
+}
+
+function DMStoDEC($deg, $min, $sec) {
+
+// Converts DMS ( Degrees / minutes / seconds ) 
+// to decimal format longitude / latitude
+
+    return $deg + ((($min * 60) + ($sec)) / 3600);
+}
+
 ?>

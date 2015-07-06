@@ -45,7 +45,7 @@ if (!function_exists('easy2mapimg_e2m_img_e2m_img_save_map_polylines_callback'))
         $mapID = $_REQUEST["mapID"];
         $PolyLines = urldecode($_REQUEST['PolyLines']);
 
-        $wpdb->query(sprintf("UPDATE $mapsTable
+        $wpdb->query($wpdb->prepare("UPDATE $mapsTable
         SET PolyLines = '%s'
         WHERE ID = '%s';", $PolyLines, $mapID));
 
@@ -215,7 +215,7 @@ if (!function_exists('easy2mapimg_e2m_img_save_map')):
         if (intval($mapID) != 0) {
 
             //this is a map update
-            $wpdb->query(sprintf("
+            $wpdb->query($wpdb->prepare("
                 UPDATE $mapsTable
                 SET TemplateID = '%s',
                     MapName = '%s',
@@ -228,15 +228,15 @@ if (!function_exists('easy2mapimg_e2m_img_save_map')):
                 WHERE ID = %s;", 
                     $_REQUEST['mapTemplateName'], 
                     $_REQUEST['mapName'], 
-                    urldecode($_REQUEST['mapSettingsXML']), 
-                    urldecode($_REQUEST["parentCSSXML"]),
-                    urldecode($_REQUEST["photoCSSXML"]), 
-                    urldecode($_REQUEST["mapCSSXML"]), 
-                    urldecode($_REQUEST["mapHTML"]), $mapID));
+                    stripcslashes(urldecode($_REQUEST['mapSettingsXML'])), 
+                    stripcslashes(urldecode($_REQUEST["parentCSSXML"])),
+                    stripcslashes(urldecode($_REQUEST["photoCSSXML"])), 
+                    stripcslashes(urldecode($_REQUEST["mapCSSXML"])), 
+                    stripcslashes(urldecode($_REQUEST["mapHTML"])), $mapID));
         } else {
 
             //this is a map insert
-            if (!$wpdb->query(sprintf("
+            if (!$wpdb->query($wpdb->prepare("
             INSERT INTO $mapsTable(
                 TemplateID,
                 MapName,
@@ -253,12 +253,12 @@ if (!function_exists('easy2mapimg_e2m_img_save_map')):
                     $_REQUEST['mapTemplateName'], 
                     $_REQUEST['mapName'], 
                     str_replace('index.php', '', easy2mapimg_get_plugin_url('/index.php')) . "images/map_pins/pins/111.png",
-                    urldecode($_REQUEST['mapSettingsXML']), 
+                    stripcslashes(urldecode($_REQUEST['mapSettingsXML'])), 
                     getdate(), '', 
-                    urldecode($_REQUEST["parentCSSXML"]), 
-                    urldecode($_REQUEST["photoCSSXML"]), 
-                    urldecode($_REQUEST["mapCSSXML"]), 
-                    urldecode($_REQUEST["mapHTML"])))) {
+                    stripcslashes(urldecode($_REQUEST["parentCSSXML"])), 
+                    stripcslashes(urldecode($_REQUEST["photoCSSXML"])), 
+                    stripcslashes(urldecode($_REQUEST["mapCSSXML"])), 
+                    stripcslashes(urldecode($_REQUEST["mapHTML"]))))) {
                 die("Error!");
             }
 
@@ -328,7 +328,7 @@ if (!function_exists('easy2mapimg_e2m_img_save_map_name')):
         $mapID = $_REQUEST["mapID"];
         $mapsTable = $wpdb->prefix . "easy2mapimg_maps";
         
-        $wpdb->query(sprintf("
+        $wpdb->query($wpdb->prepare("
             UPDATE $mapsTable
             SET MapName = '%s'
             IsActive = 1

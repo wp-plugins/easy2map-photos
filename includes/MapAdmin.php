@@ -57,7 +57,7 @@ $mapID = $_REQUEST["map_id"];
             "image": false, //Button to insert an image. Default true,
             "color": true //Button to change color of font  
         });
-        
+
         jQuery('.fileupload').fileupload();
         notBusy();
 
@@ -185,9 +185,9 @@ $mapID = $_REQUEST["map_id"];
                                class="input-large" style="display:none;width:300px;margin-bottom:-6px" />
 
                         <!---<?php if (!isset($_REQUEST["no_back"])) { ?>
-                                                                                                        <button onclick="window.location='?page=easy2mapimg&action=viewMaps'" type="button" 
-                                                                                                                style="margin-left:30px;width:100px;" 
-                                                                                                                class="btn">Back</button> 
+                                                                                                                <button onclick="window.location='?page=easy2mapimg&action=viewMaps'" type="button" 
+                                                                                                                        style="margin-left:30px;width:100px;" 
+                                                                                                                        class="btn">Back</button> 
                         <?php } ?>--->
 
                 </td>
@@ -260,6 +260,15 @@ $mapID = $_REQUEST["map_id"];
                                     <tr id="pinImageParent" style="display:none;"><td align="center" style="text-align:center" colspan="2">
                                             <img id="pinImagePreview">
                                         </td></tr>
+                                    
+                                    
+                                    <tr id="zipUpload" style="display:none;"><td align="center" style="text-align:center" colspan="2">
+                                        
+                                        
+                                        <h5><a href="#" onclick="document.formPhotoImport.photoSize.value=document.formAddPinImage.photoSize.value;jQuery('#mapZipImport').modal();">Upload  Zip File of Geotagged Images</a></h5>
+                                        
+                                        
+                                    </tr>
 
                                 <!---<tr id="pinNameParent" style="display:none;"><td colspan="2">
 
@@ -358,7 +367,7 @@ $mapID = $_REQUEST["map_id"];
       action="?page=easy2mapimg&action=copymapsettings&map_id=<?php echo $mapID; ?>"
       method="post">
     <input type="hidden" name="CopyMapID" id="CopyMapID">
-</form>                    
+</form>
 
 <form name="formAddPinIcon" 
       target="frameAddPinIcon" 
@@ -434,6 +443,121 @@ $mapID = $_REQUEST["map_id"];
     </div>
 </div>
 
+<form name="formPhotoImport" 
+      enctype="multipart/form-data"
+      target="frameAddPinIcon" 
+      id="formPhotoImport"
+      onsubmit="return easy2map_imgmappin_functions.uploadZippedFile();"
+      action="?page=easy2mapimg&action=photoimport&map_id=<?php echo $mapID; ?>"
+      method="post">
+    
+    
+
+    <div id="mapZipImport" style="width:600px" 
+         class="modal hide fade" tabindex="-1" 
+         role="dialog" aria-labelledby="winSettingsModalLabel" data-keyboard="true" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h3>Upload Zip File of Geotagged Images</h3>
+        </div>
+        <div class="modal-body" style="max-height: 400px">
+
+            <input type="hidden" name="photoSize" value="<?php echo $_REQUEST["photoSize"]; ?>" />
+
+            <table style="background-color:#EBEBEB;width:60%;margin-left:auto;margin-right:auto;margin-top:10px;" cellspacing="3" cellpadding="3" class="table table-bordered">
+                <tr>
+                    <td class="instructions"><h5>Note: only geotagged images will be uploaded</h5>
+                    </td>
+                </tr>
+
+                <tr><td align="center" style="text-align:center">
+
+                        <h5><input type='file' name='zipfile' 
+                                   id='zipfile' 
+                                   size='30' style="width:300px;vertical-align:middle;"
+                                   acceptedFileList='ZIP'
+                                   accept='zip/*'></h5>
+                        <h6><i>(Only Valid ZIP Files Accepted)</i></h6>
+                    </td></tr>
+            </table>
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" data-dismiss="modal" 
+                    onclick="document.formPhotoImport.submit();"
+                    aria-hidden="true">Upload Zip File</button>
+
+        </div>
+    </div>
+
+</form>
+
+
+
+
+
+
+<form name="formAddPinIcon" 
+      target="frameAddPinIcon" 
+      enctype="multipart/form-data" 
+      id="formAddPinIcon"
+      action="?page=easy2mapimg&action=mappiniconsave&map_id=<?php echo $mapID; ?>"
+      method="post">
+
+    <div id="mapPinIconList" style="width:600px" 
+         class="modal hide fade" tabindex="-1" 
+         role="dialog" aria-labelledby="winSettingsModalLabel" data-keyboard="true" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h3>My map icons</h3>
+        </div>
+        <div class="modal-body" style="max-height: 400px">
+            <h5>                
+                <?php if (self::easy2MapPhotoCodeValidator('') === false) { ?>
+                    <i>(Please upgrade to the Pro Version to upload your own custom icons)</i>
+                    <br><br>
+                <?php } else { ?>  
+                    Upload own icon: 
+                    <input type='file' name='pinicon' 
+                           id='pinicon' 
+                           size='30' style="width:300px;vertical-align:middle;"
+                           acceptedFileList='JPG;JPEG;PJPEG;GIF;PNG;X-PNG'
+                           accept='image/*'></h5>
+                <h6><i>Valid image files accepted (.jpg, .png, .gif) with a maximum file size of 5MB.</i></h6>
+            <?php } ?>
+            <table style="width:96%" 
+                   cellpadding="4" 
+                   cellspacing="4" id="tblPinImages"></table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+            <?php if (self::easy2MapPhotoCodeValidator('') === true) { ?><button class="btn btn-primary" data-dismiss="modal" onclick="easy2map_imgmappin_functions.uploadPinIcon()" aria-hidden="true">Upload Icon</button><?php } ?>
+        </div>
+    </div> 
+
+</form>
+                    
+<form name="formRefresh" 
+      id="formRefresh"
+      action="?page=easy2mapimg&action=edit&map_id=<?php echo $mapID; ?>"
+      method="post">                    
+<div id="popupModalZipImport" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Zip File Upload Result</h4>
+                </div>
+                <div class="modal-body">
+                    <p style="font-size:1.5em;font-weight:bold;" id="resultMessage"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" onclick="document.formRefresh.submit();" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</form>
 
 <iframe name="frameAddPinIcon" 
         id="frameAddPinIcon" 

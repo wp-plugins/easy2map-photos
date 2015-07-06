@@ -3,8 +3,8 @@ Plugin Name: Easy2Map Photos
 Contributors: stevenellis
 Tags: photo maps, image maps, image map, geo, map images, map photos, google maps, map plugins, mapping plugins, maps, mapping, mapper, blog maps, blogging maps, travel maps, plugin, posts, post, page, coordinates, latitude, longitude, geocoding, geotag images, geotag photos, image slider, photo slider, image gallery, photo gallery
 Requires at least: 3.0.1
-Tested up to: 3.6.1
-Stable tag: 1.0.9
+Tested up to: 4.4.2
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -97,6 +97,10 @@ Yes, width of photos can be made as percentage or pixel value.
 * Enhanced file upload control
 * Various fixes and enhancements
 
+= 1.1.0 = 
+* Plugin made WP 4.2.2 compliant
+* SQL injection vulnerabilities plugged
+
 == Upgrade Notice ==
 
 = 1.0.1 =
@@ -113,3 +117,7 @@ Yes, width of photos can be made as percentage or pixel value.
  = 1.0.9 = 
 * Enhanced file upload control
 * Various fixes and enhancements
+
+= 1.1.0 = 
+* Plugin made WP 4.2.2 compliant
+* SQL injection vulnerabilities plugged
